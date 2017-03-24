@@ -65,20 +65,20 @@ public class RateCreation {
        System.out.println("RateCreation");
 		
 		
-		FileInputStream status = new FileInputStream("D:/WorkSpace/ibv4_code/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		stat=new Properties();
 		stat.load(status);
 		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 		{
 			QALIVE=stat.getProperty("Status");
-			FileInputStream pageObjectGen = new FileInputStream("D:/WorkSpace/ibv4_code/PanelAnutomationSuit/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
 			QALIVE=stat.getProperty("Status");
-			FileInputStream pageObjectGen = new FileInputStream("D:/WorkSpace/ibv4_code/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
@@ -140,7 +140,7 @@ public class RateCreation {
 	@Test
 	public static void start() throws InterruptedException, FindFailed, AWTException, IOException, UnsupportedFlavorException
 	{
-		FileInputStream pageObject = new FileInputStream("D:/WorkSpace/ibv4_code/PanelAnutomationSuit/src/Repository/Rate_Creation_Repository.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Rate_Creation_Repository.properties");
 		prop = new Properties();
 		prop.load(pageObject);
 		driver.get(gen.getProperty("Rate_creation_URL"));

@@ -47,12 +47,12 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
     	System.out.println("RateShopper");
 	    driver=RateCreation.driver;
 		System.out.println("PAckageCreation");
-		FileInputStream status = new FileInputStream("D:/WorkSpace/ibv4_code/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		stat=new Properties();
 		stat.load(status);
 		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("D:/WorkSpace/ibv4_code/PanelAnutomationSuit/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 			expectedcomp=new ArrayList<String>();
@@ -64,7 +64,7 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("D:/WorkSpace/ibv4_code/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 			expectedcomp=new ArrayList<String>();
@@ -76,7 +76,7 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 			expectedcomp.add("La Place Sarovar Portico");
 		}
 	
-		FileInputStream pageObject = new FileInputStream("D:/WorkSpace/ibv4_code/PanelAnutomationSuit/src/Repository/Package_Creation.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Package_Creation.properties");
 		prop = new Properties();
 	    prop.load(pageObject);
 	    wait=new WebDriverWait(driver,40);
