@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Main Test Suite">
+    <test name="Panel Automation" preserve-order="true">
+        <classes>
+              <class name="Dev_progress.RateCreation"/>
+              <class name="Dev_progress.TicketCheck"/>	
+              <class name="Dev_progress.PromocodeCreation"/>
+              <class name="Dev_progress.PackageCreation"/>
+              <class name="Dev_progress.PromotionCreation"/>
+              <class name="Dev_progress.NewCalendarStatus"/>
+             <class name="Dev_progress.RateShopperCheck"/>            
+        </classes>
+    </test>   
+</suite>
