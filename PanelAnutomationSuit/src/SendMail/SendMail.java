@@ -30,15 +30,15 @@ package SendMail;
 
 		public  void copyfile() throws IOException
 		{
-		    System.out.println("sunil");
+		    
 			SimpleDateFormat DF = new SimpleDateFormat("dd-MM-yyyy");
 		    Calendar RC = Calendar.getInstance();
 		    String start=DF.format(RC.getTime());
-		    File source=new File("D:/WorkSpace/ibv4_code/Enroll_Hotel_Test/test-output/PanelARIReport-Jenkins/PanelARIReport-Jenkins.html");
+		    File source=new File("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/test-output/PanelARIReport-Jenkins/PanelARIReport-Jenkins.html");
 		
 			//File source = new File("D:/WorkSpace/ibv4_code/MobileTest/test-output/AndroidMobileAutomation/Mobile Android Automation.html");
 			File dest = new File("D:/PanelARIDailyReport/PanelARIReport-"+start+".html");
-			System.out.println(start);
+			
 			try
 			{
 			Files.copy(source.toPath(), dest.toPath());
@@ -99,7 +99,7 @@ package SendMail;
 
 		       // Part two is attachment
 		       messageBodyPart = new MimeBodyPart();
-		       String filename = "D:/WorkSpace/ibv4_code/Enroll_Hotel_Test/test-output/PanelARIReport-Jenkins/PanelARIReport-Jenkins.html";
+		       String filename = "C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/test-output/PanelARIReport-Jenkins/PanelARIReport-Jenkins.html";
 		       DataSource source = new FileDataSource(filename);
 		       messageBodyPart.setDataHandler(new DataHandler(source));
 		       messageBodyPart.setFileName(filename);
