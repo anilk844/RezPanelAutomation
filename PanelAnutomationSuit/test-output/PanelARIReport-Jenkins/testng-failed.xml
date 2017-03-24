@@ -3,17 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [PanelARIReport-Jenkins]">
   <test name="PanelARIReport-Jenkins(failed)">
     <classes>
+      <class name="Dev_progress.NewCalendarStatus">
+        <methods>
+          <include name="selectcalendar" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- Dev_progress.NewCalendarStatus -->
       <class name="Dev_progress.RateCreation">
         <methods>
-          <include name="start"/>
           <include name="login"/>
         </methods>
       </class> <!-- Dev_progress.RateCreation -->
-      <class name="Dev_progress.NewCalendarStatus">
-        <methods>
-          <include name="selectcalendar"/>
-        </methods>
-      </class> <!-- Dev_progress.NewCalendarStatus -->
     </classes>
   </test> <!-- PanelARIReport-Jenkins(failed) -->
 </suite> <!-- Failed suite [PanelARIReport-Jenkins] -->
