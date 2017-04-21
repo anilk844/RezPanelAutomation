@@ -33,6 +33,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.SendKeysAction;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -60,25 +61,25 @@ public class RateTest {
 	@Test
 	public static void start() throws InterruptedException, FindFailed, AWTException, IOException, UnsupportedFlavorException
 	{
-		FileInputStream status = new FileInputStream("D:/WorkSpace/ibv4_code/Enroll_Hotel_Test/src/LiveRepository/SwitchQAandLIVE.properties");
+		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		stat=new Properties();
 		stat.load(status);
 		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("D:/WorkSpace/ibv4_code/Enroll_Hotel_Test/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("D:/WorkSpace/ibv4_code/Enroll_Hotel_Test/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
-		FileInputStream pageObject = new FileInputStream("D:/WorkSpace/ibv4_code/Enroll_Hotel_Test/src/Repository/Rate_Creation_Repository.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Rate_Creation_Repository.properties");
 		prop = new Properties();
 		prop.load(pageObject);
-		FileInputStream file= new FileInputStream("D://RateShopper//Keys1.xlsx");
+		FileInputStream file= new FileInputStream("D://1585.xlsx");
 		//FileInputStream file= new FileInputStream("D://Keys1.xlsx");
 		
 		ArrayList data= new ArrayList();
@@ -108,20 +109,28 @@ public class RateTest {
 		}
 		file.close();
 		
-		System.out.println(data.size());
-		System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--disable-extensions");
-		driver=new ChromeDriver(options);
-		wait=new WebDriverWait(driver,10);
-		driver.manage().window().maximize();
-		driver.get(gen.getProperty("Url"));
+
+		System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
+		 
+         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+         ChromeOptions options = new ChromeOptions();
+         options.addArguments("test-type");
+         options.addArguments("--start-maximized");
+         options.addArguments("--disable-web-security");
+         options.addArguments("--allow-running-insecure-content");
+         capabilities.setCapability("chrome.binary","D://chrome//chromedriver.exe");
+         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+         driver = new ChromeDriver(capabilities);
+         driver.get(gen.getProperty("Url"));
+		 wait=new WebDriverWait(driver,10);
+		
+		
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(gen.getProperty("username"))));
 		driver.findElement(By.xpath(gen.getProperty("username"))).sendKeys(gen.getProperty("UserNameValue"));
 		driver.findElement(By.xpath(gen.getProperty("password"))).sendKeys(gen.getProperty("PasswordValue"));
 		driver.findElement(By.xpath(gen.getProperty("Button"))).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(gen.getProperty("searchField"))));
-		driver.findElement(By.xpath(gen.getProperty("searchField"))).sendKeys("4061");
+		driver.findElement(By.xpath(gen.getProperty("searchField"))).sendKeys("1585");
 		Screen scn= new Screen();
 		String img="D://sikili//Ban.PNG";
 		Pattern ptr= new Pattern(img);
@@ -930,7 +939,7 @@ public class RateTest {
 		public static void sendMessage()
 		{
 			ibv4_1 mail=new ibv4_1();
-			mail.mailSend(RateCode);
+			//mail.mailSend(RateCode);
 		}
 		
 		

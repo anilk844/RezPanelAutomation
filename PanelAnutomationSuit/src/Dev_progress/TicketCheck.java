@@ -64,10 +64,14 @@ public class TicketCheck
 		wait=new WebDriverWait(driver,40);
 		driver.get(gen.getProperty("Ticket"));
 		//*[@id="wid-id-ticketGrid"]/header/div/button
-	
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='btn newPackage']")));
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("*[class^='btn newPackage']")));
-		driver.findElement(By.cssSelector("*[class^='btn newPackage']")).click();
+		//*[@id="wid-id-ticketGrid"]/header/div/button
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='btn newPackage']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("wid-id-ticketGrid")));
+		Thread.sleep(4000);
+		//driver.findElement(By.cssSelector("*[class^='btn newPackage']")).click();
+		WebElement ele=driver.findElement(By.id("wid-id-ticketGrid"));
+		ele.findElement(By.xpath("//*[@id='wid-id-ticketGrid']/header/div/button/span[1]/i")).click();
+		//driver.findElement(By.xpath("//*[@id='wid-id-ticketGrid']/header/div/button/span[2]")).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='ddTktClassification']")));
 		WebElement TicketType=driver.findElement(By.xpath("//*[@id='ddTktClassification']"));
 		Select TicketSelect=new Select(TicketType);
@@ -127,11 +131,13 @@ public class TicketCheck
 	                  "arguments[0].scrollIntoView();", e1);
 		      
 		        e1.click();
+		      //*[@id="Msg1"]
 		   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Msg1']")));
+		   
 		   WebElement msg=driver.findElement(By.xpath("//*[@id='Msg1']"));
+		   Thread.sleep(3000);
 		   msg.findElement(By.id("bot1-Msg1")).click();
 		   
-		
 	}
 	
 	public static void date(String mon1,String Year1,String dayStr)

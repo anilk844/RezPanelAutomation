@@ -8,8 +8,7 @@
               <class name="Dev_progress.PromocodeCreation"/>
               <class name="Dev_progress.PackageCreation"/>
               <class name="Dev_progress.PromotionCreation"/>
-              <class name="Dev_progress.NewCalendarStatus"/>
-             <class name="Dev_progress.RateShopperCheck"/>            
+              <class name="Dev_progress.NewCalendarStatus"/>      
         </classes>
     </test>   
 </suite>
