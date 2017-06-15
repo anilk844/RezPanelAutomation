@@ -285,10 +285,12 @@ public static void  selectcalendar(String value,String status,String ratecodetyp
 		  //{
 			if(flag==0)
         	{
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			System.out.println("Click");
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dateValue)));
 			action.moveToElement(driver.findElement(By.xpath(dateValue))).click().build().perform();
-		    action.click(driver.findElement(By.xpath(dateValue))).build().perform();
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(dateValue)));
+		    //action.click(driver.findElement(By.xpath(dateValue))).build().perform();
 		    action.contextClick(driver.findElement(By.xpath(dateValue))).build().perform();
 		    //xpath of change rate
 		    String rate1="//*[@id='menu-"+date1+month+"']";
@@ -360,6 +362,7 @@ public String[][] getData()
 	  
 	    SimpleDateFormat DF = new SimpleDateFormat("dd/MM/yyyy");
 	    Calendar RC = Calendar.getInstance();
+	    RC.add(Calendar.DATE, 1);
 	    String start=DF.format(RC.getTime());
 	    year=start.substring(6,10);
 	    mon=start.substring(3,5);
@@ -387,6 +390,19 @@ String[][] data ={
 		{"close","Open/Close Rooms","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
         {"open","Open/Close Rooms","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
         {"open","Open/Close Rooms","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"}};
+/*
+		String[][] data ={
+				{"5500","Change Rate","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
+				{"5000","Change Rate","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
+				{"6000","Change Rate","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
+				{"6500","Change Rate","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
+				{"10","Change Inventory","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
+				{"15","Change Inventory","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
+		        {"close","Open/Close Rooms","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
+				{"close","Open/Close Rooms","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
+		        {"open","Open/Close Rooms","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
+		        {"open","Open/Close Rooms","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"}};
+*/
 return data;
 	}
 	else
@@ -719,6 +735,7 @@ return data;
           save.findElement(By.xpath("//*[@id='collapseUInv']/div/div[6]/div/a[2]")).click();
           wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Msg1']")));
           WebElement msgbox=driver.findElement(By.xpath("//*[@id='Msg1']"));
+          Thread.sleep(2000);
           String msg=msgbox.findElement(By.tagName("p")).getText();
           if(msg.equalsIgnoreCase("There seems to be some overlapping range of Date(s)"))
           {
@@ -925,6 +942,7 @@ return data;
         	 driver.findElement(By.cssSelector("*[class^='btn  btn-success']")).click();
         	 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Msg1']")));
         	 WebElement msgBox=driver.findElement(By.xpath("//*[@id='Msg1']"));
+        	 Thread.sleep(2000);
         	 String msg=msgBox.findElement(By.tagName("p")).getText();
         	 System.out.println(msg);
         	 if(msg.equals("We did not find any valid Rate Plans"))
@@ -933,7 +951,7 @@ return data;
         		 msgBox.findElement(By.tagName("button")).click();
         	 }
         	 Thread.sleep(2000);
-        	 if(msg.equals("Your Request has been Processed Successfully"))
+        	 if(msg.equalsIgnoreCase("Your Request has been Processed Successfully"))
         	 {
         		 System.out.println(msg);
         		 msgBox.findElement(By.tagName("button")).click();

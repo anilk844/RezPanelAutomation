@@ -1,17 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="SendMailReport" duration-ms="15095" started-at="2017-04-20T18:49:35Z" finished-at="2017-04-20T18:49:50Z">
+  <suite name="Maxima" duration-ms="33" started-at="2017-06-15T13:19:06Z" finished-at="2017-06-15T13:19:06Z">
     <groups>
     </groups>
-    <test name="SendMailReport" duration-ms="15095" started-at="2017-04-20T18:49:35Z" finished-at="2017-04-20T18:49:50Z">
-      <class name="SendMail.SendMail">
-        <test-method status="PASS" signature="execute()[pri:0, instance:SendMail.SendMail@27f674d]" name="execute" duration-ms="15087" started-at="2017-04-21T00:19:35Z" finished-at="2017-04-21T00:19:50Z">
+    <test name="Maxima" duration-ms="33" started-at="2017-06-15T13:19:06Z" finished-at="2017-06-15T13:19:06Z">
+      <class name="Dev_progress.Maxima">
+        <test-method status="FAIL" signature="start()[pri:0, instance:Dev_progress.Maxima@6b71769e]" name="start" duration-ms="22" started-at="2017-06-15T18:49:06Z" finished-at="2017-06-15T18:49:06Z">
+          <exception class="java.lang.ClassNotFoundException">
+            <message>
+              <![CDATA[com.microsoft.sqlserver.jdbc.SQLServerDriver]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.ClassNotFoundException: com.microsoft.sqlserver.jdbc.SQLServerDriver
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at Dev_progress.Maxima.start(Maxima.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.TestNG.privateMain(TestNG.java:1355)
+	at org.testng.TestNG.main(TestNG.java:1324)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.ClassNotFoundException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- execute -->
-      </class> <!-- SendMail.SendMail -->
-    </test> <!-- SendMailReport -->
-  </suite> <!-- SendMailReport -->
+        </test-method> <!-- start -->
+      </class> <!-- Dev_progress.Maxima -->
+    </test> <!-- Maxima -->
+  </suite> <!-- Maxima -->
 </testng-results>

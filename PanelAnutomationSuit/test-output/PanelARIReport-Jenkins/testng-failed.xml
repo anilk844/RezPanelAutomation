@@ -5,11 +5,12 @@
     <classes>
       <class name="Dev_progress.NewCalendarStatus">
         <methods>
-          <include name="selectcalendar" invocation-numbers="0"/>
+          <include name="selectcalendar" invocation-numbers="1 2 3 4 5 6 7 8 9"/>
         </methods>
       </class> <!-- Dev_progress.NewCalendarStatus -->
       <class name="Dev_progress.RateCreation">
         <methods>
+          <include name="start"/>
           <include name="login"/>
         </methods>
       </class> <!-- Dev_progress.RateCreation -->

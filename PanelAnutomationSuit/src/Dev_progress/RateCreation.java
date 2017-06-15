@@ -628,12 +628,12 @@ public class RateCreation {
 				List<WebElement>st=e2.findElements(By.tagName("strong"));
 				String str1=st.get(0).getText();
 				
-				
+				System.out.println("@@@@@"+str1);
 				WebElement strong=e2.findElement(By.tagName("i"));
-				
-				if(str1.equals(gen.getProperty("ExixtingMealPlan")))
+				System.out.println("####"+gen.getProperty("ExixtingMealPlan"));
+				if(str1.equalsIgnoreCase(gen.getProperty("ExixtingMealPlan")))
 				{
-					
+					System.out.println("----------"+gen.getProperty("ExixtingMealPlan"));
 					strong.click();
 					WebElement Tbody=e2.findElement(By.tagName("tbody"));
 					List<WebElement>tr2=Tbody.findElements(By.tagName("tr"));

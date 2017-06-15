@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [PanelARIReport-Jenkins]">
-  <test name="PanelARIReport-Jenkins(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Maxima]">
+  <test name="Maxima(failed)">
     <classes>
-      <class name="Dev_progress.NewCalendarStatus">
+      <class name="Dev_progress.Maxima">
         <methods>
-          <include name="selectcalendar" invocation-numbers="0"/>
+          <include name="start"/>
         </methods>
-      </class> <!-- Dev_progress.NewCalendarStatus -->
-      <class name="Dev_progress.RateCreation">
-        <methods>
-          <include name="login"/>
-        </methods>
-      </class> <!-- Dev_progress.RateCreation -->
+      </class> <!-- Dev_progress.Maxima -->
     </classes>
-  </test> <!-- PanelARIReport-Jenkins(failed) -->
-</suite> <!-- Failed suite [PanelARIReport-Jenkins] -->
+  </test> <!-- Maxima(failed) -->
+</suite> <!-- Failed suite [Maxima] -->
