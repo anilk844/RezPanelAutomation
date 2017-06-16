@@ -86,13 +86,13 @@ public class Maxima {
 	     ResultSet Custx = Cust.executeQuery(Custstr1);
 	     if(Custx.next())
 	     {
-	    	String custupdate= "update TBLRZNMaximOccupancyUpdateStatus set Rundate='"+sm.format(new Date())+"',StartTime='"+startdate+"',SStatus='Running' where custcode="+Rezcode[j]+"";
+	    	String custupdate= "update TBLRZNMaximOccupancyUpdateStatus set Rundate='"+sm.format(new Date())+"',StartTime='"+startdate+"',SStatus='Running',AzureUpdate='' where custcode="+Rezcode[j]+"";
 	    	System.out.println(custupdate);
 	    	Cust.executeUpdate(custupdate);
 	     }
 	     else
 	     {
-	    	String CustInsert="INSERT INTO TBLRZNMaximOccupancyUpdateStatus " + "VALUES ("+Rezcode[j]+", '"+sm.format(new Date())+"', '"+startdate+"','','Running')";
+	    	String CustInsert="INSERT INTO TBLRZNMaximOccupancyUpdateStatus " + "VALUES ("+Rezcode[j]+", '"+sm.format(new Date())+"', '"+startdate+"','','Running','')";
 	    	 Cust.executeUpdate(CustInsert);
 	     }
          for(int i=6;i<=12;i++)
