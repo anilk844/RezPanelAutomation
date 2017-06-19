@@ -36,13 +36,17 @@ public class Maxima {
          SimpleDateFormat sm  = new SimpleDateFormat("yyyy-MM-dd");
 		 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");	
 		 System.out.println("test1");
-		 Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=Rezstaging;password=Staging@123;database=redcoredblive28may16_test");
+		 //Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=Rezstaging;password=Staging@123;database=redcoredblive28may16_test");
+		 Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=RED;password=TechOperation_786;database=redcoredblive");
 		 System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
 		
 		 
-		 String []custcode={"2070","2060","2050","2000","2080"};
-		 String []Rezcode={"2901","595","13","47","2309"};
-		 String[] str={"D:\\Maxima\\Green Park - Avasa","D:\\Maxima\\GreenParkChennai","D:\\Maxima\\Green Park - Hyderabad","D:\\Maxima\\Green Park - Visakhapatnam","D:\\Maxima\\Marigold by Green Park"};
+		 //String []custcode={"2070","2060","2050","2000","2080"};
+		 //String []Rezcode={"2901","595","13","47","2309"};
+		 String []custcode={"2080"};
+		 String []Rezcode={"2309"};
+		 //String[] str={"D:\\Maxima\\Green Park - Avasa","D:\\Maxima\\GreenParkChennai","D:\\Maxima\\Green Park - Hyderabad","D:\\Maxima\\Green Park - Visakhapatnam","D:\\Maxima\\Marigold by Green Park"};
+		  String[] str={"D:\\Maxima\\Marigold by Green Park"};
          DesiredCapabilities capabilities = DesiredCapabilities.chrome();
          ChromeOptions options = new ChromeOptions();
          options.addArguments("test-type");
@@ -147,7 +151,7 @@ public class Maxima {
         	      System.out.println();
         	      String actualOccup=td.get(16).getText().toString();
         	      Statement sta = conn.createStatement();
-        	      String str1="select * from TBLRZNMaximOccuapncy where custcode="+Rezcode[j]+" and RunDate = '"+strDate+"'";
+        	      String str1="select * from TBLRZNMaximOccupancy where custcode="+Rezcode[j]+" and RunDate = '"+strDate+"'";
         	      ResultSet x = sta.executeQuery(str1);
         	      if(x.next())
         	      {
@@ -164,13 +168,13 @@ public class Maxima {
         		       else
         		      {
         			  
-        			      String UpdateDBoccup="update TBLRZNMaximOccuapncy set Occupancy="+actualOccup+",UpdateOn='"+sm1.format(new Date()).toString()+"' where custcode="+Rezcode[j]+" and RunDate = '"+strDate+"'";
+        			      String UpdateDBoccup="update TBLRZNMaximOccupancy set Occupancy="+actualOccup+",UpdatedOn='"+sm1.format(new Date()).toString()+"' where custcode="+Rezcode[j]+" and RunDate = '"+strDate+"'";
         			      sta.executeUpdate(UpdateDBoccup);
         		      }
         	     }
         	     else
         	     {
-        		      String Sql = "INSERT INTO TBLRZNMaximOccuapncy " + "VALUES ("+Rezcode[j]+", '"+Finaldate+"', "+td.get(16).getText()+",'"+sm1.format(new Date()).toString()+"','"+sm1.format(new Date()).toString()+"')";
+        		      String Sql = "INSERT INTO TBLRZNMaximOccupancy " + "VALUES ("+Rezcode[j]+", '"+Finaldate+"', "+td.get(16).getText()+",'"+sm1.format(new Date()).toString()+"','"+sm1.format(new Date()).toString()+"')";
             	      System.out.println(str1);
             	      sta.executeUpdate(Sql);
         	     }
