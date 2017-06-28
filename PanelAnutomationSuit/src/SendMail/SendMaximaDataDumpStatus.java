@@ -85,14 +85,14 @@ package SendMail;
 		          InternetAddress.parse("poornima.rao@reznext.com"));
 
 		       // Set Subject: header field
-		       message.setSubject("Maxim Accupancy Push Status");
+		       message.setSubject("Maxim Occupancy Push Status");
 
 		       // Create the message part
 		       BodyPart messageBodyPart = new MimeBodyPart();
 
 		       // Now set the actual message
 		       messageBodyPart.setText("Hi Team,\n"
-		       		+ "Please find Maxim Accupancy Push Status");
+		       		+ "Please find Maxim Occupancy Push Status");
 
 		       // Create a multipar message
 		       Multipart multipart = new MimeMultipart();
