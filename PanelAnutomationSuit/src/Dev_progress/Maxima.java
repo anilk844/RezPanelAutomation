@@ -41,14 +41,14 @@ public class Maxima {
 		 System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
 		
 		 
-		 String []custcode={"2070","2060","2050","2000","2080"};
-		 String []Rezcode={"2901","595","13","47","2309"};
-		 //String []custcode={"2080"};
+		 String []custcode={"2070","2060","2050","2000","2080"};   //live
+		 String []Rezcode={"2901","595","13","47","2309"};          //live
+		 //String []custcode={"2000"};
 		 //String []custcode={"2050","2000"};
-		 //String []Rezcode={"2309"};
+		 //String []Rezcode={"47"};
 		 //String []Rezcode={"13","47"};
 		 String[] str={"D:\\Maxima\\Green Park - Avasa","D:\\Maxima\\GreenParkChennai","D:\\Maxima\\Green Park - Hyderabad","D:\\Maxima\\Green Park - Visakhapatnam","D:\\Maxima\\Marigold by Green Park"};
-		 //String[] str={"D:\\Maxima\\Green Park - Hyderabad","D:\\Maxima\\Green Park - Visakhapatnam"};
+		 //String[] str={"D:\\Maxima\\Green Park - Visakhapatnam"};
 		 //String[] str={"D:\\Maxima\\Marigold by Green Park"};
          DesiredCapabilities capabilities = DesiredCapabilities.chrome();
          ChromeOptions options = new ChromeOptions();
