@@ -71,14 +71,14 @@ public class Maxima {
          WebDriverWait wait=new WebDriverWait(driver,40);
          driver.get("https://reznext.maximrms.net");
          wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[2]/td[2]/input")));
-         driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[2]/td[2]/input")).sendKeys("srinivas@hotelgreenpark.com");
-         driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[3]/td[2]/input")).sendKeys("bpm@2012");
+         driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[2]/td[2]/input")).sendKeys("vinod@hotelgreenpark.com");
+         driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[3]/td[2]/input")).sendKeys("shreya9176#");
          driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[5]/td/input[1]")).click();
-         
+         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='menu']/ul/li[1]/a")));
          driver.findElement(By.xpath("//*[@id='menu']/ul/li[1]/a")).click();
-        
-         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='menu']/ul/li[1]/div/ul/li[6]/a")));
-         driver.findElement(By.xpath("//*[@id='menu']/ul/li[1]/div/ul/li[6]/a")).click();
+       //*[@id="menu"]/ul/li[1]/div/ul/li[3]/a
+         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='menu']/ul/li[1]/div/ul/li[3]/a")));
+         driver.findElement(By.xpath("//*[@id='menu']/ul/li[1]/div/ul/li[3]/a")).click();
          Thread.sleep(2000);
          wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='hotel_sel']")));
          WebElement selprop=driver.findElement(By.xpath("//*[@id='hotel_sel']"));
@@ -102,7 +102,7 @@ public class Maxima {
 	    	String CustInsert="INSERT INTO TBLRZNMaximOccupancyUpdateStatus " + "VALUES ("+Rezcode[j]+", '"+sm.format(new Date())+"', '"+startdate+"','','Running','')";
 	    	 Cust.executeUpdate(CustInsert);
 	     }
-         for(int i=6;i<=12;i++)
+         for(int i=10;i<=12;i++)
          {
         
             driver.get("https://reznext.maximrms.net/main/NormalMonth?&sel_yr=2017&sel_mo="+i+"&sel_dy=1");

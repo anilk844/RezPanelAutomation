@@ -164,6 +164,7 @@ public static void date()
 @Test(dataProvider="getData")
 public static void  selectcalendar(String value,String status,String ratecodetype,String rateCodeVAlue,String RoomType,String Channelid,String mdate,String mMonth,String StartDate ,String EndDate,String Type,String DayType) throws InterruptedException, IOException
 {
+	
 	 
 		if(check1==1)
  	   {
@@ -355,9 +356,9 @@ public static void  selectcalendar(String value,String status,String ratecodetyp
 @DataProvider
 public String[][] getData()
 {
-	//Change Rate
-	//Change Inventory
-	//Open/Close Rooms
+	    //Change Rate
+	    //Change Inventory
+	    //Open/Close Rooms
 	   
 	  
 	    SimpleDateFormat DF = new SimpleDateFormat("dd/MM/yyyy");
@@ -379,7 +380,7 @@ public String[][] getData()
 		enddaycal=end.substring(0,2);
 	if((RateCreation.QALIVE).equalsIgnoreCase("QA"))
 	{
-String[][] data ={
+         String[][] data ={
 		{"5500","Change Rate","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
 		{"5000","Change Rate","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
 		{"6000","Change Rate","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
@@ -390,7 +391,7 @@ String[][] data ={
 		{"close","Open/Close Rooms","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
         {"open","Open/Close Rooms","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
         {"open","Open/Close Rooms","B2B","B2B00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"}};
-/*
+    /*
 		String[][] data ={
 				{"5500","Change Rate","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
 				{"5000","Change Rate","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
@@ -402,7 +403,7 @@ String[][] data ={
 				{"close","Open/Close Rooms","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"},
 		        {"open","Open/Close Rooms","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,day+"-"+month+"-"+year,"Single","singleday"},
 		        {"open","Open/Close Rooms","B2C","B2C00001","Deluxe","50",day,mon,day+"-"+month+"-"+year,enddaycal+"-"+endmonth+"-"+endyear,"Multi","multipleday"}};
-*/
+    */
 return data;
 	}
 	else
@@ -441,7 +442,7 @@ return data;
         	modelRAte.findElement(By.xpath("//*[@id='collapseRtU']/div/div[3]/div[3]/div[3]/div/div/label[1]")).click();
         }
         List<WebElement>ratesection=modelRAte.findElements(By.tagName("input"));
-       WebElement fromdateElement =ratesection.get(0);
+        WebElement fromdateElement =ratesection.get(0);
         Thread.sleep(2000);
         String sdate[]=StartDate.split("-");
         String edate[]=EndDate.split("-");

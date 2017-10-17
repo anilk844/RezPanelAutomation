@@ -2,94 +2,287 @@ package Enroll_hotel_test;
 
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class IBE4
 {
+	
+	
+public static int xpathflag=0;
 public static WebDriver driver;
 static boolean flag=true;
+public static ArrayList data;
 public static WebDriverWait wait;
-public static void main(String args[]) throws InterruptedException
-{
+public static boolean intialFlag=true;
+ 
 
-    DesiredCapabilities capabilities =DesiredCapabilities.chrome();
-    capabilities.setJavascriptEnabled(true);
-    System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
-    driver=new ChromeDriver();
-	//driver.get("https://redapptest.azurewebsites.net/login.html");
-    driver.get("https://rezev4qa.azurewebsites.net/hotel-oct");
-    driver.manage().window().maximize();
-    String Startdate="27-07-2016";
-    driver.findElement(By.xpath("//*[@id='checkin']")).sendKeys(Startdate);
-    String Enddate="28-07-2016";
-    driver.findElement(By.xpath("//*[@id='checkout']")).sendKeys(Enddate);
+@DataProvider
+public Object[][] getData() throws IOException
+{
+	data= new ArrayList();
+	FileInputStream file= new FileInputStream("D://IBE TestCase//IBETestData.xlsx");
+	XSSFWorkbook workbook = new XSSFWorkbook(file);
+	XSSFSheet sheet = workbook.getSheet("Sheet2");
+	Iterator itr = sheet.iterator();
+	while(itr.hasNext())
+	{
+		Row RowItr = (Row)itr.next();
+		Iterator cellItr=RowItr.cellIterator();
+		while(cellItr.hasNext())
+		{
+			Cell cells= (Cell)cellItr.next();
+			switch(cells.getCellType())
+			{
+			case Cell.CELL_TYPE_STRING:data.add(cells.getStringCellValue());
+			break;
+			case Cell.CELL_TYPE_NUMERIC:data.add(cells.getNumericCellValue());
+			break;
+			case Cell.CELL_TYPE_BOOLEAN:data.add(cells.getBooleanCellValue());
+			break;
+			case Cell.CELL_TYPE_BLANK:
+			break;
+			}
+		}
+	}
+	int rw=data.size()/16;
+	Object a[][]=new Object[rw][16];
+	int j=0;
+	for(int i=16;i<data.size();i=i+16)
+	{
+		
+	    double a1=(double)data.get(i);
+	    int DayCount=(int) Math.round(a1);
+	    a[j][0]=DayCount;
+	    double b=(double)data.get(i+1);
+	    int AdultCount=(int) Math.round(b);
+	    a[j][1]=AdultCount;
+	    double c=(double)data.get(i+2);
+	    int ChildCount=(int) Math.round(c);
+	    a[j][2]=ChildCount;
+	    double d=(double)data.get(i+3);
+	    int InfantCount=(int) Math.round(d);
+	    a[j][3]=InfantCount;
+	    double e=(double)data.get(i+4);
+	    int RoomCount=(int) Math.round(e);
+	    a[j][4]=RoomCount;
+	    String RoomName=(String) data.get(i+5);
+	    a[j][5]=RoomName;
+	    String MealPlan=(String) data.get(i+6);
+	    a[j][6]=MealPlan;
+	    double f=(double)data.get(i+7);
+	    int PackageCount=(int) Math.round(f);
+	    a[j][7]=PackageCount;
+	    String PackageName=(String) data.get(i+8);
+	    a[j][8]=PackageName;
+	    String PackageMealPlanName=(String) data.get(i+9);
+	    a[j][9]=PackageMealPlanName;
+	    double g=(double)data.get(i+10);
+	    int AddOnsCount=(int) Math.round(g);
+	    a[j][10]=AddOnsCount;
+	    String AddOnsName=(String) data.get(i+11);
+	    a[j][11]=AddOnsName;
+	    double h=(double)data.get(i+12);
+	    int TicketCount=(int) Math.round(h);
+	    a[j][12]=TicketCount;
+	    String TicketName=(String) data.get(i+13);
+	    a[j][13]=TicketName;
+	    String PackageType=(String) data.get(i+14);
+	    a[j][14]=PackageType;
+	    String TestCaseName="("+(String) data.get(i+15)+")";
+		a[j][15]=TestCaseName;
+		j=j+1;
+		
+	}
+	return a;
+}
+
+
+@Test(dataProvider="getData")
+public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCount,int RoomCount,String RoomName,String MealPlan,int PackageCount,String PackageName,String PackageMealPlanName, int AddOnsCount,String AddOnsName,int TicketCount,String TicketName,String PackageType,String TestCaseName) throws InterruptedException, InvalidFormatException, IOException
+{    
+	if(intialFlag)
+	{
+		
+		
+	  System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
+	  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+      ChromeOptions options = new ChromeOptions();
+      options.addArguments("test-type");
+      options.addArguments("--start-maximized");
+      options.addArguments("--disable-web-security");
+      options.addArguments("--allow-running-insecure-content");
+      HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+      chromePrefs.put("profile.default_content_settings.popups", 0);
+
+      options.setExperimentalOption("prefs", chromePrefs);
+      capabilities.setCapability("chrome.binary","D://chrome//chromedriver.exe");
+      capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+      driver = new ChromeDriver(capabilities);
+      wait=new WebDriverWait(driver, 100);
+      intialFlag=false;
+	
+	
+	}
+    
+    
+    driver.get("https://rezev4qa.azurewebsites.net/IBE-QA");
+    
+    
+    SimpleDateFormat DF = new SimpleDateFormat("dd-MMM-yyyy");
+    Calendar RC = Calendar.getInstance();
+    String Startdate=DF.format(RC.getTime());
+    
+    RC.add(Calendar.DATE, DayCount);
+	String Enddate=DF.format(RC.getTime());
+	
+	datecreste(Startdate,Enddate);
     driver.findElement(By.xpath("//*[@id='guestdetailsbtn']")).click();
-    //adult count selection
-    wait=new WebDriverWait(driver, 100);
-    int adult=3;
-    for(int i=adult;i>1;i--)
+    for(int AD=AdultCount;AD>1;AD--)
     {
+    	
     	driver.findElement(By.xpath("//*[@id='GuestDetails']/div/div[1]/div[1]/div[2]/span[2]/i")).click();
     }
    //child count selection
-    int child=2;
-    for(int i=child;i>0;i--)
+   
+    for(int CD=ChildCount;CD>0;CD--)
     {
     	driver.findElement(By.xpath("//*[@id='GuestDetails']/div/div[1]/div[2]/div[2]/span[2]/i")).click();
     }
     //Infant count selection
-    int infant=2;
-    for(int i=infant;i>0;i--)
+    
+    for(int ID=InfantCount;ID>0;ID--)
     {
     	driver.findElement(By.xpath("//*[@id='GuestDetails']/div/div[1]/div[3]/div[2]/span[2]/i")).click();
     }
-    //click on done buttn
+    //guest Done Button
+  
     driver.findElement(By.xpath("//*[@id='GuestDetails']/div/div[2]/div/button")).click();
     //search button
-    driver.findElement(By.xpath("//*[@id='form1']/div[4]/button")).click();
-    String[]roomMeal={"Standard Deluxe","Only Room","room","Deluxe","European Plan","room","General package","Only Room","General Package" };
-   
-    int roomno=2;
-    int count=2;
-    for(int i=0;i<roomMeal.length;i=i+3)
-    {
-    String roomtype=roomMeal[i];
-    String meal=roomMeal[i+1];
-    String room=roomMeal[i+2];
-    if(room.equalsIgnoreCase("room"))
-    {
-    	Thread.sleep(15000);
-    bookroom(roomtype,meal);
-    }
-    if(room.equalsIgnoreCase("package"))
-    {
-    	Thread.sleep(15000);
-    	 packageBook(room,roomtype,meal);
-    }
-    flag=true;
-    Thread.sleep(3000);
-    if(count-1>0)
+ 
+    driver.findElement(By.cssSelector("*[class^='btn btn-default searchbtn']")).click();
+    WebDriverWait addmoreRoomwait=new WebDriverWait(driver, 3);
+    if(RoomCount>0)
     {
     	
-    	JavascriptExecutor js = ((JavascriptExecutor) driver);
-
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-    	driver.findElement(By.xpath("//*[@id='Scroll']/div[1]/div/div[3]/div[2]/div[2]/div/a")).click();
-    	count--;
+       System.out.println(RoomName);
+       String rmName[]=RoomName.split("\\+");
+       String mpName[]=MealPlan.split("\\+");
+       for(int j=0;j<rmName.length;j++)
+       {
+    	   try
+       	{
+    		JavascriptExecutor js = ((JavascriptExecutor) driver);
+			WebElement element = driver.findElement(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']"));
+			//Now scroll to this element 
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
+       		addmoreRoomwait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']")));
+       		driver.findElement(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']")).click();
+       	}
+       	catch(Exception z)
+       	{
+       		System.out.println(z);
+       	}
+    	   bookroom(rmName[j],mpName[j]);
+    	   xpathflag=xpathflag+1;
+       }
     }
-  }
+    
+    if(PackageCount>0)
+    {
+	
+     
+       String pkName[]=PackageName.split("\\+");
+       String pmName[]=PackageMealPlanName.split("\\+");
+       String pkType[]=PackageType.split("\\+");
+       for(int j=0;j<pkName.length;j++)
+       {
+    	   try
+       	{
+    		JavascriptExecutor js = ((JavascriptExecutor) driver);
+			WebElement element = driver.findElement(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']"));
+			   //Now scroll to this element 
+			js.executeScript("arguments[0].scrollIntoView(true);", element);   
+       		addmoreRoomwait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']")));
+       		driver.findElement(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']")).click();
+       	}
+       	catch(Exception z)
+       	{
+       		System.out.println(z);
+       	}
+    	   System.out.println("inside"+pkType[j]+" "+pkName[j]+" "+pmName[j]);
+    	   packageBook(pkType[j],pkName[j],pmName[j]);
+    	   xpathflag=xpathflag+1;
+       }
+    }
+    if(TicketCount>0)
+    {
+    	
+    	String TkName[]=TicketName.split("\\+");
+    	for(int ai=0;ai<TkName.length;ai++)
+    	{
+    		try
+           	{
+    			 JavascriptExecutor js = ((JavascriptExecutor) driver);
+    			   WebElement element = driver.findElement(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']"));
+    			   //Now scroll to this element 
+    			   js.executeScript("arguments[0].scrollIntoView(true);", element);
+           		addmoreRoomwait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']")));
+           		driver.findElement(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']")).click();
+           	}
+           	catch(Exception z)
+           	{
+           		System.out.println(z);
+           	}
+    	    TicketBooking(TkName[ai]);
+    	    xpathflag=xpathflag+1;
+        }
+    }
+    
+    if(AddOnsCount>0)
+    {
+    	
+    	String AddName[]=AddOnsName.split("\\+");
+    	for(int ai=0;ai<AddName.length;ai++)
+    	{
+    		
+    	    AddOnsBooking(AddName[ai],AddOnsCount);
+        }
+    }
+    Thread.sleep(2000);
+    String totalAmt=driver.findElement(By.cssSelector("*[class^='total-amount']")).getText();
     guestDetails();
-    String totalAmt=driver.findElement(By.xpath("//*[@id='sidebar']/div[5]/div/table/thead/tr/td[2]/label")).getText();
-    System.out.println(totalAmt);
+
     driver.findElement(By.xpath("//*[@id='User_TermsAndConditions']")).click();
     Thread.sleep(2000);
     driver.findElement(By.xpath("//*[@id='PaymentSubmit']/div[2]/div[2]/div/button")).click();
@@ -97,51 +290,130 @@ public static void main(String args[]) throws InterruptedException
     String amt=driver.findElement(By.xpath("//*[@id='amount1']")).getText();
     if(amt.equalsIgnoreCase(totalAmt))
     {
+    	Reporter.log("<font font-family='Times New Roman'>Calendar Page--</font><font color='blue'>"+TestCaseName+"-:PASS</font></a>", true);
     	System.out.println("pass");
     }
-    else{
+    else
+    {
     	System.out.println("amount mismatch");
+    	Reporter.log("<font font-family='Times New Roman'>Calendar Page--</font><font color='blue'>"+TestCaseName+"-:FAIL(amount mismatch)</font></a>", true);
     }
     
-   
+     
     
 }
     
+
+
+
+public static  void execute() throws IOException, InvalidFormatException
+{
+	data= new ArrayList();
+	System.out.println("Inside dataextractor");
+	FileInputStream file= new FileInputStream("D://IBE TestCase//IBETestData.xlsx");
+	
+	XSSFWorkbook workbook = new XSSFWorkbook(file);
+	XSSFSheet sheet = workbook.getSheet("Sheet1");
+	Iterator itr = sheet.iterator();
+	while(itr.hasNext())
+	{
+		Row RowItr = (Row)itr.next();
+		Iterator cellItr=RowItr.cellIterator();
+		while(cellItr.hasNext())
+		{
+			Cell cells= (Cell)cellItr.next();
+			switch(cells.getCellType())
+			{
+			case Cell.CELL_TYPE_STRING:data.add(cells.getStringCellValue());
+			break;
+			case Cell.CELL_TYPE_NUMERIC:data.add(cells.getNumericCellValue());
+			break;
+			case Cell.CELL_TYPE_BOOLEAN:data.add(cells.getBooleanCellValue());
+			break;
+			case Cell.CELL_TYPE_BLANK:
+			break;
+			}
+		}
+	}
+	System.out.println(data);
+	
+}
+
+
+
    public static void bookroom(String roomtype1,String meal1) throws InterruptedException
    {
-    	//driver.findElement(By.xpath("//*[@id='ScrollRoom']/div[1]/div/div[1]/div[1]/div[1]/div/a")).click();
-
-   	JavascriptExecutor js = ((JavascriptExecutor) driver);
+       //driver.findElement(By.xpath("//*[@id='ScrollRoom']/div[1]/div/div[1]/div[1]/div[1]/div/a")).click();
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='content-loader']")));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='rooms']/img")));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/img")));
+       wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/div/img")));
+   	   JavascriptExecutor js = ((JavascriptExecutor) driver);
 
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-    	List<WebElement> roomtype=driver.findElements(By.cssSelector("*[class^='col-sm-12 pad-zero rate-inventory rooms-info']"));
-    	Boolean flag=true;
+	
+		List<WebElement>mealPlan1 =new LinkedList<WebElement>();
+		List<WebElement>mealPlan2 =new LinkedList<WebElement>();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='col-sm-12 pad-zero rate-inventory read-more rooms-info']")));
+    	List<WebElement> roomtype=driver.findElements(By.cssSelector("*[class^='col-sm-12 pad-zero rate-inventory read-more rooms-info']"));
+    	Boolean RoomNameflag=true;
+    	Boolean RoomMealflag=true;
+    	WebDriverWait mealwait=new WebDriverWait(driver,4);
     	for(WebElement web:roomtype)
     	{
-    		if(flag)
+    		if(RoomNameflag)
     		{
     		WebElement roomName=web.findElement(By.cssSelector("*[class^='label-Blue col-sm-8 pad-zero']"));
     		String roomname1=roomName.getText();
-    		System.out.println("1");
-    		System.out.println(roomname1);
+    
     		if(roomname1.equalsIgnoreCase(roomtype1))
     		{
-    			System.out.println("2");
-    			Thread.sleep(5000);
-    			List<WebElement>mealPlan=web.findElements(By.cssSelector("*[class^='col-xs-12 pad-zero margin-align mealplan-rate-info']"));
-    			System.out.println("meal Plan"+mealPlan.size());
-    			for(WebElement meal:mealPlan)
+    			RoomNameflag=false;
+    			
+    			Thread.sleep(6000);
+    			try{
+    			                              
+    			mealwait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='col-xs-12 pad-zero margin-align mealplan-rate-info']")));
+    			
+    			mealPlan1= web.findElements(By.cssSelector("*[class^='col-xs-12 pad-zero margin-align mealplan-rate-info']"));
+    			
+    			}
+    			catch(Exception e)
     			{
-        			System.out.println("3");
-    				String mealPlan1=meal.findElement(By.cssSelector("*[class^='day-roomlabel']")).getText();
-    				if(mealPlan1.equalsIgnoreCase(meal1))
+    				System.out.println(e);
+    			}
+    			try{
+    				mealwait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='col-xs-12 pad-zero margin-align promotion-rate-info']")));
+    			
+        		     mealPlan2=web.findElements(By.cssSelector("*[class^='col-xs-12 pad-zero margin-align promotion-rate-info']"));
+        		
+        		}
+        		catch(Exception e)
+        		{
+        			System.out.println(e);
+        		}
+    			mealPlan1.addAll(mealPlan2);
+    		
+    		
+    			for(WebElement meal:mealPlan1)
+    			{
+    				if(RoomMealflag)
     				{
-    					System.out.println("4");
+        			
+    				String mealplanweb=meal.findElement(By.cssSelector("*[class^='day-roomlabel']")).getText();
+    				
+    				if(mealplanweb.equalsIgnoreCase(meal1))
+    				{
+    					
+    					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    					RoomMealflag=false;
+    					wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("button")));
+    	                
     					meal.findElement(By.tagName("button")).click();
-    					Thread.sleep(3000);
+    					
     					try
     					{
-    						System.out.println("5");
+    						
     						WebElement popup=driver.findElement(By.xpath("//*[@id='checkindate-popup']/div"));
     						popup.findElement(By.xpath("//*[@id='checkindate-popup']/div/div/div[3]/button")).click();
     					}
@@ -153,34 +425,205 @@ public static void main(String args[]) throws InterruptedException
     					break;
     			      
     				}
+    				}
     			}
-    		}
-    	   }
+    		 }
+    	    } 
     	}
-    	System.out.println(roomtype.size());
+    	
     }
    
+  
    
-   public static void packageBook(String PackageType,String PackageName,String MealType)
+   
+   
+   public static void packageBook(String PackageType,String PackageName,String MealType) throws InterruptedException
    {
-	 //*[@id="ScrollRoom"]/div[1]/div/div[1]/div[1]/div[2]/a
-	   driver.findElement(By.xpath("//*[@id='ScrollRoom']/div[1]/div/div[1]/div[1]/div[2]/a")).click();
-	   List<WebElement>packcat=driver.findElements(By.cssSelector("*[class^='col-sm-4']"));
-	   for(WebElement e:packcat)
+	 //*[@id="flip_maindiv"]/div/div/img
+	 //*[@id="rooms"]/img
+	   Boolean PackageNameflag=true;
+	   Boolean PackageTypeflag=true;
+       WebDriverWait packtype=new WebDriverWait(driver,4);
+	   /*wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='content-loader']")));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='rooms']/img")));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/img")));
+       wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/div/img")));*/
+       try
+       {
+    	   if(xpathflag==0)
+    	   {
+    	   packtype.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='packagetab']/a")));
+    	   driver.findElement(By.xpath("//*[@id='packagetab']/a")).click();
+    	   }
+       }
+       catch(Exception e)
+       {
+    	   System.out.println();
+       }
+       try
+       {
+    	   if(xpathflag!=0)
+    	   {
+    	      packtype.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='hpackagetab']/a")));
+    	      driver.findElement(By.xpath("//*[@id='hpackagetab']/a")).click();
+    	   }
+       }
+       catch(Exception e)
+       {
+    	   System.out.println();
+       }
+	//*[@id="hpackagetab"]/a
+	//*[@id="packagetab"]/a
+       
+       wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='package']/img")));
+       Thread.sleep(2000);
+       JavascriptExecutor js = ((JavascriptExecutor) driver);
+
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	     wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='lead margin-clear text-left']")));
+	 //List<WebElement>WebPackageType=driver.findElements(By.cssSelector("*[class^='lead margin-clear text-left']"));
+	 
+	    List<WebElement>WebPackageType=driver.findElements(By.cssSelector("*[class^='overlay-container overlay-visible']"));
+	 
+	 for(WebElement a :WebPackageType)
+	 {
+		
+		 if(PackageTypeflag)
+		 {
+			 String name=a.findElement(By.cssSelector("*[class^='lead margin-clear text-left']")).getText();
+			
+		 if(name.equalsIgnoreCase(PackageType))
+		 {
+			 PackageTypeflag=false;
+			 a.findElement(By.cssSelector("*[class^='overlay-link popup-img']")).click();
+			 wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='col-sm-12 pad-zero packages-info']")));
+			 List<WebElement>WebPackageName=driver.findElements(By.cssSelector("*[class^='col-sm-12 pad-zero packages-info']"));
+			 for(WebElement b :WebPackageName)
+			 {
+				 
+				 if(PackageNameflag)
+				 {
+					 String pkname=b.findElement(By.cssSelector("*[class^='label-Blue']")).getText();
+					 
+				 if(pkname.equalsIgnoreCase(PackageName))
+				 {
+					 PackageNameflag=false;
+					
+					 WebElement mealPlanSelectDropDown=b.findElement(By.cssSelector("*[class^='form-control selected-package-mealplan']"));
+					
+					 Select sel=new Select(mealPlanSelectDropDown);
+					 sel.selectByVisibleText(MealType);
+					
+					 b.findElement(By.cssSelector("*[class='btn btn-default  book-pakage']")).click();
+				 }
+			 }
+			 }
+		 }
+		 }
+	 }
+	   
+   } 
+   
+   
+   
+   
+   
+   public static void TicketBooking(String Ticketname)
+   {
+	   
+	   boolean tickettypeflag=true;
+	   WebDriverWait TicketType=new WebDriverWait(driver,4);
+	   
+	 //*[@id="hofferstab"]/a
+	   try
 	   {
-		   String packName=e.findElement(By.tagName("p")).getText();
-		   if(packName.equalsIgnoreCase(PackageType))
-		   {
-			   
-		   }
-		   
+		   if(xpathflag==0)
+    	   {
+		      TicketType.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='offerstab']/a")));
+		      driver.findElement(By.xpath("//*[@id='offerstab']/a")).click();
+    	   }
+	   }
+	  catch(Exception e)
+	   {
+		  System.out.println();
 	   }
 	   
+	   try
+	   {
+		   if(xpathflag!=0)
+    	   {
+		      TicketType.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='hofferstab']/a")));
+		      driver.findElement(By.xpath("//*[@id='hofferstab']/a")).click();
+    	   }
+	   }
+	  catch(Exception e)
+	   {
+		  System.out.println();
+	   }
+	   
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='offers']/img")));
+	    JavascriptExecutor js = ((JavascriptExecutor) driver);
+
+		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='col-lg-4 rate-inventory col-md-4 col-sm-6 col-xs-12 rooms-info grid-roomtype']")));
+        List<WebElement>Ticket1=driver.findElements(By.cssSelector("*[class^='col-lg-4 rate-inventory col-md-4 col-sm-6 col-xs-12 rooms-info grid-roomtype']"));
+       for(WebElement a :Ticket1)
+       {
+    	   if(tickettypeflag)
+    	   {
+    	   String WebticketNAme=a.findElement(By.tagName("span")).getText();
+    	   if(WebticketNAme.equalsIgnoreCase(Ticketname))
+    	   {
+    		   tickettypeflag=false;
+    		   a.findElement(By.cssSelector("*[class^='btn btn-default btn-custom ticket-book pull-right']")).click();
+    	   }
+    	   }
+       }
    }
+   
+   
+   
+   
+   
+   public static void AddOnsBooking(String AddonsService,int count) throws InterruptedException
+   {
+	   
+	   System.out.println("1");
+	   JavascriptExecutor js = ((JavascriptExecutor) driver);
+	   WebElement element = driver.findElement(By.cssSelector("*[class^='col-sm-12 myaddons']"));
+	   //Now scroll to this element 
+	   js.executeScript("arguments[0].scrollIntoView(true);", element);
+	   boolean addonsname=true;
+	   List<WebElement>addls=element.findElements(By.cssSelector("*[class^='col-md-12 col-sm-12 addons list-group ng-scope addons-list']"));
+	   for(WebElement a :addls)
+	   {
+		   System.out.println("1");
+		   if(addonsname)
+		   {
+		   String AddOnsName=a.findElement(By.cssSelector("*[class^='col-md-8 col-sm-8 addons-details pad-zero']")).getText();
+		   System.out.println(AddOnsName);
+		   System.out.println(AddonsService);
+		   if(AddOnsName.equalsIgnoreCase(AddonsService))
+		   {
+			   System.out.println("1");
+		       addonsname=false;
+			   WebElement addonscount=a.findElement(By.cssSelector("*[class^='update-addon']"));
+			   Select sel=new Select(addonscount);
+			   sel.selectByVisibleText(String.valueOf(count));
+			   a.findElement(By.cssSelector("*[class^='fa fa-plus']")).click();
+			   Thread.sleep(3000);
+			   
+		   }
+		   }
+	   }
+   }
+   
+   
+   
    
    public  static void guestDetails() throws InterruptedException
    {
-	   Thread.sleep(6000);
+	   
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
 
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -209,6 +652,129 @@ public static void main(String args[]) throws InterruptedException
 	   }
 	   
 	   System.out.println("hello"+first.size());
+   }
+   
+   
+   
+   
+   
+   public static void datecreste(String Startdate,String Enddate)
+   {
+	   String sd[]=Startdate.split("\\-");
+	   String ed[]=Enddate.split("\\-");
+	   String startday=sd[0];
+	   String startmon=sd[1];
+	   String startYear=sd[2];
+	   String endday=ed[0];
+	   String endMon=ed[1];
+	   String endYear=ed[2];
+	   
+	   driver.findElement(By.xpath("//*[@id='checkin']")).click();
+	   WebElement checkindropdown =driver.findElement(By.cssSelector("*[class^='datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom']"));
+	   
+	   checkindropdown.findElement(By.cssSelector("*[class^='datepicker-switch']")).click();
+	   List<WebElement>checkinmon=checkindropdown.findElements(By.tagName("span"));
+	   boolean startmonflag=true;
+	   for(WebElement a:checkinmon)
+	   {
+		   if(startmonflag)
+		   {
+		   String mon=a.getText();
+		   if(mon.equalsIgnoreCase(startmon))
+		   {  
+			   startmonflag=false;
+			   List<WebElement>curday=new LinkedList<WebElement>();
+		       List<WebElement>furday=new LinkedList<WebElement>();
+			   a.click();
+			   curday=checkindropdown.findElements(By.cssSelector("*[class^='active day']"));
+			   try
+			   {
+			   furday=checkindropdown.findElements(By.cssSelector("*[class^='day']"));
+			   }
+			   catch(Exception e)
+			   {
+				   
+			   }
+			   curday.addAll(furday);
+			   System.out.println(curday.size());
+			   boolean startdayflag=true;
+			   for(WebElement b : curday)
+			   {
+				   if(startdayflag)
+				   {
+				   String day=b.getText();
+				   System.out.println(day);
+				   if(day.equalsIgnoreCase(startday))
+				   {
+					   b.click();
+					   startdayflag=false;
+				   }
+				   }
+			   }
+		   }
+		   }
+	   }
+	   
+	   
+	   
+	   
+	   //CheckOut
+	   driver.findElement(By.xpath("//*[@id='checkout']")).click();
+	   WebElement checkOutdropdown =driver.findElement(By.cssSelector("*[class^='datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom']"));
+	  
+	   checkOutdropdown.findElement(By.cssSelector("*[class^='datepicker-switch']")).click();
+	   List<WebElement>checkoutmon=checkOutdropdown.findElements(By.tagName("span"));
+	   boolean endmonflag=true;
+	   for(WebElement a:checkoutmon)
+	   {
+		   if(endmonflag)
+		   {
+		   String mon=a.getText();
+		   if(mon.equalsIgnoreCase(endMon))
+		   {  
+			   endmonflag=false;
+			   List<WebElement>curday=new LinkedList<WebElement>();
+		       List<WebElement>furday=new LinkedList<WebElement>();
+			   a.click();
+			   curday=checkOutdropdown.findElements(By.cssSelector("*[class^='active day']"));
+			   try
+			   {
+			   furday=checkOutdropdown.findElements(By.cssSelector("*[class^='day']"));
+			   }
+			   catch(Exception e)
+			   {
+				   
+			   }
+			   curday.addAll(furday);
+			   boolean enddayflag=true;
+			   for(WebElement b : curday)
+			   {
+				   if(enddayflag)
+				   { 
+				   String day=b.getText();
+				   if(day.equalsIgnoreCase(endday))
+				   {
+					   b.click();
+					   enddayflag=false;
+				   }
+				   }
+			   }
+		   }
+		   }
+	   }
+	   
+	   
+	   
+	   
+	   
+	   /*System.out.println(startmon);
+	   System.out.println(startday);
+	   System.out.println(startYear);
+	   System.out.println(endMon);
+	   System.out.println(endday);
+	   System.out.println(endYear);*/
+	   
+	   
    }
 
 

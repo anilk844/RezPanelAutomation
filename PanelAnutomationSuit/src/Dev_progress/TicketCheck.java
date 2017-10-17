@@ -36,8 +36,8 @@ public class TicketCheck
 	public static WebDriverWait wait;
 	public static Properties gen;
 	public static Properties stat;
-	public static String[] monthformate={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-	
+	//public static String[] monthformate={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+	public static String[] monthformate={"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	@Test
 	public static void createTicket() throws IOException, InterruptedException, AWTException
 	{
@@ -81,26 +81,138 @@ public class TicketCheck
 		driver.findElement(By.xpath("//*[@id='numberoftkts']")).sendKeys(gen.getProperty("NoOfTickets"));
 		
 		   
-		    SimpleDateFormat DF = new SimpleDateFormat("dd/MM/yyyy");
-		    Calendar RC = Calendar.getInstance();
-		    String start=DF.format(RC.getTime());
-		    String year=start.substring(6,10);
-		    String mon=start.substring(3,5);
-		    String  month=monthformate[Integer.parseInt(start.substring(3,5))-1];
-		    String day=start.substring(0,2);
-		    driver.findElement(By.xpath("//*[@id='startdate']")).click();
-		    date(month,year,day);
+		SimpleDateFormat DF = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar RC = Calendar.getInstance();
+		String start=DF.format(RC.getTime());
+		int inputyear=Integer.parseInt(start.substring(6,10));
+		int month=Integer.parseInt(start.substring(3,5));
+		int daycal=Integer.parseInt(start.substring(0,2));
+		
+		driver.findElement(By.xpath("//*[@id='startdate']")).click();
+		//*[@id="enddate"]
+		
+		
+		
+		
+		
+		
+		
+	    //driver.findElement(By.xpath(prop.getProperty("StartDate"))).click();
+	    //*[@id="ui-datepicker-div"]
+		WebElement calStart=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']"));
+	
+		//-------------------New changes in date picker------------------------19-06-2017
+		String year=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[2]")).getText();
+		int year1=Integer.parseInt(year);
+		
+		while(inputyear!=year1)
+		{
+			if(inputyear>year1)
+			{
+				
+				driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span/i")).click();
+				String year2=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[2]")).getText();
+				int year3=Integer.parseInt(year2);
+				year1=year3;
+			}
+		}
+		if(inputyear==year1)
+		{
+			String month1=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[1]")).getText();
 			
-		    
-		    RC.add(Calendar.DATE, 20);
-			String end=DF.format(RC.getTime());
-			String endyear=end.substring(6,10);
-			String Endmon=end.substring(3,5);
-			String endmonth=monthformate[Integer.parseInt(end.substring(3,5))-1];
+			while(!month1.equalsIgnoreCase(monthformate[month-1]))
+			{
+				driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
+				month1=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[1]")).getText();
+			}
+		
 			
-			String enddaycal=end.substring(0,2);
-			driver.findElement(By.xpath("//*[@id='enddate']")).click();
-			date(endmonth,endyear,enddaycal);
+				
+		
+		}
+		int flag1=0;
+		WebElement ele4=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/table"));
+		List<WebElement> tr=ele4.findElements(By.tagName("tr"));
+		for(WebElement e:tr)
+		{
+			if(flag1==0)
+			{
+			List<WebElement> td=e.findElements(By.tagName("td"));
+			for(WebElement e1:td)
+			{
+				String day=e1.getText();
+				
+			
+				if(String.valueOf(daycal).equalsIgnoreCase(day))
+				{
+					e1.click();
+					flag1=1;
+					break;
+					
+				}
+			}
+			}
+		}
+		
+		
+		
+		
+		RC.add(Calendar.DATE, 20);
+		String end=DF.format(RC.getTime());
+		int endyear=Integer.parseInt(end.substring(6,10));
+		int endmonth=Integer.parseInt(end.substring(3,5));
+		int enddaycal=Integer.parseInt(end.substring(0,2));
+		driver.findElement(By.xpath("//*[@id='enddate']")).click();
+		
+	
+		Thread.sleep(3000);
+		String yearend=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[2]")).getText();
+	
+		
+		int yearend1=Integer.parseInt(yearend);
+		int inputyearend=endyear;
+		
+		//int inputyearend=Integer.parseInt(gen.getProperty("EndYear"));
+		while(inputyearend!=yearend1)
+		{
+			if(inputyearend>yearend1)
+			{
+		        
+				driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span/i")).click();
+				String yearend2=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[2]")).getText();
+				int yearend3=Integer.parseInt(yearend2);
+				yearend1=yearend3;
+			}
+		}
+		if(inputyearend==yearend1)
+		{
+			
+			String month1=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[1]")).getText();
+			
+		
+			while(!month1.equalsIgnoreCase(monthformate[endmonth-1]))
+			{
+				 driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
+		         month1=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[1]")).getText();
+			}
+		}
+		WebElement ele6=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/table"));
+		List<WebElement> tr1=ele6.findElements(By.tagName("tr"));
+		for(WebElement e1:tr1)
+		{System.out.println("14");
+			List<WebElement> td1=e1.findElements(By.tagName("td"));
+			for(WebElement e2:td1)
+			{
+				String day=e2.getText();
+				System.out.println(day);
+				//if(gen.getProperty("EndDay").equalsIgnoreCase(day))
+				if(String.valueOf(enddaycal).equalsIgnoreCase(day))
+				{
+					e1.click();
+					break;
+				}
+			}
+		}
 			
 			driver.findElement(By.xpath("//*[@id='pkgPriceAccordian']")).click();
 			

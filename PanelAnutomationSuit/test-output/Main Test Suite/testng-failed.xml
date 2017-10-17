@@ -3,21 +3,21 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Main Test Suite]">
   <test name="Panel Automation(failed)">
     <classes>
-      <class name="Dev_progress.RateCreation">
-        <methods>
-          <include name="login"/>
-        </methods>
-      </class> <!-- Dev_progress.RateCreation -->
-      <class name="Dev_progress.PackageCreation">
-        <methods>
-          <include name="start"/>
-        </methods>
-      </class> <!-- Dev_progress.PackageCreation -->
       <class name="Dev_progress.PromotionCreation">
         <methods>
           <include name="start"/>
         </methods>
       </class> <!-- Dev_progress.PromotionCreation -->
+      <class name="Dev_progress.PackageCreation">
+        <methods>
+          <include name="start"/>
+        </methods>
+      </class> <!-- Dev_progress.PackageCreation -->
+      <class name="Dev_progress.RateCreation">
+        <methods>
+          <include name="login"/>
+        </methods>
+      </class> <!-- Dev_progress.RateCreation -->
     </classes>
   </test> <!-- Panel Automation(failed) -->
 </suite> <!-- Failed suite [Main Test Suite] -->

@@ -4,12 +4,11 @@
     <test name="Panel Automation" preserve-order="true">
         <classes>
               <class name="Dev_progress.RateCreation"/>
-              <class name="Dev_progress.TicketCheck"/>
+              <class name="Dev_progress.PackageCreation"/>
               <class name="Dev_progress.PromocodeCreation"/>
               <class name="Dev_progress.PromotionCreation"/>
-              <class name="Dev_progress.PackageCreation"/>
-            
-                   
+               <class name="Dev_progress.TicketCheck"/>
+                  
         </classes>
     </test>   
 </suite>

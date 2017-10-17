@@ -29,7 +29,7 @@ public class PromocodeCreation {
 	public static WebDriverWait wait;
 	public static Properties gen;
 	public static Properties stat;
-	public static String[] monthformate={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+	public static String[] monthformate={"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	@Test
 	public static void promo() throws InterruptedException, FindFailed, AWTException, IOException
 	{
@@ -86,11 +86,14 @@ public class PromocodeCreation {
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(prop.getProperty("newbutton"))));
 		Thread.sleep(3000);
 		driver.findElement(By.xpath(prop.getProperty("newbutton"))).click();
+		
 		WebElement ratecodetype=driver.findElement(By.xpath(prop.getProperty("RateCodeType")));
+	
 		Select sel=new Select(ratecodetype);
 		if(gen.getProperty("Chain").equalsIgnoreCase("1"))
 		{
 			sel.selectByVisibleText(RateCreation.text);
+			
 		}
 		else
 		{
@@ -99,7 +102,9 @@ public class PromocodeCreation {
 		
 		
 		Thread.sleep(2000);
+		
 		WebElement roomtype=driver.findElement(By.xpath(prop.getProperty("RoomType")));
+		
 		Select sel1=new Select(roomtype);
 		if(gen.getProperty("Chain").equalsIgnoreCase("1"))
 		{
@@ -107,10 +112,12 @@ public class PromocodeCreation {
 		}
 		else
 		{
+			
 			sel1.selectByVisibleText(gen.getProperty("PromocodeRoomTypeValue"));                                                   //--Changed--
 		}
 		
 		WebElement mealtype=driver.findElement(By.xpath(prop.getProperty("MealPlanType")));
+		
 		Select sel2=new Select(mealtype);
 		if(gen.getProperty("Chain").equalsIgnoreCase("1"))
 		{
@@ -130,23 +137,50 @@ public class PromocodeCreation {
 		int month=Integer.parseInt(start.substring(3,5));
 		int daycal=Integer.parseInt(start.substring(0,2));
 		
-		WebElement ele=driver.findElement(By.xpath("//*[@id='wid-promoCodeContent']/div/div[2]/div[2]/div[3]/label"));
+		WebElement ele=driver.findElement(By.xpath("//*[@id='promoCodeContent']/div/div[2]/div[2]/div[3]/label"));
 		ele.findElement(By.tagName("input")).click();
-	    // driver.findElement(By.xpath(prop.getProperty("StartDate"))).click();
-		//*[@id="ui-datepicker-div"]
-		WebElement calStart=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']"));
-        WebElement startYear=calStart.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/select[2]"));
-        Select startYear1=new Select(startYear);
-        startYear1.selectByVisibleText(String.valueOf(inputyear));
-        //startYear1.selectByVisibleText(prop.getProperty("ProStartYear"));
 		
-        WebElement startMonth=calStart.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/select[1]"));
-        Select startMonth1=new Select(startMonth);
-        startMonth1.selectByVisibleText(monthformate[month-1]);
-        //startMonth1.selectByVisibleText(prop.getProperty("ProStartMonth"));
-      
-        int flag1=0;
-		WebElement ele4=calStart.findElement(By.xpath("//*[@id='ui-datepicker-div']/table"));
+		
+		
+		
+		
+		
+		
+	    //driver.findElement(By.xpath(prop.getProperty("StartDate"))).click();
+	    //*[@id="ui-datepicker-div"]
+		WebElement calStart=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']"));
+	
+		//-------------------New changes in date picker------------------------19-06-2017
+		String year=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[2]")).getText();
+		int year1=Integer.parseInt(year);
+		
+		while(inputyear!=year1)
+		{
+			if(inputyear>year1)
+			{
+				
+				driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span/i")).click();
+				String year2=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[2]")).getText();
+				int year3=Integer.parseInt(year2);
+				year1=year3;
+			}
+		}
+		if(inputyear==year1)
+		{
+			String month1=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[1]")).getText();
+			
+			while(!month1.equalsIgnoreCase(monthformate[month-1]))
+			{
+				driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
+				month1=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[1]")).getText();
+			}
+		
+			
+				
+		
+		}
+		int flag1=0;
+		WebElement ele4=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/table"));
 		List<WebElement> tr=ele4.findElements(By.tagName("tr"));
 		for(WebElement e:tr)
 		{
@@ -156,8 +190,8 @@ public class PromocodeCreation {
 			for(WebElement e1:td)
 			{
 				String day=e1.getText();
-				System.out.println(day);
-				//if(prop.getProperty("ProStartDay").equalsIgnoreCase(day))
+				
+			
 				if(String.valueOf(daycal).equalsIgnoreCase(day))
 				{
 					e1.click();
@@ -169,8 +203,87 @@ public class PromocodeCreation {
 			}
 		}
 		
-		//end date select 
 		
+		
+		
+		RC.add(Calendar.DATE, 20);
+		String end=DF.format(RC.getTime());
+		int endyear=Integer.parseInt(end.substring(6,10));
+		int endmonth=Integer.parseInt(end.substring(3,5));
+		int enddaycal=Integer.parseInt(end.substring(0,2));
+		
+		WebElement ele1=driver.findElement(By.xpath("//*[@id='promoCodeContent']/div/div[2]/div[2]/div[4]/label"));
+		ele1.findElement(By.tagName("input")).click();
+	
+		Thread.sleep(3000);
+		String yearend=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[2]")).getText();
+	
+		
+		int yearend1=Integer.parseInt(yearend);
+		int inputyearend=endyear;
+		
+		//int inputyearend=Integer.parseInt(gen.getProperty("EndYear"));
+		while(inputyearend!=yearend1)
+		{
+			if(inputyearend>yearend1)
+			{
+		        
+				driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span/i")).click();
+				String yearend2=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[2]")).getText();
+				int yearend3=Integer.parseInt(yearend2);
+				yearend1=yearend3;
+			}
+		}
+		if(inputyearend==yearend1)
+		{
+			
+			String month1=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[1]")).getText();
+			
+		
+			while(!month1.equalsIgnoreCase(monthformate[endmonth-1]))
+			{
+				 driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/a[2]/span")).click();
+		         month1=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span[1]")).getText();
+			}
+		}
+		WebElement ele6=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/table"));
+		List<WebElement> tr1=ele6.findElements(By.tagName("tr"));
+		for(WebElement e1:tr1)
+		{System.out.println("14");
+			List<WebElement> td1=e1.findElements(By.tagName("td"));
+			for(WebElement e2:td1)
+			{
+				String day=e2.getText();
+				System.out.println(day);
+				//if(gen.getProperty("EndDay").equalsIgnoreCase(day))
+				if(String.valueOf(enddaycal).equalsIgnoreCase(day))
+				{
+					e1.click();
+					break;
+				}
+			}
+		}
+		
+        /*WebElement startYear=calStart.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/select[2]"));
+        System.out.println("11");
+        Select startYear1=new Select(startYear);
+        startYear1.selectByVisibleText(String.valueOf(inputyear));
+        System.out.println("12");
+        //startYear1.selectByVisibleText(prop.getProperty("ProStartYear"));
+		
+        WebElement startMonth=calStart.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/select[1]"));
+        Select startMonth1=new Select(startMonth);
+        startMonth1.selectByVisibleText(monthformate[month-1]);
+        //startMonth1.selectByVisibleText(prop.getProperty("ProStartMonth"));*/
+      
+        
+        
+        
+        
+      
+		
+		//end date select 
+		/*
 		RC.add(Calendar.DATE, 200);
 		String end=DF.format(RC.getTime());
 		int calendyear=Integer.parseInt(end.substring(6,10));
@@ -215,7 +328,7 @@ public class PromocodeCreation {
 			}
 			}
 		}
-		
+		*/
         driver.findElement(By.xpath(prop.getProperty("Promocode"))).sendKeys(gen.getProperty("PromocodeValue"));
 		
 		driver.findElement(By.xpath(prop.getProperty("PromocodeName"))).sendKeys(gen.getProperty("PromocodeNameValue"));
