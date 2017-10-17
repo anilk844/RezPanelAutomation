@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [RateShopper Fetch Result]">
+  <test name="RateShopper Fetch Result(failed)">
+    <classes>
+      <class name="Dev_progress.RateShopperFetch">
+        <methods>
+          <include name="setup"/>
+          <include name="RateFetchClick" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- Dev_progress.RateShopperFetch -->
+    </classes>
+  </test> <!-- RateShopper Fetch Result(failed) -->
+</suite> <!-- Failed suite [RateShopper Fetch Result] -->

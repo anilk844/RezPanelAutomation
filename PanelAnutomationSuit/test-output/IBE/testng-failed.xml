@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [IBE]">
+  <test name="IBE(failed)">
+    <classes>
+      <class name="Enroll_hotel_test.IBE4">
+        <methods>
+          <include name="IBE" invocation-numbers="3 4"/>
+        </methods>
+      </class> <!-- Enroll_hotel_test.IBE4 -->
+    </classes>
+  </test> <!-- IBE(failed) -->
+</suite> <!-- Failed suite [IBE] -->
