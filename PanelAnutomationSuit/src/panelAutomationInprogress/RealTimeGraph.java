@@ -1,4 +1,4 @@
-package Enroll_hotel_test;
+package panelAutomationInprogress;
 
 public class RealTimeGraph {
 

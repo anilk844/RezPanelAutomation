@@ -1,4 +1,4 @@
-package Enroll_hotel_test;
+package panelAutomationInprogress;
 
 import java.awt.List;
 import java.io.FileInputStream;

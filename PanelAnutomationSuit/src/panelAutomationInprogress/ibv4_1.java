@@ -1,4 +1,4 @@
-package Enroll_hotel_test;
+package panelAutomationInprogress;
 
 import java.io.IOException;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package Dev_progress;
+package Panel_Automation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

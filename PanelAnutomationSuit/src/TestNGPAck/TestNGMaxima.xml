@@ -3,7 +3,7 @@
 <suite name="Maxima">
     <test name="Maxima" preserve-order="true">
         <classes>
-              <class name="Dev_progress.Maxima"/>  
+              <class name="Maxima.Maxima"/>  
         </classes>
     </test>   
 </suite>

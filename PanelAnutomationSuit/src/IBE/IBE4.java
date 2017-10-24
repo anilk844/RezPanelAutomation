@@ -1,4 +1,4 @@
-package Enroll_hotel_test;
+package IBE;
 
 
 
@@ -53,7 +53,7 @@ public Object[][] getData() throws IOException
 	data= new ArrayList();
 	FileInputStream file= new FileInputStream("D://IBE TestCase//IBETestData.xlsx");
 	XSSFWorkbook workbook = new XSSFWorkbook(file);
-	XSSFSheet sheet = workbook.getSheet("Sheet2");
+	XSSFSheet sheet = workbook.getSheet("Sheet1");
 	Iterator itr = sheet.iterator();
 	while(itr.hasNext())
 	{

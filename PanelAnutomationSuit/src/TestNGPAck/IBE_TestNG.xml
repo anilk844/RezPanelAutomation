@@ -3,7 +3,7 @@
 <suite name="IBE">
     <test name="IBE" preserve-order="true">
         <classes>
-              <class name="Enroll_hotel_test.IBE4"/>
+              <class name="IBE.IBE4"/>
               
         </classes>
     </test>   

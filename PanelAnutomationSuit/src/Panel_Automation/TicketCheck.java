@@ -1,4 +1,4 @@
-package Dev_progress;
+package Panel_Automation;
 
 import java.awt.AWTException;
 import java.awt.Robot;

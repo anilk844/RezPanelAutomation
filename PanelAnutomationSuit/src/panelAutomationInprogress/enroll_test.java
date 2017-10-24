@@ -1,4 +1,4 @@
-package Enroll_hotel_test;
+package panelAutomationInprogress;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;

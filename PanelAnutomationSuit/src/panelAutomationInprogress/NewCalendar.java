@@ -1,4 +1,4 @@
-package Enroll_hotel_test;
+package panelAutomationInprogress;
 
 import java.awt.AWTException;
 import java.awt.Robot;

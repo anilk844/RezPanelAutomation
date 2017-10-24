@@ -1,4 +1,4 @@
-package Dev_progress;
+package Maxima;
 
 import java.awt.Frame;
 import java.sql.Connection;
@@ -58,48 +58,53 @@ public class Maxima {
          options.addArguments("--allow-running-insecure-content");
          int j=0;
          
+         //Rate Upadet IP changes Date-24-10-2017
+         Statement st = conn.createStatement();
+         String UpdateURL= "update TBLRZNChannelCredentialInfo set RateURL='http://202.62.72.102/SynxisCrawler/api/Rate/RateUpdate' where channelid=20 and custcode in (13,47,595)";
+    	 
+    	 st.executeUpdate(UpdateURL);
          for(String s:str)
          {
-         String downloadFilepath = s;
-         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-         chromePrefs.put("profile.default_content_settings.popups", 0);
-         chromePrefs.put("download.default_directory", downloadFilepath);
-         options.setExperimentalOption("prefs", chromePrefs);
-         capabilities.setCapability("chrome.binary","D://chrome//chromedriver.exe");
-         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-         WebDriver driver = new ChromeDriver(capabilities);
-         WebDriverWait wait=new WebDriverWait(driver,40);
-         driver.get("https://reznext.maximrms.net");
-         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[2]/td[2]/input")));
-         driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[2]/td[2]/input")).sendKeys("vinod@hotelgreenpark.com");
-         driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[3]/td[2]/input")).sendKeys("shreya9176#");
-         driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[5]/td/input[1]")).click();
-         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='menu']/ul/li[1]/a")));
-         driver.findElement(By.xpath("//*[@id='menu']/ul/li[1]/a")).click();
+           String downloadFilepath = s;
+           HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+           chromePrefs.put("profile.default_content_settings.popups", 0);
+           chromePrefs.put("download.default_directory", downloadFilepath);
+           options.setExperimentalOption("prefs", chromePrefs);
+           capabilities.setCapability("chrome.binary","D://chrome//chromedriver.exe");
+           capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+           WebDriver driver = new ChromeDriver(capabilities);
+           WebDriverWait wait=new WebDriverWait(driver,40);
+           driver.get("https://reznext.maximrms.net");
+           wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[2]/td[2]/input")));
+           driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[2]/td[2]/input")).sendKeys("vinod@hotelgreenpark.com");
+           driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[3]/td[2]/input")).sendKeys("shreya9176#");
+           driver.findElement(By.xpath("/html/body/table[2]/tbody/tr/td/form/table/tbody/tr[5]/td/input[1]")).click();
+           wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='menu']/ul/li[1]/a")));
+           driver.findElement(By.xpath("//*[@id='menu']/ul/li[1]/a")).click();
        //*[@id="menu"]/ul/li[1]/div/ul/li[3]/a
-         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='menu']/ul/li[1]/div/ul/li[3]/a")));
-         driver.findElement(By.xpath("//*[@id='menu']/ul/li[1]/div/ul/li[3]/a")).click();
-         Thread.sleep(2000);
-         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='hotel_sel']")));
-         WebElement selprop=driver.findElement(By.xpath("//*[@id='hotel_sel']"));
-         Select sel=new Select(selprop);
+           wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='menu']/ul/li[1]/div/ul/li[3]/a")));
+           driver.findElement(By.xpath("//*[@id='menu']/ul/li[1]/div/ul/li[3]/a")).click();
+           Thread.sleep(2000);
+           wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='hotel_sel']")));
+           WebElement selprop=driver.findElement(By.xpath("//*[@id='hotel_sel']"));
+           Select sel=new Select(selprop);
         
-         sel.selectByValue(custcode[j]);
+           sel.selectByValue(custcode[j]);
          
-	     SimpleDateFormat dat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	     String startdate=dat1.format(new Date());
-	     Statement Cust = conn.createStatement();
-         String Custstr1="select * from TBLRZNMaximOccupancyUpdateStatus where custcode="+Rezcode[j]+"";
-	     ResultSet Custx = Cust.executeQuery(Custstr1);
-	     if(Custx.next())
-	     {
-	    	String custupdate= "update TBLRZNMaximOccupancyUpdateStatus set Rundate='"+sm.format(new Date())+"',StartTime='"+startdate+"',SStatus='Running',AzureUpdate='' where custcode="+Rezcode[j]+"";
-	    	System.out.println(custupdate);
-	    	Cust.executeUpdate(custupdate);
+	       SimpleDateFormat dat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	       String startdate=dat1.format(new Date());
+	       Statement Cust = conn.createStatement();
+           String Custstr1="select * from TBLRZNMaximOccupancyUpdateStatus where custcode="+Rezcode[j]+"";
+	       ResultSet Custx = Cust.executeQuery(Custstr1);
+	       if(Custx.next())
+	       {
+	    	 String custupdate= "update TBLRZNMaximOccupancyUpdateStatus set Rundate='"+sm.format(new Date())+"',StartTime='"+startdate+"',SStatus='Running',AzureUpdate='' where custcode="+Rezcode[j]+"";
+	    	 System.out.println(custupdate);
+	    	 Cust.executeUpdate(custupdate);
 	     }
 	     else
 	     {
-	    	String CustInsert="INSERT INTO TBLRZNMaximOccupancyUpdateStatus " + "VALUES ("+Rezcode[j]+", '"+sm.format(new Date())+"', '"+startdate+"','','Running','')";
+	    	 String CustInsert="INSERT INTO TBLRZNMaximOccupancyUpdateStatus " + "VALUES ("+Rezcode[j]+", '"+sm.format(new Date())+"', '"+startdate+"','','Running','')";
 	    	 Cust.executeUpdate(CustInsert);
 	     }
          for(int i=10;i<=12;i++)
