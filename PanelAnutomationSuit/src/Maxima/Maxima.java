@@ -65,6 +65,7 @@ public class Maxima {
     	 st.executeUpdate(UpdateURL);
          for(String s:str)
          {
+        	 System.out.println("a");
            String downloadFilepath = s;
            HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
            chromePrefs.put("profile.default_content_settings.popups", 0);
