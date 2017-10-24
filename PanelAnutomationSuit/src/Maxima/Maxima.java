@@ -41,7 +41,7 @@ public class Maxima {
 		 System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
 		
 		 
-		 String []custcode={"2070","2060","2050","2000","2080"};   //live
+		 String []custcode={"2070","2060","2050","2000","2080"};   //live live
 		 String []Rezcode={"2901","595","13","47","2309"};          //live
 		 //String []custcode={"2000"};
 		 //String []custcode={"2050","2000"};
