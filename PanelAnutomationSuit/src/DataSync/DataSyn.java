@@ -3,6 +3,11 @@ package DataSync;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -44,9 +49,10 @@ public class DataSyn {
 	public static boolean topflag=true;
 	
 	@DataProvider
-	public Object[][] getData() throws IOException
+	public Object[][] getData() throws IOException 
 	{
 		data= new ArrayList();
+		System.out.println("1");
 		FileInputStream file= new FileInputStream("D://IBE TestCase//DataSyn.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
 		XSSFSheet sheet = workbook.getSheet("Sheet1");
@@ -71,6 +77,7 @@ public class DataSyn {
 				}
 			}
 		}
+		System.out.println(data);
 		int rw=data.size()/2;
 		Object a[][]=new Object[rw][2];
 		int j=0;
@@ -79,19 +86,22 @@ public class DataSyn {
 			
 		    double a1=(double)data.get(i);
 		    int CustCode=(int) Math.round(a1);
+		    System.out.println(CustCode);
 		    a[j][0]=CustCode;
-		    String Channels=(String) data.get(i+1);
-		    a[j][1]=Channels;
-			j=j+1;
+		    a[j][1]="1";
+		    j++;
 			
 		}
 		return a;
 	}
 	
 @Test(dataProvider="getData")	
-public static void datasyn(int Cuscode,String Channel) throws IOException, InterruptedException
+public static void datasyn(int Cuscode,String n) throws IOException, InterruptedException, ClassNotFoundException, SQLException
 {
+	 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");	
 	
+	 //Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=Rezstaging;password=Staging@123;database=redcoredblive28may16_test");
+	 Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=RED;password=TechOperation_786;database=redcoredblive");
 	if(topflag)
 	{
 	FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
@@ -137,7 +147,7 @@ public static void datasyn(int Cuscode,String Channel) throws IOException, Inter
     //WebDriverWait wait=new WebDriverWait(driver,40);
     driver.get(gen.getProperty("Url"));
    
-	wait=new WebDriverWait(driver,40);
+	wait=new WebDriverWait(driver,500);
 	//driver.manage().window().maximize();
  
 	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(gen.getProperty("username"))));
@@ -167,11 +177,32 @@ public static void datasyn(int Cuscode,String Channel) throws IOException, Inter
 	//driver.findElement(By.xpath("//*[@id='header']/div[2]/form/div/table/tbody/tr[2]")).click();
 	
 	
-    driver.get("https://redapptest.azurewebsites.net/index.html#/channelcontrol/channelcontrol");
-    String channellist[]=Channel.split("\\+");
-    System.out.println(channellist.length);
+    driver.get("https://red.reznext.com/index.html#/channelcontrol/channelcontrol");
+    Statement Cust = conn.createStatement();
+    //String Custstr1="select channelid from TBLRZNChannelControl where custcode="+Cuscode+" and DSwitchChnl=1 and channelid not in (8,2,45)";
+    String Custstr1="select channelid from TBLRZNChannelControl where custcode="+Cuscode+" and DSwitchChnl=1 and channelid =86";
+    ResultSet Custx = Cust.executeQuery(Custstr1);
+    ArrayList<String> st=new ArrayList<String>();
+    while (Custx.next())
+    {
+       System.out.println(Custx.getString(1));
+       String channelid=Custx.getString(1);
+       Statement Chanl = conn.createStatement();
+       String ChannelName="select Channelname from TBLRZNChannels where id="+channelid+"";
+       ResultSet ChannelNamex = Chanl.executeQuery(ChannelName);
+       while (ChannelNamex.next())
+       {
+    	   System.out.println(ChannelNamex.getString(1));
+    	   st.add(ChannelNamex.getString(1));
+       }
+    }
+       
     
-    for(String c:channellist)
+    //start----------------
+   // String channellist[]=Channel.split("\\+");
+    //System.out.println(channellist.length);
+    
+    for(String c:st)
     {
     	String text=click(c);
     	if(text.equalsIgnoreCase("Please provide Min/Max Weightage for All Mapped Rooms"))
@@ -193,12 +224,36 @@ public static void datasyn(int Cuscode,String Channel) throws IOException, Inter
 			
 			System.out.println(text);
 			String txt=click(c);
+			if(txt.equalsIgnoreCase("Please provide Min/Max Weightage for All Mapped Rooms"))
+			{
+			    System.out.println("Please provide Min/Max Weightage for All Mapped Rooms");
+			    Reporter.log("<font font-family='Times New Roman'>Calendar Page--</font><font color='#990000'>"+"(Custcode:-"+Cuscode+" Channel Name:-"+c+" Status:-"+txt+"-:FAIL</font></a>", true);
+			    
+			}else
+			if(txt.equalsIgnoreCase("Save Failed"))
+			{
+
+				Reporter.log("<font font-family='Times New Roman'>Calendar Page--</font><font color='#990000'>"+"(Custcode:-"+Cuscode+" Channel Name:-"+c+" Status:-"+txt+"-:FAIL</font></a>", true);
+			    System.out.println("Save Failed");
+			   
+			
+			    
+			}else
+			if(text.equalsIgnoreCase("Saved successfully"))
+			{
 			Reporter.log("<font font-family='Times New Roman'>Calendar Page--</font><font color='blue'>"+"(Custcode:-"+Cuscode+" Channel Name:-"+c+" Status:-"+txt+"-:PASS</font></a>", true);
+			}
+			else
+			{
+				Reporter.log("<font font-family='Times New Roman'>Calendar Page--</font><font color='#990000'>"+"(Custcode:-"+Cuscode+" Channel Name:-"+c+" Status:-"+txt+"-:Fail</font></a>", true);
+			}
 			System.out.println(txt);
-		}else
-		{
-			Reporter.log("<font font-family='Times New Roman'>Calendar Page--</font><font color='#990000'>"+"(Custcode:-"+Cuscode+" Channel Name:-"+c+" Status:-"+text+"-:Fail</font></a>", true);
 		}
+    	
+    	
+    	
+    	
+    	 //end-------------------------------
     	
    /* System.out.println(c);
     wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='fixed-width desktop-detected menu-on-top ng-scope container smart-style-2']")));
@@ -266,8 +321,11 @@ public static void datasyn(int Cuscode,String Channel) throws IOException, Inter
     	}
     	}
     }*/
-    }
+   }
+    Thread.sleep(30000);
 }
+
+
 
 public static String click(String c) throws InterruptedException
 {       String text=null;

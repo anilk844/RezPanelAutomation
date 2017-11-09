@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Maxim">
-    <test name="Maxim" preserve-order="true">
+       <test name="Maxim" preserve-order="true">
         <classes>
               <class name="Maxima.Maxima"/>
+         </classes>
+         </test>  
         <test name="SendMaxim" preserve-order="true">
         <classes>
                <class name="SendMail.SendMaximaDataDumpStatus"/>  

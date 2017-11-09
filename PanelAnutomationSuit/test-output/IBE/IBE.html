@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>IBE</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/2/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>30/9/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Oct 18 19:07:00 IST 2017</td>
+<td>Started on:</td><td>Thu Nov 02 18:17:13 IST 2017</td>
 </tr>
-<tr><td>Total time:</td><td>166 seconds (166484 ms)</td>
+<tr><td>Total time:</td><td>6018 seconds (6018931 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,46 +75,50 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Dev_progress.DataSyn.datasyn()'><b>datasyn</b><br>Test class: Dev_progress.DataSyn<br>Parameters: 139228, Internet Booking Engine+travelguru.com+Agoda</td>
-<td><div><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 0, null, null, 0, Null, Null, 0, Null, 1, Night CLUB, Null, (Tickets(Same type))</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class^=&apos;total-amount&apos;]&quot;}
   (Session info: chrome=61.0.3163.100)
   (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 623 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Command duration or timeout: 10.05 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
 System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir8076_14585}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 23285c45c1b429a6cde873feb778f734
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
-	at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:152)
-	at Dev_progress.DataSyn.datasyn(DataSyn.java:219)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace86558824", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace86558824'><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at IBE.IBE4.TicketBooking(IBE4.java:711)
+	at IBE.IBE4.IBE(IBE4.java:278)
+... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace796851467", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace796851467'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class^=&apos;total-amount&apos;]&quot;}
   (Session info: chrome=61.0.3163.100)
   (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 623 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Command duration or timeout: 10.05 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
 System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir8076_14585}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 23285c45c1b429a6cde873feb778f734
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at sun.reflect.GeneratedConstructorAccessor18.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
 	at java.lang.reflect.Constructor.newInstance(Unknown Source)
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
-	at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:152)
-	at Dev_progress.DataSyn.datasyn(DataSyn.java:219)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at IBE.IBE4.TicketBooking(IBE4.java:711)
+	at IBE.IBE4.IBE(IBE4.java:278)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
@@ -138,37 +142,36 @@ Session ID: 23285c45c1b429a6cde873feb778f734
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
 </pre></div></td>
-<td>42</td>
-<td>Dev_progress.DataSyn@6aaa5eb0</td></tr>
+<td>62</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
 <tr>
-<td title='Dev_progress.DataSyn.datasyn()'><b>datasyn</b><br>Test class: Dev_progress.DataSyn<br>Parameters: 47, travelguru.com</td>
-<td><div><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 0, null, null, 0, Null, Null, 0, Null, 2, Night CLUB+Horse Riding, Null, (Tickets(Multiple Type))</td>
+<td><div><pre>org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (499, -255)
   (Session info: chrome=61.0.3163.100)
   (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 515 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Command duration or timeout: 39 milliseconds
 Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
 System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir8076_14585}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 23285c45c1b429a6cde873feb778f734
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
 	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
 	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:79)
-	at Dev_progress.DataSyn.datasyn(DataSyn.java:220)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace576894497", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace576894497'><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
+	at IBE.IBE4.datecreste(IBE4.java:874)
+	at IBE.IBE4.IBE(IBE4.java:180)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1016156941", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1016156941'><pre>org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (499, -255)
   (Session info: chrome=61.0.3163.100)
   (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 515 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Command duration or timeout: 39 milliseconds
 Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
 System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir8076_14585}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
-Session ID: 23285c45c1b429a6cde873feb778f734
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -178,9 +181,9 @@ Session ID: 23285c45c1b429a6cde873feb778f734
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
 	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
 	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:79)
-	at Dev_progress.DataSyn.datasyn(DataSyn.java:220)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at IBE.IBE4.datecreste(IBE4.java:874)
+	at IBE.IBE4.IBE(IBE4.java:180)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
@@ -204,8 +207,475 @@ Session ID: 23285c45c1b429a6cde873feb778f734
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
 </pre></div></td>
-<td>27</td>
-<td>Dev_progress.DataSyn@6aaa5eb0</td></tr>
+<td>5</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 0, null, null, 1, Deluxe Room 1Night/2Days, cp, 0, Null, 0, Null, Holiday Package, (Package(Same type))</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Timed out after 100 seconds waiting for presence of element located by: By.selector: *[class=&apos;table table-condensed borderless&apos;]
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:79)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at IBE.IBE4.IBE(IBE4.java:296)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class=&apos;table table-condensed borderless&apos;]&quot;}
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 10.05 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:730)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$0(ExpectedConditions.java:728)
+	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:106)
+	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:1)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	... 24 more
+... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2034460325", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2034460325'><pre>org.openqa.selenium.TimeoutException: Timed out after 100 seconds waiting for presence of element located by: By.selector: *[class=&apos;table table-condensed borderless&apos;]
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:79)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at IBE.IBE4.IBE(IBE4.java:296)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class=&apos;table table-condensed borderless&apos;]&quot;}
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 10.05 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at sun.reflect.GeneratedConstructorAccessor18.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:730)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$0(ExpectedConditions.java:728)
+	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:106)
+	at org.openqa.selenium.support.ui.ExpectedConditions$3.apply(ExpectedConditions.java:1)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
+	... 24 more
+</pre></div></td>
+<td>155</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 0, null, null, 2, Deluxe Room 1Night/2Days+Deluxe Rooms 2Days/3Nights, cp+cp, 0, Null, 0, Null, Holiday Package+Holiday Package, (PAckage(Multiple Type))</td>
+<td><div><pre>org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (499, -255)
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 44 milliseconds
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:79)
+	at IBE.IBE4.datecreste(IBE4.java:874)
+	at IBE.IBE4.IBE(IBE4.java:180)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1526453607", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1526453607'><pre>org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (499, -255)
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 44 milliseconds
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:79)
+	at IBE.IBE4.datecreste(IBE4.java:874)
+	at IBE.IBE4.IBE(IBE4.java:180)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+</pre></div></td>
+<td>5</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 0, null, null, 0, Null, Null, 1, Airport Pickup, 1, Night CLUB, Null, (Tickets(Same type)+ Additional services)</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class^=&apos;total-amount&apos;]&quot;}
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 10.02 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at IBE.IBE4.TicketBooking(IBE4.java:711)
+	at IBE.IBE4.IBE(IBE4.java:278)
+... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1252069894", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1252069894'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class^=&apos;total-amount&apos;]&quot;}
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 10.02 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at sun.reflect.GeneratedConstructorAccessor18.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at IBE.IBE4.TicketBooking(IBE4.java:711)
+	at IBE.IBE4.IBE(IBE4.java:278)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+</pre></div></td>
+<td>45</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 0, null, null, 0, Null, Null, 1, Airport Pickup, 2, Night CLUB+Horse Riding, Null, (Tickets(Multiple Type)+ Additional services)</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class^=&apos;total-amount&apos;]&quot;}
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 10.02 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at IBE.IBE4.TicketBooking(IBE4.java:711)
+	at IBE.IBE4.IBE(IBE4.java:278)
+... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1572557043", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1572557043'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class^=&apos;total-amount&apos;]&quot;}
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 10.02 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at sun.reflect.GeneratedConstructorAccessor18.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at IBE.IBE4.TicketBooking(IBE4.java:711)
+	at IBE.IBE4.IBE(IBE4.java:278)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+</pre></div></td>
+<td>47</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 0, null, null, 1, Deluxe Room 1Night/2Days, cp, 1, Airport Pickup, 0, null, Holiday Package, (Package(Same type)+ Additional services)</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class^=&apos;col-sm-12 myaddons&apos;]&quot;}
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 10.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at IBE.IBE4.AddOnsBooking(IBE4.java:783)
+	at IBE.IBE4.IBE(IBE4.java:290)
+... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace992302041", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace992302041'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[class^=&apos;col-sm-12 myaddons&apos;]&quot;}
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 10.06 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at sun.reflect.GeneratedConstructorAccessor18.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:441)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:426)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at IBE.IBE4.AddOnsBooking(IBE4.java:783)
+	at IBE.IBE4.IBE(IBE4.java:290)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+</pre></div></td>
+<td>49</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 0, null, null, 1, Deluxe Room 1Night/2Days+Deluxe Rooms 2Days/3Nights, cp+cp, 1, Airport Pickup, 0, null, Holiday Package+Holiday Package, (PAckage(Multiple Type)+ Additional services)</td>
+<td><div><pre>org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (499, -255)
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 38 milliseconds
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:79)
+	at IBE.IBE4.datecreste(IBE4.java:874)
+	at IBE.IBE4.IBE(IBE4.java:180)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace769195805", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace769195805'><pre>org.openqa.selenium.WebDriverException: unknown error: Element is not clickable at point (499, -255)
+  (Session info: chrome=61.0.3163.100)
+  (Driver info: chromedriver=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 38 milliseconds
+Build info: version: &apos;2.44.0&apos;, revision: &apos;76d78cf&apos;, time: &apos;2014-10-23 20:03:00&apos;
+System info: host: &apos;RezD021&apos;, ip: &apos;192.168.4.70&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_72&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9), userDataDir=C:\Users\ANIL~1.KUM\AppData\Local\Temp\scoped_dir11348_891}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=61.0.3163.100, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1107d381d466d0706b90c503c69c73e4
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:79)
+	at IBE.IBE4.datecreste(IBE4.java:874)
+	at IBE.IBE4.IBE(IBE4.java:180)
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+</pre></div></td>
+<td>5</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null</td>
+<td><div><pre>java.lang.IllegalArgumentException
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1633770314", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1633770314'><pre>java.lang.IllegalArgumentException
+	at sun.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+</pre></div></td>
+<td>0</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -215,10 +685,395 @@ Session ID: 23285c45c1b429a6cde873feb778f734
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Dev_progress.DataSyn.datasyn()'><b>datasyn</b><br>Test class: Dev_progress.DataSyn<br>Parameters: 13, CRS+TravelTripper</td>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 1, Deluxe Rooms, CP, 0, Null, Null, 0, Null, 0, Null, Null, (Single Room(Single Day))<br/>
+<a href="#Output-854733477" onClick='toggleBox("Output-854733477", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-854733477" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-854733477">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room(Single Day))-:( Total Amount :-1180 and Booking Summary Page Total Amount :-1180is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room(Single Day))-:( Booking Summary Page Total :-1,180and Voucher Page Amount :-1,180 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
 <td></td>
-<td>95</td>
-<td>Dev_progress.DataSyn@6aaa5eb0</td></tr>
+<td>124</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 1, Deluxe Rooms, CP, 0, Null, Null, 0, Null, 1, Night CLUB, Null, (Single Room + Tickets(Single Day))<br/>
+<a href="#Output-69062746" onClick='toggleBox("Output-69062746", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-69062746" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-69062746">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Tickets(Single Day))-:( Total Amount :-2280 and Booking Summary Page Total Amount :-2280is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Tickets(Single Day))-:( Booking Summary Page Total :-2,280and Voucher Page Amount :-2,280 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>139</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 1, Deluxe Rooms, MAP, 0, Null, Null, 0, Null, 1, Night CLUB, Null, (Single Room-PROMOTION+ Tickets(Single Day))<br/>
+<a href="#Output-2015301874" onClick='toggleBox("Output-2015301874", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2015301874" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2015301874">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room-PROMOTION+ Tickets(Single Day))-:( Total Amount :-3332 and Booking Summary Page Total Amount :-3332is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room-PROMOTION+ Tickets(Single Day))-:( Booking Summary Page Total :-3,332and Voucher Page Amount :-3,332 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>139</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 1, Deluxe Rooms, CP, 1, Deluxe Room 1Night/2Days, cp, 0, Null, 1, Night CLUB, Holiday Package, (Single Room + Package+Ticket)<br/>
+<a href="#Output-1976602906" onClick='toggleBox("Output-1976602906", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1976602906" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1976602906">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Package+Ticket)-:( Total Amount :-3380 and Booking Summary Page Total Amount :-3380is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Package+Ticket)-:( Booking Summary Page Total :-3,380and Voucher Page Amount :-3,380 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>163</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 1, Deluxe Rooms, MAP, 1, Deluxe Room 1Night/2Days, cp, 0, Null, 1, Night CLUB, Holiday Package, (Single Room-Promotion+ Package+Ticket)<br/>
+<a href="#Output-1662592920" onClick='toggleBox("Output-1662592920", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1662592920" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1662592920">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room-Promotion+ Package+Ticket)-:( Total Amount :-4432 and Booking Summary Page Total Amount :-4432is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room-Promotion+ Package+Ticket)-:( Booking Summary Page Total :-4,432and Voucher Page Amount :-4,432 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>159</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 2, 1, 1, 0, 1, Deluxe Rooms, MAP, 0, Null, Null, 0, Null, 0, Null, Null, (Single Room (Multi Day)-Promotion)<br/>
+<a href="#Output-2064883371" onClick='toggleBox("Output-2064883371", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2064883371" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2064883371">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room (Multi Day)-Promotion)-:( Total Amount :-2790 and Booking Summary Page Total Amount :-2790is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room (Multi Day)-Promotion)-:( Booking Summary Page Total :-2,790and Voucher Page Amount :-2,790 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>117</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 2, 1, 1, 0, 1, Standard, CP, 0, Null, Null, 0, Null, 0, Null, Null, (Single Room (Multi Day))<br/>
+<a href="#Output-1334405552" onClick='toggleBox("Output-1334405552", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1334405552" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1334405552">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room (Multi Day))-:( Total Amount :-1984 and Booking Summary Page Total Amount :-1984is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room (Multi Day))-:( Booking Summary Page Total :-1,984and Voucher Page Amount :-1,984 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>126</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 2, 1, 1, 0, 1, Standard, CP, 0, Null, Null, 1, Airport Pickup, 0, Null, Null, (Single Room + Additional services(Multi Day))<br/>
+<a href="#Output-1869673263" onClick='toggleBox("Output-1869673263", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1869673263" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1869673263">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Additional services(Multi Day))-:( Total Amount :-2984 and Booking Summary Page Total Amount :-2984is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Additional services(Multi Day))-:( Booking Summary Page Total :-2,984and Voucher Page Amount :-2,984 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>131</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 2, 1, 1, 0, 1, Deluxe Rooms, MAP, 0, Null, Null, 1, Airport Pickup, 0, Null, Null, (Single Room -Promotion+ Additional services(Multi Day))<br/>
+<a href="#Output-944752500" onClick='toggleBox("Output-944752500", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-944752500" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-944752500">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room -Promotion+ Additional services(Multi Day))-:( Total Amount :-3790 and Booking Summary Page Total Amount :-3790is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room -Promotion+ Additional services(Multi Day))-:( Booking Summary Page Total :-3,790and Voucher Page Amount :-3,790 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>122</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 2, 1, 0, 0, 1, Standard, CP, 0, Null, Null, 0,  Null, 1, Night CLUB, Null, (Single Room + Tickets(Multi Day))<br/>
+<a href="#Output-279781579" onClick='toggleBox("Output-279781579", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-279781579" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-279781579">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Tickets(Multi Day))-:( Total Amount :-2398 and Booking Summary Page Total Amount :-2398is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Tickets(Multi Day))-:( Booking Summary Page Total :-2,398and Voucher Page Amount :-2,398 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>161</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 2, Standard+Standard, CP+CP, 0, Null, Null, 0, Null, 0, null, Null, (Multi Room(single room type)(Single Day))<br/>
+<a href="#Output-1688310330" onClick='toggleBox("Output-1688310330", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1688310330" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1688310330">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type)(Single Day))-:( Total Amount :-2596 and Booking Summary Page Total Amount :-2596is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type)(Single Day))-:( Booking Summary Page Total :-2,596and Voucher Page Amount :-2,596 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>186</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 1, 0, 2, Standard+Standard, CP+CP, 0, Null, Null, 1, Airport Pickup, 0, null, Null, (Multi Room(single room type) + Additional services(Single Day))<br/>
+<a href="#Output-1769227988" onClick='toggleBox("Output-1769227988", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1769227988" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1769227988">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Additional services(Single Day))-:( Total Amount :-4968 and Booking Summary Page Total Amount :-4968is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Additional services(Single Day))-:( Booking Summary Page Total :-4,968and Voucher Page Amount :-4,968 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>184</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 1, 0, 2, Standard+Standard, CP+CP, 0, Null, Null, 0, Null, 2, Night CLUB+Horse Riding, Null, (Multi Room(single room type) + Tickets(Multiple Tickets)(Single Day))<br/>
+<a href="#Output-1882348832" onClick='toggleBox("Output-1882348832", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1882348832" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1882348832">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Tickets(Multiple Tickets)(Single Day))-:( Total Amount :-6168 and Booking Summary Page Total Amount :-6168is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Tickets(Multiple Tickets)(Single Day))-:( Booking Summary Page Total :-6,168and Voucher Page Amount :-6,168 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>232</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 2, Standard+Standard, CP+CP, 2, Deluxe Room 1Night/2Days+Deluxe Room 1Night/2Days, cp+cp, 0, Null, 1, Night CLUB, Holiday Package+Holiday Package, (Multi Room(single room type) + Mutiple Package(Single Package Type)+Ticket(Single Ticket Type))<br/>
+<a href="#Output-1175154004" onClick='toggleBox("Output-1175154004", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1175154004" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1175154004">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Mutiple Package(Single Package Type)+Ticket(Single Ticket Type))-:( Total Amount :-5896 and Booking Summary Page Total Amount :-5896is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Mutiple Package(Single Package Type)+Ticket(Single Ticket Type))-:( Booking Summary Page Total :-5,896and Voucher Page Amount :-5,896 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>305</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 3, 1, 0, 0, 2, Standard+Standard, CP+CP, 0, Null, Null, 0, Null, 0, null, null, (Multi Room(single room type)(Multi  Day))<br/>
+<a href="#Output-653880197" onClick='toggleBox("Output-653880197", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-653880197" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-653880197">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type)(Multi  Day))-:( Total Amount :-2596 and Booking Summary Page Total Amount :-2596is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type)(Multi  Day))-:( Booking Summary Page Total :-2,596and Voucher Page Amount :-2,596 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>175</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 3, 1, 1, 0, 2, Standard+Standard, CP+CP, 0, Null, Null, 1, Airport Pickup, 0, null, Null, (Multi Room(single room type) + Additional services(Multi  Day))<br/>
+<a href="#Output-679442449" onClick='toggleBox("Output-679442449", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-679442449" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-679442449">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Additional services(Multi  Day))-:( Total Amount :-4968 and Booking Summary Page Total Amount :-4968is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Additional services(Multi  Day))-:( Booking Summary Page Total :-4,968and Voucher Page Amount :-4,968 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>178</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 3, 1, 1, 0, 2, Standard+Standard, CP+CP, 0, Null, Null, 0, Null, 2, Night CLUB+Night CLUB, Null, (Multi Room(single room type) + Tickets(Single Ticket Type)(Multi Day))<br/>
+<a href="#Output-1433568941" onClick='toggleBox("Output-1433568941", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1433568941" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1433568941">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Tickets(Single Ticket Type)(Multi Day))-:( Total Amount :-6168 and Booking Summary Page Total Amount :-6168is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Tickets(Single Ticket Type)(Multi Day))-:( Booking Summary Page Total :-6,168and Voucher Page Amount :-6,168 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>225</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 1, 0, 2, Deluxe Rooms+Standard, CP+CP, 0, Null, Null, 0, Null, 0, null, Null, (Multi Room(Multiple room type)(Single Day))<br/>
+<a href="#Output-1689723487" onClick='toggleBox("Output-1689723487", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1689723487" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1689723487">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type)(Single Day))-:( Total Amount :-3754 and Booking Summary Page Total Amount :-3754is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type)(Single Day))-:( Booking Summary Page Total :-3,754and Voucher Page Amount :-3,754 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>172</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 1, 0, 2, Deluxe Rooms+Standard, CP+CP, 0, Null, Null, 1, Airport Pickup, 0, null, Null, (Multi Room(Multiple room type) + Additional services(Single Day))<br/>
+<a href="#Output-550707" onClick='toggleBox("Output-550707", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-550707" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-550707">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Additional services(Single Day))-:( Total Amount :-4754 and Booking Summary Page Total Amount :-4754is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Additional services(Single Day))-:( Booking Summary Page Total :-4,754and Voucher Page Amount :-4,754 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>181</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 1, 0, 2, Deluxe Rooms+Standard, CP+CP, 0, Null, Null, 0, Null, 1, Night CLUB, Null, (Multi Room(Multiple room type) + Tickets(Multiple Tickets)(Single Day))<br/>
+<a href="#Output-1680147911" onClick='toggleBox("Output-1680147911", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1680147911" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1680147911">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Tickets(Multiple Tickets)(Single Day))-:( Total Amount :-4854 and Booking Summary Page Total Amount :-4854is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Tickets(Multiple Tickets)(Single Day))-:( Booking Summary Page Total :-4,854and Voucher Page Amount :-4,854 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>216</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 1, 0, 1, Deluxe Rooms, CP, 0, Null, Null, 1, Airport Pickup, 0, Null, Null, (Single Room + Additional services(Single Day))<br/>
+<a href="#Output-884111637" onClick='toggleBox("Output-884111637", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-884111637" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-884111637">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Additional services(Single Day))-:( Total Amount :-2770 and Booking Summary Page Total Amount :-2770is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Additional services(Single Day))-:( Booking Summary Page Total :-2,770and Voucher Page Amount :-2,770 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>122</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 2, Deluxe Rooms+Standard, CP+CP, 2, Deluxe Room 1Night/2Days+Deluxe Rooms 2Days/3Nights, cp+cp, 0, null, 2, Night CLUB+Night CLUB, Holiday Package+Holiday Package, (Multi Room(Multiple room type) + Mutiple Package(Multiple Package Type)+Ticket(Multiple Ticket Type))<br/>
+<a href="#Output-1100288091" onClick='toggleBox("Output-1100288091", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1100288091" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1100288091">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Mutiple Package(Multiple Package Type)+Ticket(Multiple Ticket Type))-:( Total Amount :-9078 and Booking Summary Page Total Amount :-9078is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Mutiple Package(Multiple Package Type)+Ticket(Multiple Ticket Type))-:( Booking Summary Page Total :-9,078and Voucher Page Amount :-9,078 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>295</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 2, 1, 1, 0, 2, Deluxe Rooms+Standard, CP+CP, 0, Null, Null, 0, Null, 0, null, null, (Multi Room(Multiple room type)(Mutiple Day))<br/>
+<a href="#Output-566042862" onClick='toggleBox("Output-566042862", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-566042862" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-566042862">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type)(Mutiple Day))-:( Total Amount :-3754 and Booking Summary Page Total Amount :-3754is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type)(Mutiple Day))-:( Booking Summary Page Total :-3,754and Voucher Page Amount :-3,754 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>182</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 2, 1, 1, 0, 2, Deluxe Rooms+Standard, CP+CP, 0, Null, Null, 1, Airport Pickup, 0, null, null, (Multi Room(Multiple room type) + Additional services(Multiple Day))<br/>
+<a href="#Output-967343730" onClick='toggleBox("Output-967343730", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-967343730" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-967343730">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Additional services(Multiple Day))-:( Total Amount :-4754 and Booking Summary Page Total Amount :-4754is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Additional services(Multiple Day))-:( Booking Summary Page Total :-4,754and Voucher Page Amount :-4,754 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>176</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 2, 1, 1, 0, 2, Deluxe Rooms+Standard, CP+CP, 0, Null, Null, 0, Null, 2, Night CLUB+Night CLUB, Null, (Multi Room(Multiple room type) + Tickets(Multiple Tickets)(Multiple Day))<br/>
+<a href="#Output-1908505175" onClick='toggleBox("Output-1908505175", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1908505175" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1908505175">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Tickets(Multiple Tickets)(Multiple Day))-:( Total Amount :-5954 and Booking Summary Page Total Amount :-5954is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Tickets(Multiple Tickets)(Multiple Day))-:( Booking Summary Page Total :-5,954and Voucher Page Amount :-5,954 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>234</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 2, Deluxe Rooms+Standard, CP+CP, 1, Deluxe Room 1Night/2Days+Deluxe Rooms 2Days/3Nights, cp+cp, 0, Null, 2, Night CLUB+Horse Riding, Holiday Package+Holiday Package, (Multi Room(Multiple room type) + Mutiple Package(Multiple Package Type)+Ticket(Multiple Ticket Type) (Multiple Day))<br/>
+<a href="#Output-1382756158" onClick='toggleBox("Output-1382756158", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1382756158" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1382756158">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Mutiple Package(Multiple Package Type)+Ticket(Multiple Ticket Type) (Multiple Day))-:( Total Amount :-9078 and Booking Summary Page Total Amount :-9078is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Mutiple Package(Multiple Package Type)+Ticket(Multiple Ticket Type) (Multiple Day))-:( Booking Summary Page Total :-9,078and Voucher Page Amount :-9,078 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>317</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 1, Deluxe Rooms, MAP, 1, Deluxe Room 1Night/2Days, cp, 0, Null, 0, Null, Holiday Package, (Single Room + Promotion+ Package)<br/>
+<a href="#Output-2110472873" onClick='toggleBox("Output-2110472873", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2110472873" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2110472873">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Promotion+ Package)-:( Total Amount :-3332 and Booking Summary Page Total Amount :-3332is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Promotion+ Package)-:( Booking Summary Page Total :-3,332and Voucher Page Amount :-3,332 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>197</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 1, Deluxe Rooms, CP, 1, Deluxe Room 1Night/2Days, cp, 0, Null, 0, Null, Holiday Package, (Single Room + Package)<br/>
+<a href="#Output-1599612880" onClick='toggleBox("Output-1599612880", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1599612880" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1599612880">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Package)-:( Total Amount :-2280 and Booking Summary Page Total Amount :-2280is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Single Room + Package)-:( Booking Summary Page Total :-2,280and Voucher Page Amount :-2,280 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>168</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 4, Deluxe Rooms+Deluxe Rooms+Deluxe Rooms+Deluxe Rooms, CP+CP+MAP+MAP, 0, Null, Null, 0, Null, 0, Null, Null, (Multi Room(single room type) + Promotions (Multiple promotions)(Single Day))<br/>
+<a href="#Output-1239593925" onClick='toggleBox("Output-1239593925", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1239593925" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1239593925">
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Promotions (Multiple promotions)(Single Day))-:( Total Amount :-6824 and Booking Summary Page Total Amount :-6824is Matched ):-PASS</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(single room type) + Promotions (Multiple promotions)(Single Day))-:( Booking Summary Page Total :-6,824and Voucher Page Amount :-6,824 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>292</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
+<tr>
+<td title='IBE.IBE4.IBE()'><b>IBE</b><br>Test class: IBE.IBE4<br>Parameters: 1, 1, 0, 0, 2, Deluxe Rooms+Standard, CP+CP, 0, Null, Null, 2, Airport Pickup, 0, Null, Null, (Multi Room(Multiple room type) + Multiple Additional services(Single Day))<br/>
+<a href="#Output-1352254875" onClick='toggleBox("Output-1352254875", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1352254875" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1352254875">
+<font font-family='Times New Roman'>IBE--</font><font color='red'>(Multi Room(Multiple room type) + Multiple Additional services(Single Day))-:( Total Amount :-3478and Booking Summary Page Total Amount :-4478 is not Matched ):-FAIL</font></a><br/>
+<font font-family='Times New Roman'>IBE--</font><font color='blue'>(Multi Room(Multiple room type) + Multiple Additional services(Single Day))-:( Booking Summary Page Total :-4,478and Voucher Page Amount :-4,478 is Matched ):-PASS</font></a><br/>
+</div>
+</td>
+<td></td>
+<td>208</td>
+<td>IBE.IBE4@7a5d012c</td></tr>
 </table><p>
 </body>
 </html>

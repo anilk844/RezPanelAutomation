@@ -1,34 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Main Test Suite]">
-  <test name="Panel Automation(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="Panel_Automation.TicketCheck">
+      <class name="DataSync.DataSyn">
         <methods>
-          <include name="createTicket"/>
+          <include name="datasyn" invocation-numbers="4"/>
         </methods>
-      </class> <!-- Panel_Automation.TicketCheck -->
-      <class name="Panel_Automation.PromotionCreation">
-        <methods>
-          <include name="start"/>
-        </methods>
-      </class> <!-- Panel_Automation.PromotionCreation -->
-      <class name="Panel_Automation.PackageCreation">
-        <methods>
-          <include name="start"/>
-        </methods>
-      </class> <!-- Panel_Automation.PackageCreation -->
-      <class name="Panel_Automation.PromocodeCreation">
-        <methods>
-          <include name="promo"/>
-        </methods>
-      </class> <!-- Panel_Automation.PromocodeCreation -->
-      <class name="Panel_Automation.RateCreation">
-        <methods>
-          <include name="login"/>
-          <include name="start"/>
-        </methods>
-      </class> <!-- Panel_Automation.RateCreation -->
+      </class> <!-- DataSync.DataSyn -->
     </classes>
-  </test> <!-- Panel Automation(failed) -->
-</suite> <!-- Failed suite [Main Test Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

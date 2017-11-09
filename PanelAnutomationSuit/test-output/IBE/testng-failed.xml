@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [IBE]">
   <test name="IBE(failed)">
     <classes>
-      <class name="Dev_progress.DataSyn">
+      <class name="IBE.IBE4">
         <methods>
-          <include name="datasyn" invocation-numbers="0 2"/>
+          <include name="IBE" invocation-numbers="26 27 28 29 30 31 32 33 38"/>
         </methods>
-      </class> <!-- Dev_progress.DataSyn -->
+      </class> <!-- IBE.IBE4 -->
     </classes>
   </test> <!-- IBE(failed) -->
 </suite> <!-- Failed suite [IBE] -->

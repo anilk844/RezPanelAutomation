@@ -3,11 +3,6 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Main Test Suite]">
   <test name="Panel Automation(failed)">
     <classes>
-      <class name="Panel_Automation.TicketCheck">
-        <methods>
-          <include name="createTicket"/>
-        </methods>
-      </class> <!-- Panel_Automation.TicketCheck -->
       <class name="Panel_Automation.PromotionCreation">
         <methods>
           <include name="start"/>
@@ -26,7 +21,6 @@
       <class name="Panel_Automation.RateCreation">
         <methods>
           <include name="login"/>
-          <include name="start"/>
         </methods>
       </class> <!-- Panel_Automation.RateCreation -->
     </classes>
