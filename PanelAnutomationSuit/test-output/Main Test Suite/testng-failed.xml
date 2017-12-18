@@ -13,11 +13,6 @@
           <include name="start"/>
         </methods>
       </class> <!-- Panel_Automation.PackageCreation -->
-      <class name="Panel_Automation.PromocodeCreation">
-        <methods>
-          <include name="promo"/>
-        </methods>
-      </class> <!-- Panel_Automation.PromocodeCreation -->
       <class name="Panel_Automation.RateCreation">
         <methods>
           <include name="login"/>

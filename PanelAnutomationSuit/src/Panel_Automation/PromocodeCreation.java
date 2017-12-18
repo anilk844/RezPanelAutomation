@@ -345,9 +345,9 @@ public class PromocodeCreation {
 		
 		driver.findElement(By.xpath(prop.getProperty("PerSwitch"))).click();
 		
-		driver.findElement(By.xpath(prop.getProperty("DiscountedRatePlan"))).click();
-		
-		driver.findElement(By.xpath(prop.getProperty("SaveButton"))).click();
+		//driver.findElement(By.xpath(prop.getProperty("DiscountedRatePlan"))).click();
+		driver.findElement(By.cssSelector("*[class^='btn btn-labeled btn-success']")).click();
+		//driver.findElement(By.xpath(prop.getProperty("SaveButton"))).click();
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[@id='Msg1']")));
 		WebElement msgbox=driver.findElement(By.xpath("//*[@id='Msg1']"));
 		msgbox.findElement(By.id("bot1-Msg1")).click();

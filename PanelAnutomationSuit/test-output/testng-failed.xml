@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="DataSync.DataSyn">
+      <class name="Maxima.Maxima">
         <methods>
-          <include name="datasyn" invocation-numbers="4"/>
+          <include name="start"/>
         </methods>
-      </class> <!-- DataSync.DataSyn -->
+      </class> <!-- Maxima.Maxima -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

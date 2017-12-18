@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -50,6 +51,10 @@ public static int totalAmount=0;
 public static List<Integer>ticketRates;
  public static int ticketflag;
  public static int tktcount=0;
+ public static int tktvoucherCheck=1;
+ public static int PackageVoucherCheck=1;
+ public static String SummaryPage=null;
+ public static Properties stat;
 
 @DataProvider
 public Object[][] getData() throws IOException
@@ -58,7 +63,7 @@ public Object[][] getData() throws IOException
 	data= new ArrayList();
 	FileInputStream file= new FileInputStream("D://IBE TestCase//IBETestData.xlsx");
 	XSSFWorkbook workbook = new XSSFWorkbook(file);
-	XSSFSheet sheet = workbook.getSheet("Sheet1");
+	XSSFSheet sheet = workbook.getSheet("Sheet2");
 	Iterator itr = sheet.iterator();
 	while(itr.hasNext())
 	{
@@ -136,16 +141,21 @@ public Object[][] getData() throws IOException
 @Test(dataProvider="getData")
 public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCount,int RoomCount,String RoomName,String MealPlan,int PackageCount,String PackageName,String PackageMealPlanName, int AddOnsCount,String AddOnsName,int TicketCount,String TicketName,String PackageType,String TestCaseName) throws InterruptedException, InvalidFormatException, IOException
 {    
-     xpathflag=0;
+	tktvoucherCheck=1;
+    PackageVoucherCheck=1;
+    xpathflag=0;
 	System.out.println(TestCaseName);
     ticketflag=0;
 	totalAmount=0;
 	tktcount=0;
 	ticketRates=new ArrayList<Integer>();
+	
 	if(intialFlag)
 	{
 		
-		
+	  FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/IBE/IBESetting.properties");
+	  stat=new Properties();
+	  stat.load(status);
 	  System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
 	  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
       ChromeOptions options = new ChromeOptions();
@@ -205,7 +215,8 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     WebDriverWait addmoreRoomwait=new WebDriverWait(driver, 3);
     if(RoomCount>0)
     {
-    	
+    	tktvoucherCheck=0;
+    	PackageVoucherCheck=0;
       // System.out.println(RoomName);
        String rmName[]=RoomName.split("\\+");
        String mpName[]=MealPlan.split("\\+");
@@ -232,7 +243,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     if(PackageCount>0)
     {
 	
-     
+    	tktvoucherCheck=0;
        String pkName[]=PackageName.split("\\+");
        String pmName[]=PackageMealPlanName.split("\\+");
        String pkType[]=PackageType.split("\\+");
@@ -258,6 +269,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     }
     if(TicketCount>0)
     {
+    	PackageVoucherCheck=0;
     	System.out.println(TicketCount);
     	tktcount=TicketCount;
     	String TkName[]=TicketName.split("\\+");
@@ -284,6 +296,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     
     if(AddOnsCount>0)
     {
+    	
     	int amount=totalAmount;
     	String AddName[]=AddOnsName.split("\\+");
     	for(int ai=0;ai<AddName.length;ai++)
@@ -294,35 +307,40 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     	    
         }
     }
-    Thread.sleep(2000);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class='table table-condensed borderless']")));
-    WebElement tax=driver.findElement(By.cssSelector("*[class='table table-condensed borderless']"));
-    WebElement TaxTd=tax.findElement(By.cssSelector("*[class='col-sm-4 text-right']"));
-    String TaxAmount=TaxTd.findElement(By.cssSelector("*[class='font-size-13 ']")).getText();
-    String specialchar[]={" ",",","\""};
-	for(String s :specialchar)
+    String amt=null;
+    int totalAMTValue=0;
+    String totalAmt=null;
+    if(stat.getProperty("summaryPage").equalsIgnoreCase("old"))
 	{
-		TaxAmount=TaxAmount.replace(s, "");
-	}
-	String parseString=TaxAmount;
-	totalAmount=totalAmount+Integer.parseInt(parseString);
+       Thread.sleep(2000);
+       wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class='table table-condensed borderless']")));
+       WebElement tax=driver.findElement(By.cssSelector("*[class='table table-condensed borderless']"));
+       WebElement TaxTd=tax.findElement(By.cssSelector("*[class='col-sm-4 text-right']"));
+       String TaxAmount=TaxTd.findElement(By.cssSelector("*[class='font-size-13 ']")).getText();
+       String specialchar[]={" ",",","\""};
+	   for(String s :specialchar)
+	   {
+		  TaxAmount=TaxAmount.replace(s, "");
+	   }
+	   String parseString=TaxAmount;
+	   totalAmount=totalAmount+Integer.parseInt(parseString);
 	
-    String BooingtotalAmt=driver.findElement(By.cssSelector("*[class^='total-amount']")).getText();
-    String totalAmt=BooingtotalAmt;
+       String BooingtotalAmt=driver.findElement(By.cssSelector("*[class^='total-amount']")).getText();
+       totalAmt=BooingtotalAmt;
    
-    for(String s :specialchar)
-	{
-    	totalAmt=totalAmt.replace(s, "");
-	}
-	String parseStringtotalAmt=totalAmt;
-	int totalAMTValue=Integer.parseInt(parseStringtotalAmt);
-	/*int bookingrateCheckFlag=0;
-	if(ticketRates.size()>0)
-	{
-	int FinalTotalAmount=0;
-    for(int a :ticketRates)
-    {
-    	if(bookingrateCheckFlag==0)
+       for(String s :specialchar)
+	   {
+    	  totalAmt=totalAmt.replace(s, "");
+	   }
+	   String parseStringtotalAmt=totalAmt;
+	   totalAMTValue=Integer.parseInt(parseStringtotalAmt);
+    	/*int bookingrateCheckFlag=0;
+    	if(ticketRates.size()>0)
+    	{
+        	int FinalTotalAmount=0;
+            for(int a :ticketRates)
+            {
+       	if(bookingrateCheckFlag==0)
     	{
     	FinalTotalAmount=totalAmount+a;
     	totalAmount=FinalTotalAmount;
@@ -347,7 +365,9 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     }
     
     guestDetails();
-    
+   // btn btn-default rmbRds add-more-rooms
+   // btn btn-default rmbRds booknow
+  //*[@id="PaymentSubmit"]/div[2]/div[2]/div[2]/button
     
 
 	JavascriptExecutor js = ((JavascriptExecutor) driver);
@@ -356,20 +376,45 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
 	js.executeScript("arguments[0].scrollIntoView(true);", element);
     driver.findElement(By.xpath("//*[@id='User_TermsAndConditions']")).click();
     Thread.sleep(2000);
+  //*[@id="mainContainer"]/table/tbody/tr[5]/td[2]
+   
     driver.findElement(By.xpath("//*[@id='PaymentSubmit']/div[2]/div[2]/div/button")).click();
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='amount1']")));
-    String amt=driver.findElement(By.xpath("//*[@id='amount1']")).getText();
-    System.out.println("Booking Summary amount:-"+totalAmt);
-    System.out.println("Voucher Page amount:-"+amt);
-    if(amt.equalsIgnoreCase(BooingtotalAmt))
+	}
+    if(stat.getProperty("summaryPage").equalsIgnoreCase("new"))
+   	{
+    	
+   	}
+    if(tktvoucherCheck==1)
     {
-    	Reporter.log("<font font-family='Times New Roman'>IBE--</font><font color='blue'>"+TestCaseName+"-:( Booking Summary Page Total :-"+amt+"and Voucher Page Amount :-"+BooingtotalAmt+" is Matched ):-PASS</font></a>", true);
+    	
+    	wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='payDetails table-striped']")));
+        WebElement a1=driver.findElement(By.cssSelector("*[class^='payDetails table-striped']"));
+        List<WebElement> td1=a1.findElements(By.id("td"));
+        amt=td1.get(7).getText();
+    }else
+ 
+    {
+    	  wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='mainContainer']/table/tbody/tr[5]/td[2]")));
+    	  amt=driver.findElement(By.xpath("//*[@id='mainContainer']/table/tbody/tr[5]/td[2]")).getText();
+    	  
+    	  
+    	
+    }
+  
+    
+    
+    String[] AmtStr=amt.split(" ");
+    System.out.println("Booking Summary amount:-"+totalAmt);
+    System.out.println("Voucher Page amount:-"+AmtStr[1]);
+    if(AmtStr[1].equalsIgnoreCase(String.valueOf(totalAMTValue)))
+    {
+    	Reporter.log("<font font-family='Times New Roman'>IBE--</font><font color='blue'>"+TestCaseName+"-:( Booking Summary Page Total :-"+totalAMTValue+"and Voucher Page Amount :-"+AmtStr[1]+" is Matched ):-PASS</font></a>", true);
     	System.out.println("pass");
     }
     else
     {
     	System.out.println("amount mismatch");
-    	Reporter.log("<font font-family='Times New Roman'>IBE--</font><font color='red'>"+TestCaseName+"-:( Booking Summary Page Total :-"+amt+" and Voucher Page Amount :-"+BooingtotalAmt+" is not Matched ):-FAIL</font></a>", true);
+    	Reporter.log("<font font-family='Times New Roman'>IBE--</font><font color='red'>"+TestCaseName+"-:( Booking Summary Page Total :-"+totalAMTValue+" and Voucher Page Amount :-"+AmtStr[1]+" is not Matched ):-FAIL</font></a>", true);
     }
     
      
@@ -524,7 +569,7 @@ public static  void execute() throws IOException, InvalidFormatException
 	 //*[@id="rooms"]/img
 	   Boolean PackageNameflag=true;
 	   Boolean PackageTypeflag=true;
-       WebDriverWait packtype=new WebDriverWait(driver,4);
+       WebDriverWait packtype=new WebDriverWait(driver,20);
 	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='content-loader']")));
 	   //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='rooms']/img")));
 	   //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/img")));
@@ -534,7 +579,7 @@ public static  void execute() throws IOException, InvalidFormatException
     	   if(xpathflag==0)
     	   {
     		System.out.println("Inside");
-    		//*[@id="packagetab"]/a
+    		Thread.sleep(20000);
     	   packtype.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='packagetab']/a")));
     	   driver.findElement(By.xpath("//*[@id='packagetab']/a")).click();
     	   }
@@ -653,8 +698,8 @@ public static  void execute() throws IOException, InvalidFormatException
 		   if(xpathflag==0)
     	   {
 			   System.out.println("hello111");
-		      TicketType.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='offerstab']/a")));
-		      driver.findElement(By.xpath("//*[@id='offerstab']/a")).click();
+		       TicketType.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='offerstab']/a")));
+		       driver.findElement(By.xpath("//*[@id='offerstab']/a")).click();
     	   }
 	   }
 	  catch(Exception e)
@@ -711,7 +756,9 @@ public static  void execute() throws IOException, InvalidFormatException
     	   }
     	   }
        }
-       
+     
+       if(stat.getProperty("summaryPage").equalsIgnoreCase("old"))
+       {
        JavascriptExecutor js1 = ((JavascriptExecutor) driver);
 	   WebElement element = driver.findElement(By.cssSelector("*[class^='total-amount']"));
 	   //Now scroll to this element 
@@ -773,6 +820,7 @@ public static  void execute() throws IOException, InvalidFormatException
 	    }
 	    
 	    System.out.println("Total Amount Inside Ticket Count----"+totalAmount);
+       }
 	    
    }
    
@@ -783,6 +831,10 @@ public static  void execute() throws IOException, InvalidFormatException
    public static void AddOnsBooking(String AddonsService,int count) throws InterruptedException
    {
 	   
+	   
+	   
+	 if(stat.getProperty("summaryPage").equalsIgnoreCase("old"))
+	 {
 	   System.out.println("1");
 	   JavascriptExecutor js = ((JavascriptExecutor) driver);
 	   WebElement element = driver.findElement(By.cssSelector("*[class^='col-sm-12 myaddons']"));
@@ -817,12 +869,18 @@ public static  void execute() throws IOException, InvalidFormatException
 				}
 				String parseString=price;
 				totalAmount=totalAmount+Integer.parseInt(parseString);
+				
 			    a.findElement(By.cssSelector("*[class^='fa fa-plus']")).click();
-			    Thread.sleep(3000);
+			    Thread.sleep(6000);
 			   
 		   }
 		   }
 	   }
+	 }
+	 if(stat.getProperty("summaryPage").equalsIgnoreCase("new"))
+	 {
+	 
+	 }
    }
    
    
