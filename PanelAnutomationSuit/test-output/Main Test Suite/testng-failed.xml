@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Main Test Suite]">
+<suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [Main Test Suite]">
   <test name="Panel Automation(failed)">
     <classes>
-      <class name="Panel_Automation.PromotionCreation">
+      <class name="Panel_Automation.RateCreation">
         <methods>
+          <include name="login"/>
           <include name="start"/>
         </methods>
-      </class> <!-- Panel_Automation.PromotionCreation -->
+      </class> <!-- Panel_Automation.RateCreation -->
       <class name="Panel_Automation.PackageCreation">
         <methods>
           <include name="start"/>
         </methods>
       </class> <!-- Panel_Automation.PackageCreation -->
-      <class name="Panel_Automation.RateCreation">
+      <class name="Panel_Automation.PromocodeCreation">
         <methods>
-          <include name="login"/>
+          <include name="promo"/>
         </methods>
-      </class> <!-- Panel_Automation.RateCreation -->
+      </class> <!-- Panel_Automation.PromocodeCreation -->
+      <class name="Panel_Automation.PromotionCreation">
+        <methods>
+          <include name="start"/>
+        </methods>
+      </class> <!-- Panel_Automation.PromotionCreation -->
+      <class name="Panel_Automation.TicketCheck">
+        <methods>
+          <include name="createTicket"/>
+        </methods>
+      </class> <!-- Panel_Automation.TicketCheck -->
     </classes>
   </test> <!-- Panel Automation(failed) -->
 </suite> <!-- Failed suite [Main Test Suite] -->

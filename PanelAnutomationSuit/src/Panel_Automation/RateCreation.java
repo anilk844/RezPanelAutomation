@@ -48,6 +48,7 @@ import org.testng.annotations.Test;
 //import com.sun.glass.ui.Clipboard;
 
 public class RateCreation {
+	
 	public static Properties prop;
 	public static Properties gen;
 	public static WebDriver driver;
@@ -63,35 +64,34 @@ public class RateCreation {
 	@BeforeSuite
 	public static void login() throws IOException, InterruptedException
 	{
-       System.out.println("RateCreation");
-		
-		
-		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
-		stat=new Properties();
-		stat.load(status);
-		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
-		{
+        
+		 //Status variable conatins Switch QA and Live properties file address
+		 FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		 stat=new Properties();//stat is variable of type properties and its used to store object reference
+		 stat.load(status);//loading status variable into stat
+		 if(stat.getProperty("Status").equalsIgnoreCase("QA"))
+		 {
 			QALIVE=stat.getProperty("Status");
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
-			gen=new Properties();
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
+			gen=new Properties();//test property data is accessed here from Repository--Generic.properties
 			gen.load(pageObjectGen);
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
 			QALIVE=stat.getProperty("Status");
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
-			gen=new Properties();
-			gen.load(pageObjectGen);
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			gen=new Properties();//test live property data is accessed here--LiveRepository--Generic.properties
+			gen.load(pageObjectGen);//USING GEN.PROPERTIES we access pageobjectgen 
 		}
 		
 		
-		room=gen.getProperty("ExistingRoomType1");
+		 //room=gen.getProperty("ExistingRoomType1");
 		channelid2=gen.getProperty("ExistingChannel");
 		mealplan2=gen.getProperty("ExixtingMealPlan");
 		
 		
-		
-		System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
+		//chrome drive code START (general google code)
+		 System.setProperty("webdriver.chrome.driver", "D://Files//Chrome Driver//chromedriver.exe");
 		 
 		 DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 	     ChromeOptions options = new ChromeOptions();
@@ -106,77 +106,60 @@ public class RateCreation {
 	    chromePrefs.put("profile.password_manager_enabled", false);
 	    //chromePrefs.put("download.default_directory", downloadFilepath);
 	    options.setExperimentalOption("prefs", chromePrefs);
-	    capabilities.setCapability("chrome.binary","D://chrome//chromedriver.exe");
+	    capabilities.setCapability("chrome.binary","D://Files//Chrome Driver//chromedriver.exe");
 	    capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-         driver = new ChromeDriver(capabilities);
-         driver.get(gen.getProperty("Url"));
+        driver = new ChromeDriver(capabilities);
+        
+        //chrome drive code ENDS (general google code)
+        driver.get(gen.getProperty("Url"));
         
 		wait=new WebDriverWait(driver,40);
 		//driver.manage().window().maximize();
 	  
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(gen.getProperty("username"))));
-		 
-		driver.findElement(By.xpath(gen.getProperty("username"))).sendKeys(gen.getProperty("UserNameValue"));
-		  
+		driver.findElement(By.xpath(gen.getProperty("username"))).sendKeys(gen.getProperty("UserNameValue"));  
 		driver.findElement(By.xpath(gen.getProperty("password"))).sendKeys(gen.getProperty("PasswordValue"));
 		driver.findElement(By.xpath(gen.getProperty("Button"))).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(gen.getProperty("searchField"))));
 		driver.findElement(By.xpath(gen.getProperty("searchField"))).sendKeys(gen.getProperty("hotelcode"));
-		/*try
-		{
-		driver.findElement(By.xpath("//*[@id='header']/div[2]/form/div/table/tbody/tr[2]")).click();
-		}
-		catch(Exception e)
-		{
-			
-		}
-		try
-		{
-		Screen scn= new Screen();
-		String img="D://sikili//Ban.PNG";
-		Pattern ptr= new Pattern(img);
-		Thread.sleep(4000);
-		scn.click(ptr);
-		}
-		catch(Exception e)
-		{
-			
-		}*/
+		
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(gen.getProperty("searchField"))));
 		//driver.findElement(By.xpath(gen.getProperty("searchField"))).sendKeys(String.valueOf(Cuscode));
 		
+		//Property selection from serach box --code STARTS
 		WebElement DropOut=driver.findElement(By.cssSelector("*[class^='search_dropdown']"));
 		List<WebElement>tr=DropOut.findElements(By.cssSelector("*[class^='ng-scope']"));
-		for(WebElement a : tr)
+		for(WebElement a : tr)//ONE PROPERTY ROW data--for each loop
 		{
-					List<WebElement>td=a.findElements(By.tagName("td"));
-					System.out.println(td.get(1).getText());
+					List<WebElement>td=a.findElements(By.tagName("td"));//getting all column data of one property
+					
 
-			if(td.get(0).getText().equals(String.valueOf(gen.getProperty("hotelcode"))))
+			if(td.get(0).getText().equals(String.valueOf(gen.getProperty("hotelcode"))))//if sent hotel code from i/p matches searched hotel code (hotel code always in 0th position 
 			{
-				a.click();
+				a.click();//a contains full row with property info
 				System.out.println("Pass");
 			}
 		}
+		//Property selection from search box --code ENDS
 	}
 	
 	
 	@Test
 	public static void start() throws InterruptedException, FindFailed, AWTException, IOException, UnsupportedFlavorException
 	{
-		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Rate_Creation_Repository.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Rate_Creation_Repository.properties");
 		prop = new Properties();
 		prop.load(pageObject);
-		driver.get(gen.getProperty("Rate_creation_URL"));
-		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
+		driver.get(gen.getProperty("Rate_creation_URL")); //contains either test gen or live gen file
+		driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);//implicit wait waits for every element if its not present for 15seconds
 		//Thread.sleep(2000);
 		for(int i=0;i<1;i++)
 		{
 			if(gen.getProperty("createNewRate").equalsIgnoreCase("true"))
 			{
 				
-				CreateNewRate();
-				WebElement rat=driver.findElement(By.xpath("//*[@id='ratecode']"));
+				 CreateNewRate();
+				 WebElement rat=driver.findElement(By.xpath("//*[@id='ratecode']"));
 				 Actions action=new Actions(driver);
 				 action.moveToElement(rat).doubleClick().build().perform();
 				 //Thread.sleep(5000);
@@ -208,8 +191,11 @@ public class RateCreation {
 			     }
 				 Thread.sleep(2000);
 				
+				
+				 
 			
-		
+				
+			
 				if(gen.getProperty("addNewMealPlan").equalsIgnoreCase("true"))
 				{
 					AddNewRatePlan();
@@ -220,15 +206,12 @@ public class RateCreation {
 					AddRate();
 					Thread.sleep(3000);
 					
+					//waiting to see save button on create rate header
 					wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='bootstrap-wizard-1']/div/div[1]/div/div/a[1]")));
-					//NEW CODE 24-11-2016
-					/*Screen sc= new Screen();
-					String im="D://sikili//B2CRate.PNG";
-					Pattern pt= new Pattern(im);
-					Thread.sleep(4000);
-					sc.doubleClick(pt);*/
-					
+					//click on save button --STARTS
 					driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div/div[1]/div/div/a[1]")).click();
+					
+					
 					WebElement msgbox=driver.findElement(By.xpath("//*[@id='Msg1']"));
 					String msg=msgbox.findElement(By.tagName("p")).getText();
 					
@@ -241,18 +224,19 @@ public class RateCreation {
 						Thread.sleep(3000);
 						
 					}
+					//click on save button --ENDS
 		        }
 				
 			}
-				
+				//Rate modification
 				if(gen.getProperty("existingRateCode").equalsIgnoreCase("true"))
 				{
 					//AddNewRatePlan();
 					ExistingRateCode();
 				}
-				//AssignRateToChannel();
+				AssignRateToChannel();
 		
-		//String CreateNewRate ="False";
+		        //String CreateNewRate ="False";
 		//Create New Rate Code 
 	}
 	}
@@ -261,13 +245,12 @@ public class RateCreation {
 	
 	
 	
-	
+	//CreateNewRate method starts here
 	
 	public static void CreateNewRate() throws InterruptedException
 	{
-	  
-		System.out.println("inside");
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("Add_New_button"))));
+		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("Add_New_button"))));//prop contains rate creation repository 
 		//wait.until(ExpectedConditions.(By.xpath(prop.getProperty("Add_New_button"))));
 		Thread.sleep(3000);
 
@@ -282,24 +265,19 @@ public class RateCreation {
 		
 		driver.findElement(By.xpath(prop.getProperty("Season"))).sendKeys(gen.getProperty("SeasonValue"));
 		driver.findElement(By.xpath(prop.getProperty("Start_date"))).click();
-		//start date
+		
+		//start date calendar function
 		String year=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/span")).getText();
 		
 		SimpleDateFormat DF = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar RC = Calendar.getInstance();
-		String start=DF.format(RC.getTime());
+		String start=DF.format(RC.getTime());//todays date you get here in dd/mm/yyyy format
 		int inputyear=Integer.parseInt(start.substring(6,10));
 		int month=Integer.parseInt(start.substring(3,5));
 		int daycal=Integer.parseInt(start.substring(0,2));
-		
-		
-		
-		
-		
-		
 		int year1=Integer.parseInt(year);
 		//int inputyear=Integer.parseInt(gen.getProperty("StartYear"));
-		while(inputyear!=year1)
+		while(inputyear!=year1) //coparing system date format year with the calendar year in panel
 		{
 			if(inputyear>year1)
 			{
@@ -314,9 +292,10 @@ public class RateCreation {
 		{
 			WebElement ele2=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/select"));
 			Select sel2 =new Select(ele2);
-			sel2.selectByVisibleText(monthformate[month-1]);
+			sel2.selectByVisibleText(monthformate[month-1]);//monthformat is as array used above and array starts from 0th position so month-1
 			//sel2.selectByVisibleText(gen.getProperty("StartMonth"));
 		}
+		//Date Selection Codes starts from here
 		int flag1=0;
 		WebElement ele4=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/table"));
 		List<WebElement> tr=ele4.findElements(By.tagName("tr"));
@@ -340,8 +319,10 @@ public class RateCreation {
 			}
 			}
 		}
+		//Date Selection Codes ENDS here
 		
-		RC.add(Calendar.DATE, 200);
+		//Rate code end date selection starts here
+		RC.add(Calendar.DATE, 200);//rate creation happens for 200 days duration
 		String end=DF.format(RC.getTime());
 		int endyear=Integer.parseInt(end.substring(6,10));
 		int endmonth=Integer.parseInt(end.substring(3,5));
@@ -388,6 +369,9 @@ public class RateCreation {
 				}
 			}
 		}
+		
+		//Rate code end date selection ends here
+		
 		driver.findElement(By.xpath(prop.getProperty("Rate_Name"))).sendKeys(gen.getProperty("RateNameValue"));
 		driver.findElement(By.xpath(prop.getProperty("Rate_Des"))).sendKeys(gen.getProperty("RateDescValue"));
 		driver.findElement(By.xpath(prop.getProperty("Room_Type"))).click();
@@ -397,10 +381,11 @@ public class RateCreation {
 	}
 
 		
-	
+	//CreateNewRate method ends here
 	
 	
 	//click on existing ratecode 
+	
 	public static void ExistingRateCode() throws InterruptedException, FindFailed
 	{
 		
@@ -411,7 +396,7 @@ public class RateCreation {
 		 int total=0;
 		for(int i=7;i<div1.size();i=i+8)
 		{
-			System.out.println(div1.size());
+		 System.out.println(div1.size());
 		 WebElement dv=div1.get(i);
 		 
 		
@@ -453,10 +438,6 @@ public class RateCreation {
 		}
 		
 		
-		
-		//link.get(1).click();; 		
-		//end on clicking existing rate code
-		//click on edit meal plan 
 		WebElement edit=driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div/div[1]/section[2]/fieldset/div/ol"));
 		List<WebElement>edit1=edit.findElements(By.tagName("li"));
 		System.out.println(edit1.size());
@@ -499,26 +480,7 @@ public class RateCreation {
 						if(str1.equals(gen.getProperty("ExixtingMealPlan")))
 						{
 							strong.click();
-						/*	WebElement Tbody=e2.findElement(By.tagName("tbody"));
-							List<WebElement>tr2=Tbody.findElements(By.tagName("tr"));
-							for(int p=0;p<tr2.size();p++)
-							{
-								WebElement tr3=tr2.get(p);
-								List<WebElement>td3=tr3.findElements(By.tagName("td"));
-								for(int j=1;j<3;j++)
-								{
-									WebElement td4 =td3.get(j);
-									WebElement input = td4.findElement(By.tagName("input"));
-									//input.clear();
-									//input.sendKeys("7000");
-									JavascriptExecutor js = ((JavascriptExecutor) driver);
-
-							        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-									driver.findElement(By.xpath("//*[@id='remoteModal-rate']/div/div/div[3]/a[1]")).click();
-									//---**add save button or cancel button----*****
-								}
-								break;
-							}*/
+						
 							JavascriptExecutor js = ((JavascriptExecutor) driver);
 
 					        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -533,55 +495,6 @@ public class RateCreation {
 						}
 					}
 				
-				
-				
-				/*
-				WebElement msgbox1=driver.findElement(By.xpath("//*[@id='remoteModal-rate']/div"));
-			
-				List<WebElement> lst2=msgbox1.findElements(By.tagName("div"));
-				
-				for(int k=0;k<lst2.size();k++)
-				{
-					WebElement e2=lst2.get(k);
-					try
-					{
-					WebElement strong=e2.findElement(By.tagName("i"));
-					String str=e2.getText();
-					System.out.println(str);
-					if(str.equals("Only Room"))
-					{
-						strong.click();
-						WebElement Tbody=e2.findElement(By.tagName("tbody"));
-						List<WebElement>tr2=Tbody.findElements(By.tagName("tr"));
-						for(int m=0;m<tr2.size();m++)
-						{
-							WebElement tr3=tr2.get(m);
-							List<WebElement>td3=tr3.findElements(By.tagName("td"));
-							for(int j=1;j<3;j++)
-							{
-								WebElement td4 =td3.get(j);
-								WebElement input = td4.findElement(By.tagName("input"));
-								input.clear();
-								input.sendKeys("1000");
-								
-								//driver.findElement(By.xpath("//*[@id='remoteModal-rate']/div/div/div[3]/a[1]")).click();
-							}
-						break;	
-						}
-						
-						break;
-					}
-				
-				}
-					catch(Exception e)
-					{
-						
-					}
-				}
-				*/
-			   
-			   
-			   //end
 			}
 			System.out.println(label.size());
 			
@@ -636,46 +549,46 @@ public class RateCreation {
 		
           public static void AddRate() throws InterruptedException, FindFailed
           {
-			Thread.sleep(2000);
+			 Thread.sleep(2000);
 			//*[@id="accord0"]/div/div[1]/h6/a
 			   driver.findElement(By.xpath("//*[@id='addrates']")).click();
 			   wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[@id='remoteModal-rate']/div/div/div[2]/div")));
+			   //Add rate pop up window
 			   WebElement msgbox1=driver.findElement(By.xpath("//*[@id='remoteModal-rate']/div/div/div[2]/div"));
 			
-			List<WebElement> lst2=msgbox1.findElements(By.tagName("div"));
+			List<WebElement> lst2=msgbox1.findElements(By.tagName("div"));//rate plan div storing in list variable
 			
-			for(int k=0;k<lst2.size();k=k+31)
+			for(int k=0;k<lst2.size();k=k+31)//there are 31 div tags in each meal plan accordian
 			{
 			    try
 			    {
 				WebElement e2=lst2.get(k);
-				List<WebElement>st=e2.findElements(By.tagName("strong"));
-				String str1=st.get(0).getText();
-				
-				System.out.println("@@@@@"+str1);
-				WebElement strong=e2.findElement(By.tagName("i"));
-				System.out.println("####"+gen.getProperty("ExixtingMealPlan"));
+				List<WebElement>st=e2.findElements(By.tagName("strong"));//meal plan tag name everywhere is in strong tagname
+				String str1=st.get(0).getText();//CP is stored
+				WebElement strong=e2.findElement(By.tagName("i"));// meal plan accordion arrow address is stored
 				if(str1.equalsIgnoreCase(gen.getProperty("ExixtingMealPlan")))
 				{
-					System.out.println("----------"+gen.getProperty("ExixtingMealPlan"));
-					strong.click();
+					strong.click();//clicking on meal plan accordion
 					WebElement Tbody=e2.findElement(By.tagName("tbody"));
-					List<WebElement>tr2=Tbody.findElements(By.tagName("tr"));
-					for(int i=0;i<tr2.size();i++)
+					List<WebElement>tr2=Tbody.findElements(By.tagName("tr"));//all rows stored in list tr2
+					for(int i=0;i<tr2.size();i++) //considering each row while entering rates
 					{
 						WebElement tr3=tr2.get(i);
-						List<WebElement>td3=tr3.findElements(By.tagName("td"));
-						for(int j=1;j<3;j++)
+						List<WebElement>td3=tr3.findElements(By.tagName("td")); //all columns stored here in list td3
+						for(int j=1;j<3;j++) //entering single and double rate for all 7 days in this loop
 						{
 							WebElement td4 =td3.get(j);
 							WebElement input = td4.findElement(By.tagName("input"));
 							input.clear();
 							input.sendKeys(gen.getProperty("AddAmount"));
 							//---**add save button or cancel button----*****
+							
+							//these 2 lines used to scroll the entire page to downwards--starts
 							JavascriptExecutor js = ((JavascriptExecutor) driver);
-
 					        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-							driver.findElement(By.xpath("//*[@id='remoteModal-rate']/div/div/div[3]/a[1]")).click();
+					        
+					      //these 2 lines used to scroll the entire page to downwards--ends
+							driver.findElement(By.xpath("//*[@id='remoteModal-rate']/div/div/div[3]/a[1]")).click();//clicking on save button
 							
 						}
 						break;
@@ -704,12 +617,12 @@ public class RateCreation {
         	  
         	   Thread.sleep(4000);
       
-        		driver.findElement(By.xpath("//*[@id='ratechannelstab']/a/i")).click();
+        		driver.findElement(By.xpath("//*[@id='ratechannelstab']/a/i")).click();//assign rate to channel -tab click
         		Thread.sleep(3000);
         		//*[@id="ratechannelstab"]
-        		driver.findElement(By.xpath("//*[@id='RateAssignTab']/header/div/button")).click();
+        		driver.findElement(By.xpath("//*[@id='RateAssignTab']/header/div/button")).click();//assign rate to channel button click
         		Thread.sleep(4000);
-        	    WebElement ratecode=driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[1]/div[1]/div/select"));
+        	    WebElement ratecode=driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[1]/div[1]/div/select"));//rate code select box address
         	    Select selectratcode=new Select(ratecode);
         	    if(gen.getProperty("createNewRate").equalsIgnoreCase("false"))
         	    {
@@ -763,28 +676,7 @@ public class RateCreation {
         	    }
         	    Thread.sleep(3000);
         	    WebElement ele=null;
-        	   try
-        	   {
-        		  ele =driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[6]/div[1]/div[2]/div/select"));
-        		   Select inv=new Select(ele);
-       	    	   inv.selectByVisibleText("Allocation Inventory");
-        	   }
-        	   catch(Exception e)
-        	   {
-        		   
-        	   }
-        	 //*[@id="bootstrap-wizard-1"]/div[1]/div/fieldset/div[6]/div[1]/div[2]/div/select
-        	 //*[@id="bootstrap-wizard-1"]/div[1]/div/fieldset/div[5]/div[1]/div[2]/div/select
-        	   try
-        	   {
-        		   ele =driver.findElement(By.xpath(" //*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[5]/div[1]/div[2]/div/select"));
-        		   Select inv=new Select(ele);
-       	    	   inv.selectByVisibleText("Allocation Inventory");
-        	   }
-        	   catch(Exception e)
-        	   {
-        		   
-        	   }
+        	
         	    String inventory="Allocation Inventory";
         	    if(inventory.equalsIgnoreCase("Allocation Inventory"))
         	    {
@@ -818,7 +710,10 @@ public class RateCreation {
         	         //*[@id="bootstrap-wizard-1"]/div[3]/div/div/a[2]
 					//driver.findElement(By.xpath("//*[@id='remoteModal-rate']/div/div/div[3]/a[1]")).click();
         	        driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[3]/div/div/a[2]")).click();
+        	        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='btn btn-primary']")));
+        	        driver.findElement(By.cssSelector("*[class^='btn btn-primary']")).click();
         	        Thread.sleep(5000);
+        	        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Msg1']")));
         	        WebElement msgbox=driver.findElement(By.xpath("//*[@id='Msg1']"));
         	        WebElement msg=msgbox.findElement(By.tagName("p"));
         	        Assert.assertEquals("Confirm your save will modify the rates if the rates have been alloted earlier or New rates will alloted for the Channel", msg.getText());

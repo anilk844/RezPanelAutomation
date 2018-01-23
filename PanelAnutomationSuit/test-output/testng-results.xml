@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="1" failed="0" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Maxim" duration-ms="876222" started-at="2017-12-18T04:00:39Z" finished-at="2017-12-18T04:15:15Z">
+  <suite name="Default suite" duration-ms="22" started-at="2018-01-23T05:22:58Z" finished-at="2018-01-23T05:22:58Z">
     <groups>
     </groups>
-    <test name="Maxim" duration-ms="869783" started-at="2017-12-18T04:00:39Z" finished-at="2017-12-18T04:15:08Z">
-      <class name="Maxima.Maxima">
-        <test-method status="PASS" signature="start()[pri:0, instance:Maxima.Maxima@e580929]" name="start" duration-ms="869762" started-at="2017-12-18T09:30:39Z" finished-at="2017-12-18T09:45:08Z">
+    <test name="Default test" duration-ms="22" started-at="2018-01-23T05:22:58Z" finished-at="2018-01-23T05:22:58Z">
+      <class name="Panel_Automation.RateCreation">
+        <test-method status="FAIL" signature="login()[pri:0, instance:Panel_Automation.RateCreation@7403c468]" name="login" is-config="true" duration-ms="9" started-at="2018-01-23T10:52:58Z" finished-at="2018-01-23T10:52:58Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerExceptionat Panel_Automation.RateCreation.login(RateCreation.java:89)at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)at java.lang.reflect.Method.invoke(Unknown Source)at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:451)at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)at org.testng.SuiteRunner.privateRun(SuiteRunner.java:401)at org.testng.SuiteRunner.run(SuiteRunner.java:364)at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)at org.testng.TestNG.runSuites(TestNG.java:1028)at org.testng.TestNG.run(TestNG.java:996)at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="SKIP" signature="start()[pri:0, instance:Panel_Automation.RateCreation@7403c468]" name="start" duration-ms="0" started-at="2018-01-23T10:52:58Z" finished-at="2018-01-23T10:52:58Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerExceptionat Panel_Automation.RateCreation.login(RateCreation.java:89)at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)at java.lang.reflect.Method.invoke(Unknown Source)at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:451)at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)at org.testng.SuiteRunner.privateRun(SuiteRunner.java:401)at org.testng.SuiteRunner.run(SuiteRunner.java:364)at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)at org.testng.TestNG.runSuites(TestNG.java:1028)at org.testng.TestNG.run(TestNG.java:996)at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-      </class> <!-- Maxima.Maxima -->
-    </test> <!-- Maxim -->
-    <test name="SendMaxim" duration-ms="6331" started-at="2017-12-18T04:15:09Z" finished-at="2017-12-18T04:15:15Z">
-      <class name="SendMail.SendMaximaDataDumpStatus">
-        <test-method status="PASS" signature="execute()[pri:0, instance:SendMail.SendMaximaDataDumpStatus@1554909b]" name="execute" duration-ms="6331" started-at="2017-12-18T09:45:09Z" finished-at="2017-12-18T09:45:15Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- execute -->
-      </class> <!-- SendMail.SendMaximaDataDumpStatus -->
-    </test> <!-- SendMaxim -->
-  </suite> <!-- Maxim -->
+      </class> <!-- Panel_Automation.RateCreation -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

@@ -48,22 +48,22 @@ public class PromotionCreation {
 		driver=RateCreation.driver;
 		
 		
-		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		stat=new Properties();
 		stat.load(status);
 		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
-		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Promotion.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Promotion.properties");
 		prop = new Properties();
 	    prop.load(pageObject);
 	    wait=new WebDriverWait(driver,40);
@@ -105,8 +105,8 @@ public class PromotionCreation {
 		Thread.sleep(6000);
 		driver.navigate().refresh();
 		Thread.sleep(6000);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(prop.getProperty("addnewButton"))));
-		driver.findElement(By.xpath(prop.getProperty("addnewButton"))).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(prop.getProperty("addnewButton"))));
+		driver.findElement(By.cssSelector(prop.getProperty("addnewButton"))).click();
 		
 		WebElement promoRateCode=driver.findElement(By.xpath(prop.getProperty("RateCode")));
 		Select sel1=new Select(promoRateCode);

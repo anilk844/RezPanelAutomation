@@ -36,10 +36,10 @@ package SendMail;
 			SimpleDateFormat DF = new SimpleDateFormat("dd-MM-yyyy");
 		    Calendar RC = Calendar.getInstance();
 		    String start=DF.format(RC.getTime());
-		    File source=new File("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxim/Maxim.html");
+		    File source=new File("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxim/Maxim.html");
 		    //C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxima/Maxima.html
 			//File source = new File("D:/WorkSpace/ibv4_code/MobileTest/test-output/AndroidMobileAutomation/Mobile Android Automation.html");
-			File dest = new File("D:/PanelARIDailyReport/PanelARIReport-"+start+".html");
+			File dest = new File("D:/Maxim Daily Report/PanelARIReport-"+start+".html");
 			
 			try
 			{
@@ -103,7 +103,7 @@ package SendMail;
 		       // Part two is attachment
 		       messageBodyPart = new MimeBodyPart();
 		       
-		       String filename = "C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxim/Maxim.html";
+		       String filename = "C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxim/Maxim.html";
 		       DataSource source = new FileDataSource(filename);
 		       messageBodyPart.setDataHandler(new DataHandler(source));
 		       messageBodyPart.setFileName(filename);

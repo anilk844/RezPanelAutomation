@@ -53,7 +53,7 @@ public class DataSyn {
 	{
 		data= new ArrayList();
 		System.out.println("1");
-		FileInputStream file= new FileInputStream("D://IBE TestCase//DataSyn.xlsx");
+		FileInputStream file= new FileInputStream("D://DataSyn TestCases//DataSyn.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
 		XSSFSheet sheet = workbook.getSheet("Sheet1");
 		Iterator itr = sheet.iterator();
@@ -104,26 +104,26 @@ public static void datasyn(int Cuscode,String n) throws IOException, Interrupted
 	 Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=RED;password=TechOperation_786;database=redcoredblive");
 	if(topflag)
 	{
-	FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+	FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 	stat=new Properties();
 	stat.load(status);
 	if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 	{
 		QALIVE=stat.getProperty("Status");
-		FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
+		FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
 		gen=new Properties();
 		gen.load(pageObjectGen);
 	}
 	else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 	{
 		QALIVE=stat.getProperty("Status");
-		FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+		FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 		gen=new Properties();
 		gen.load(pageObjectGen);
 	}
 	
 	
-	System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver", "D://Files//Chrome Driver//chromedriver.exe");
 	 
 	 DesiredCapabilities capabilities = DesiredCapabilities.chrome();
      ChromeOptions options = new ChromeOptions();
@@ -138,7 +138,7 @@ public static void datasyn(int Cuscode,String n) throws IOException, Interrupted
     chromePrefs.put("profile.password_manager_enabled", false);
     //chromePrefs.put("download.default_directory", downloadFilepath);
     options.setExperimentalOption("prefs", chromePrefs);
-    capabilities.setCapability("chrome.binary","D://chrome//chromedriver.exe");
+    capabilities.setCapability("chrome.binary","D://Files//Chrome Driver//chromedriver.exe");
     capabilities.setCapability(ChromeOptions.CAPABILITY, options);
     
    

@@ -38,7 +38,7 @@ public class Maxima {
 		 System.out.println("test1");
 		 //Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=Rezstaging;password=Staging@123;database=redcoredblive28may16_test");
 		 Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=RED;password=TechOperation_786;database=redcoredblive");
-		 System.setProperty("webdriver.chrome.driver", "D://Maxim Chrom Driver//chromedriver.exe");
+		 System.setProperty("webdriver.chrome.driver", "D://Files//Chrome Driver//chromedriver.exe");
 		
 		 
 		 String []custcode={"2070","2060","2050","2000","2080"};   //live live
@@ -71,7 +71,7 @@ public class Maxima {
            chromePrefs.put("profile.default_content_settings.popups", 0);
            chromePrefs.put("download.default_directory", downloadFilepath);
            options.setExperimentalOption("prefs", chromePrefs);
-           capabilities.setCapability("chrome.binary","D://Maxim Chrom Driver//chromedriver.exe");
+           capabilities.setCapability("chrome.binary","D://Files//Chrome Driver//chromedriver.exe");
            capabilities.setCapability(ChromeOptions.CAPABILITY, options);
            WebDriver driver = new ChromeDriver(capabilities);
            WebDriverWait wait=new WebDriverWait(driver,40);

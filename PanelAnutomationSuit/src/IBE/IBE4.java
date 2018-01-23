@@ -63,7 +63,7 @@ public Object[][] getData() throws IOException
 	data= new ArrayList();
 	FileInputStream file= new FileInputStream("D://IBE TestCase//IBETestData.xlsx");
 	XSSFWorkbook workbook = new XSSFWorkbook(file);
-	XSSFSheet sheet = workbook.getSheet("Sheet2");
+	XSSFSheet sheet = workbook.getSheet("Sheet1");
 	Iterator itr = sheet.iterator();
 	while(itr.hasNext())
 	{
@@ -153,10 +153,10 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
 	if(intialFlag)
 	{
 		
-	  FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/IBE/IBESetting.properties");
+	  FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/IBE/IBESetting.properties");
 	  stat=new Properties();
 	  stat.load(status);
-	  System.setProperty("webdriver.chrome.driver", "D://chrome//chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", "D://Files//Chrome Driver//chromedriver.exe");
 	  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
       ChromeOptions options = new ChromeOptions();
       options.addArguments("test-type");
@@ -167,7 +167,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
       chromePrefs.put("profile.default_content_settings.popups", 0);
 
       options.setExperimentalOption("prefs", chromePrefs);
-      capabilities.setCapability("chrome.binary","D://chrome//chromedriver.exe");
+      capabilities.setCapability("chrome.binary","D://Files//Chrome Driver//chromedriver.exe");
       capabilities.setCapability(ChromeOptions.CAPABILITY, options);
       driver = new ChromeDriver(capabilities);
       wait=new WebDriverWait(driver, 100);
@@ -310,8 +310,10 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     String amt=null;
     int totalAMTValue=0;
     String totalAmt=null;
-    if(stat.getProperty("summaryPage").equalsIgnoreCase("old"))
-	{
+  //  if(stat.getProperty("summaryPage").equalsIgnoreCase("old"))
+	//{
+    
+       System.out.println("inside");
        Thread.sleep(2000);
        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class='table table-condensed borderless']")));
        WebElement tax=driver.findElement(By.cssSelector("*[class='table table-condensed borderless']"));
@@ -334,7 +336,8 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
 	   }
 	   String parseStringtotalAmt=totalAmt;
 	   totalAMTValue=Integer.parseInt(parseStringtotalAmt);
-    	/*int bookingrateCheckFlag=0;
+	   //------------------Changes 12-28-2017
+    	int bookingrateCheckFlag=0;
     	if(ticketRates.size()>0)
     	{
         	int FinalTotalAmount=0;
@@ -350,7 +353,9 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     	}
     	}
     }
-	}*/
+	}
+    	
+    //------------------Stop
     if(totalAmount==totalAMTValue)
     {
     	System.out.println("total Amount:- "+totalAmount);
@@ -379,7 +384,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
   //*[@id="mainContainer"]/table/tbody/tr[5]/td[2]
    
     driver.findElement(By.xpath("//*[@id='PaymentSubmit']/div[2]/div[2]/div/button")).click();
-	}
+	//}
     if(stat.getProperty("summaryPage").equalsIgnoreCase("new"))
    	{
     	
@@ -888,10 +893,11 @@ public static  void execute() throws IOException, InvalidFormatException
    
    public  static void guestDetails() throws InterruptedException
    {
-	   
+	   System.out.println("222");
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
 
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		System.out.println("11");
 	   WebElement guest= driver.findElement(By.xpath("//*[@id='guestinfo']"));
 	   WebElement FirstName=guest.findElement(By.id("User_Firstname"));
 	   WebElement LastName=guest.findElement(By.id("User_Lastname"));
