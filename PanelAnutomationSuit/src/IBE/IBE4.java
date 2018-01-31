@@ -63,7 +63,7 @@ public Object[][] getData() throws IOException
 {
 	
 	data= new ArrayList(); //This data will store the rows and columns in single dimensional array 
-	FileInputStream file= new FileInputStream("C://Users//qa.test//git//RezPanelAutomation//PanelAnutomationSuit//src//IBE//IBETestData.xlsx");//accessing excel sheet
+	FileInputStream file= new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/IBE/IBETestData.xlsx");//accessing excel sheet
 	XSSFWorkbook workbook = new XSSFWorkbook(file);//converting to workbook
 	XSSFSheet sheet = workbook.getSheet("Sheet1");//Fetching sheet from workbook 
 	Iterator itr = sheet.iterator();
@@ -156,10 +156,10 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
 	if(intialFlag)
 	{
 		
-	  FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/IBE/IBESetting.properties");//To switch between old and new Summary page, presently not implemented.
+	  FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/IBE/IBESetting.properties");//To switch between old and new Summary page, presently not implemented.
 	  stat=new Properties();
 	  stat.load(status);
-	  System.setProperty("webdriver.chrome.driver", "D://Files//Chrome Driver//chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", "D://Maxim Chrom Driver//chromedriver.exe");
 	  DesiredCapabilities capabilities = DesiredCapabilities.chrome();
       ChromeOptions options = new ChromeOptions();
       options.addArguments("test-type");
@@ -170,7 +170,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
       chromePrefs.put("profile.default_content_settings.popups", 0);
 
       options.setExperimentalOption("prefs", chromePrefs);
-      capabilities.setCapability("chrome.binary","D://Files//Chrome Driver//chromedriver.exe");
+      capabilities.setCapability("chrome.binary","D://Maxim Chrom Driver//chromedriver.exe");
       capabilities.setCapability(ChromeOptions.CAPABILITY, options);
       driver = new ChromeDriver(capabilities);
       wait=new WebDriverWait(driver, 100);
@@ -432,39 +432,6 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
 
 
 
-public static  void execute() throws IOException, InvalidFormatException
-{
-	data= new ArrayList();
-	System.out.println("Inside dataextractor");
-	FileInputStream file= new FileInputStream("D://IBE TestCase//IBETestData.xlsx");
-	
-	XSSFWorkbook workbook = new XSSFWorkbook(file);
-	XSSFSheet sheet = workbook.getSheet("Sheet1");
-	Iterator itr = sheet.iterator();
-	while(itr.hasNext())
-	{
-		Row RowItr = (Row)itr.next();
-		Iterator cellItr=RowItr.cellIterator();
-		while(cellItr.hasNext())
-		{
-			Cell cells= (Cell)cellItr.next();
-			switch(cells.getCellType())
-			{
-			case Cell.CELL_TYPE_STRING:data.add(cells.getStringCellValue());
-			break;
-			case Cell.CELL_TYPE_NUMERIC:data.add(cells.getNumericCellValue());
-			break;
-			case Cell.CELL_TYPE_BOOLEAN:data.add(cells.getBooleanCellValue());
-			break;
-			case Cell.CELL_TYPE_BLANK:
-			break;
-			}
-		}
-	}
-	System.out.println(data);
-	
-}
-
 
 
    public static void bookroom(String roomtype1,String meal1) throws InterruptedException
@@ -576,8 +543,7 @@ public static  void execute() throws IOException, InvalidFormatException
    
    public static void packageBook(String PackageType,String PackageName,String MealType) throws InterruptedException
    {
-	 //*[@id="flip_maindiv"]/div/div/img
-	 //*[@id="rooms"]/img
+	 
 	   Boolean PackageNameflag=true;
 	   Boolean PackageTypeflag=true;
        WebDriverWait packtype=new WebDriverWait(driver,20);

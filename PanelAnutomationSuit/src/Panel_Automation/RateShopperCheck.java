@@ -47,12 +47,12 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
     	System.out.println("RateShopper");
 	    driver=RateCreation.driver;
 		System.out.println("PAckageCreation");
-		FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		stat=new Properties();
 		stat.load(status);
 		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 			expectedcomp=new ArrayList<String>();
@@ -64,7 +64,7 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 			expectedcomp=new ArrayList<String>();
@@ -76,40 +76,10 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 			expectedcomp.add("La Place Sarovar Portico");
 		}
 	
-		FileInputStream pageObject = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Package_Creation.properties");
-		prop = new Properties();
-	    prop.load(pageObject);
+		//FileInputStream pageObject = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Package_Creation.properties");
+		//prop = new Properties();
+	    //prop.load(pageObject);
 	    wait=new WebDriverWait(driver,40);
-		/*System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--disable-extensions");
-		driver=new ChromeDriver();
-		
-		wait=new WebDriverWait(driver,30);
-		driver.manage().window().maximize();
-		driver.get("https://redapptest.azurewebsites.net");
-		
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(".//*[@id='login-form']/fieldset/section[1]/label[2]/input")));
-		
-		driver.findElement(By.xpath(".//*[@id='login-form']/fieldset/section[1]/label[2]/input")).sendKeys("superuser@reznext.com");
-		driver.findElement(By.xpath(".//*[@id='password']")).sendKeys("Test@321");
-		driver.findElement(By.xpath(".//*[@id='login-form']/footer/div/button")).click();
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[@id='search-fld']")));
-		driver.findElement(By.xpath("//*[@id='search-fld']")).sendKeys("3241");
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//*[@id='header']/div[2]/form/div/table/tbody/tr[2]")).click();
-		try
-		{
-		Screen scn= new Screen();
-		String img="D://sikili//Ban.PNG";
-		Pattern ptr= new Pattern(img);
-		Thread.sleep(4000);
-		scn.click(ptr);
-		}
-		catch(Exception ex)
-		{
-			
-		}*/
 		dashboardpage();
 		comparePage();
 		rangepage();

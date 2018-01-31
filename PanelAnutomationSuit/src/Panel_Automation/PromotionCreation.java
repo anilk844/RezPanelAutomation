@@ -48,25 +48,25 @@ public class PromotionCreation {
 		driver=RateCreation.driver;
 		
 		
-		FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		stat=new Properties();
 		stat.load(status);
 		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 		{
 			System.out.println("1");
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
 		
 		//promotion.properties file gets loaded here contains all xpaths and i/p
-		FileInputStream pageObject = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Promotion.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Promotion.properties");
 		prop = new Properties();
 	    prop.load(pageObject);
 	    wait=new WebDriverWait(driver,40);//explicit wait

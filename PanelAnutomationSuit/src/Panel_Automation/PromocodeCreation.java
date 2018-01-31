@@ -36,22 +36,22 @@ public class PromocodeCreation
 	{
 		
 		
-		FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		stat=new Properties();
 		stat.load(status);
 		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
-		FileInputStream pageObject = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Promocode.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Promocode.properties");
 		prop = new Properties();
 	    prop.load(pageObject);
 	    driver=RateCreation.driver;    
