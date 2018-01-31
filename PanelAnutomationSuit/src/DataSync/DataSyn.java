@@ -47,13 +47,13 @@ public class DataSyn {
 	public static ArrayList data;
 	
 	public static boolean topflag=true;
-	
+	//This section is to fetch data from Excel Starts here**
 	@DataProvider
 	public Object[][] getData() throws IOException 
 	{
 		data= new ArrayList();
 		System.out.println("1");
-		FileInputStream file= new FileInputStream("D://DataSyn TestCases//DataSyn.xlsx");
+		FileInputStream file= new FileInputStream("C://Users//qa.test//git//RezPanelAutomation//PanelAnutomationSuit//src//DataSync//DataSyn.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
 		XSSFSheet sheet = workbook.getSheet("Sheet1");
 		Iterator itr = sheet.iterator();
@@ -78,14 +78,23 @@ public class DataSyn {
 			}
 		}
 		System.out.println(data);
-		int rw=data.size()/2;
-		Object a[][]=new Object[rw][2];
+		/*
+		 3665
+		 1
+		 783
+		 1
+		 13
+		 1
+		 Data would be stored in this fashion
+		 */
+		int rw=data.size()/2;//To calculate row. eg: 6/2 = 3
+		Object a[][]=new Object[rw][2]; // creating multi-dimensional array 
 		int j=0;
 		for(int i=0;i<data.size();i=i+2)
 		{
 			
 		    double a1=(double)data.get(i);
-		    int CustCode=(int) Math.round(a1);
+		    int CustCode=(int) Math.round(a1);//to handle excel input errors 3665.0
 		    System.out.println(CustCode);
 		    a[j][0]=CustCode;
 		    a[j][1]="1";
@@ -94,10 +103,12 @@ public class DataSyn {
 		}
 		return a;
 	}
-	
-@Test(dataProvider="getData")	
-public static void datasyn(int Cuscode,String n) throws IOException, InterruptedException, ClassNotFoundException, SQLException
-{
+	//This section is to fetch data from Excel ends here**
+
+	//Data provider(getData()) is interconnected with the dataSync() 
+	@Test(dataProvider="getData")	
+	public static void datasyn(int Cuscode,String n) throws IOException, InterruptedException, ClassNotFoundException, SQLException
+	{
 	 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");	
 	
 	 //Connection conn = DriverManager.getConnection("jdbc:sqlserver://he05ik8udk.database.windows.net;user=Rezstaging;password=Staging@123;database=redcoredblive28may16_test");
@@ -255,72 +266,8 @@ public static void datasyn(int Cuscode,String n) throws IOException, Interrupted
     	
     	 //end-------------------------------
     	
-   /* System.out.println(c);
-    wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='fixed-width desktop-detected menu-on-top ng-scope container smart-style-2']")));
-    Thread.sleep(3000);
-    //WebElement div=driver.findElement(By.cssSelector("*[class^='fixed-width desktop-detected menu-on-top ng-scope container smart-style-2']"));
-    WebElement table=driver.findElement(By.cssSelector("*[class^='table table-bordered channel_control_body table-responsive']"));
-    List<WebElement>ChannelControlList=table.findElements(By.cssSelector("*[class^='ng-scope']"));
-    //System.out.println("Hello"+ChannelControlList.size());
-    boolean flag=true;
-    for(WebElement a :ChannelControlList)
-    {
-    	
-    	if(flag)
-    	{
-    	List<WebElement>td=a.findElements(By.tagName("td"));
-    	if(td.get(1).getText().equalsIgnoreCase(c))
-    	{
-    		flag=false;
-    		//System.out.println(td.get(1).getText());
-    		td.get(8).click();
-    	    wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='MessageBoxContainer animated fadeIn fast']")));
-    		WebElement msgbox=driver.findElement(By.cssSelector("*[class^='MessageBoxContainer animated fadeIn fast']"));
-    		Thread.sleep(2000);
-    		String text=msgbox.findElement(By.cssSelector("*[class^='pText']")).getText();
-    		if(text.equalsIgnoreCase("Please provide Min/Max Weightage for All Mapped Rooms"))
-    		{
-    		    System.out.println("Please provide Min/Max Weightage for All Mapped Rooms");
-    		    Thread.sleep(2000);
-    		    msgbox.findElement(By.id("bot1-Msg1")).click();
-    		}
-    		if(text.equalsIgnoreCase("Save Failed"))
-    		{
 
-    		    System.out.println("Save Failed");
-    		    Thread.sleep(2000);
-    		    msgbox.findElement(By.id("bot1-Msg1")).click();
-    			
-    		}
-    		if(text.equalsIgnoreCase("Saved successfully"))
-    		{
-    			//System.out.println(c);
-    			System.out.println("Saved successfully");
-    			msgbox.findElement(By.id("bot1-Msg1")).click();
-    			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='table table-bordered channel_control_body table-responsive']")));
-    			System.out.println("Saved successfully11");
-    			System.out.println("-----"+td.get(1).getText());
-    			td.get(8).click();
-    			System.out.println("Saved successfully111");
-    			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='MessageBoxContainer animated fadeIn fast']")));
-        		WebElement msgbox1=driver.findElement(By.cssSelector("*[class^='MessageBoxContainer animated fadeIn fast']"));
-        		Thread.sleep(2000);
-        		String text1=msgbox1.findElement(By.cssSelector("*[class^='pText']")).getText();
-        		if(text1.equalsIgnoreCase("Please provide Min/Max Weightage for All Mapped Rooms"))
-        		{
-        		    System.out.println("Please provide Min/Max Weightage for All Mapped Rooms");
-        		    msgbox1.findElement(By.id("bot1-Msg1")).click();
-        		}
-        		if(text1.equalsIgnoreCase("Saved successfully"))
-        		{
-        			System.out.println("Saved successfully");
-        			msgbox1.findElement(By.id("bot1-Msg1")).click();
-        		}
-    		}
-    		
-    	}
-    	}
-    }*/
+
    }
     Thread.sleep(30000);
 }

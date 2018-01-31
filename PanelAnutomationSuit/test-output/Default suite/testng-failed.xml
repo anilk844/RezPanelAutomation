@@ -3,12 +3,11 @@
 <suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="Panel_Automation.RateCreation">
+      <class name="Panel_Automation.PromocodeCreation">
         <methods>
-          <include name="login"/>
-          <include name="start"/>
+          <include name="promo"/>
         </methods>
-      </class> <!-- Panel_Automation.RateCreation -->
+      </class> <!-- Panel_Automation.PromocodeCreation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

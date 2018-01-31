@@ -56,22 +56,18 @@ public class TicketCheck
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
-		/*FileInputStream pageObject = new FileInputStream("D:/WorkSpace/ibv4_code/Enroll_Hotel_Test/src/Repository/Promocode.properties");
-		prop = new Properties();
-	    prop.load(pageObject);*/
+		
 	    driver=RateCreation.driver;
 	    
 		wait=new WebDriverWait(driver,40);
 		driver.get(gen.getProperty("Ticket"));
-		//*[@id="wid-id-ticketGrid"]/header/div/button
-		//*[@id="wid-id-ticketGrid"]/header/div/button
-		//wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='btn newPackage']")));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("wid-id-ticketGrid")));
+		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("wid-id-ticketGrid")));// ticket grid id
 		Thread.sleep(4000);
-		//driver.findElement(By.cssSelector("*[class^='btn newPackage']")).click();
+		
 		WebElement ele=driver.findElement(By.id("wid-id-ticketGrid"));
-		ele.findElement(By.xpath("//*[@id='wid-id-ticketGrid']/header/div/button/span[1]/i")).click();
-		//driver.findElement(By.xpath("//*[@id='wid-id-ticketGrid']/header/div/button/span[2]")).click();
+		ele.findElement(By.xpath("//*[@id='wid-id-ticketGrid']/header/div/button/span[1]/i")).click();//create new ticket
+		
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='ddTktClassification']")));
 		WebElement TicketType=driver.findElement(By.xpath("//*[@id='ddTktClassification']"));
 		Select TicketSelect=new Select(TicketType);
@@ -80,7 +76,7 @@ public class TicketCheck
 		driver.findElement(By.xpath("//*[@id='numberoftkts']")).clear();
 		driver.findElement(By.xpath("//*[@id='numberoftkts']")).sendKeys(gen.getProperty("NoOfTickets"));
 		
-		   
+		  //date format code from here---(refer create rate program
 		SimpleDateFormat DF = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar RC = Calendar.getInstance();
 		String start=DF.format(RC.getTime());
@@ -89,16 +85,7 @@ public class TicketCheck
 		int daycal=Integer.parseInt(start.substring(0,2));
 		
 		driver.findElement(By.xpath("//*[@id='startdate']")).click();
-		//*[@id="enddate"]
-		
-		
-		
-		
-		
-		
-		
-	    //driver.findElement(By.xpath(prop.getProperty("StartDate"))).click();
-	    //*[@id="ui-datepicker-div"]
+	
 		WebElement calStart=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']"));
 	
 		//-------------------New changes in date picker------------------------19-06-2017
@@ -156,7 +143,7 @@ public class TicketCheck
 		
 		
 		
-		
+		//code for end date
 		RC.add(Calendar.DATE, 20);
 		String end=DF.format(RC.getTime());
 		int endyear=Integer.parseInt(end.substring(6,10));
@@ -213,6 +200,7 @@ public class TicketCheck
 				}
 			}
 		}
+		//date format code till here---(refer create rate program
 			
 			driver.findElement(By.xpath("//*[@id='pkgPriceAccordian']")).click();
 			
@@ -223,6 +211,8 @@ public class TicketCheck
 			driver.findElement(By.xpath("//*[@id='tktcode']")).sendKeys(gen.getProperty("TicketCode"));
 			driver.findElement(By.xpath("//*[@id='tktname']")).sendKeys(gen.getProperty("TicketName"));
 			
+			
+			//ticket code is coped and pasted in ticket description
 			StringSelection stringSelection = new StringSelection(gen.getProperty("TicketCode"));
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 		     Robot robot =new Robot();
@@ -235,14 +225,16 @@ public class TicketCheck
 			  
 			 Thread.sleep(3000);
 			 //click on choose file button
+			 
+			 //code for page scroller (full scroll)
 			 JavascriptExecutor js = ((JavascriptExecutor) driver);
 
 		     js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 			  WebElement e1=driver.findElement(By.xpath("//*[@id='wid-id-NewTicket']/div/div[2]/div[2]/div/div/a[1]"));
-		        ((JavascriptExecutor) driver).executeScript(
+		        ((JavascriptExecutor) driver).executeScript( //scroller waits till visibility of e1 element
 	                  "arguments[0].scrollIntoView();", e1);
 		      
-		        e1.click();
+		        e1.click(); //click on save
 		      //*[@id="Msg1"]
 		   wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Msg1']")));
 		   
@@ -252,34 +244,7 @@ public class TicketCheck
 		   
 	}
 	
-	public static void date(String mon1,String Year1,String dayStr)
-    {
-        String mon=mon1;
-        String year1=Year1;
-        WebElement ele =driver.findElement(By.xpath("//*[@id='ui-datepicker-div']"));
-        WebElement head=ele.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div"));
-        
- 
- //select day
-        
-        Select month=new Select(driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/select[1]")));
-        month.selectByVisibleText(mon1);
-        Select year=new Select(driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div/div/select[2]")));
-        year.selectByVisibleText(year1);
-        WebElement SelectDay=ele.findElement(By.xpath("//*[@id='ui-datepicker-div']/table/tbody"));
-        List<WebElement>day1=SelectDay.findElements(By.tagName("a"));
-        int daynew=Integer.parseInt(dayStr);
-        String dayval=String.valueOf(daynew);
-        for(WebElement e2:day1)
-        {
-	       System.out.println(e2.getText());
-	       if(e2.getText().equals(dayval))
-	       {
-		      System.out.println("got");
-		      e2.click();
-	        }
-	   }
-  }
+
  
 }
 

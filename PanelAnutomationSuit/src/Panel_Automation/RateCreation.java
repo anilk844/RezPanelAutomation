@@ -69,8 +69,13 @@ public class RateCreation {
 		 FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		 stat=new Properties();//stat is variable of type properties and its used to store object reference
 		 stat.load(status);//loading status variable into stat
-		 if(stat.getProperty("Status").equalsIgnoreCase("QA"))
+		 System.out.println(stat.getProperty("Status"));
+		 String s1=stat.getProperty("Status");
+		 System.out.println(s1);
+		 if(s1.equalsIgnoreCase("QA"))
 		 {
+		
+			 System.out.println("inside");
 			QALIVE=stat.getProperty("Status");
 			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();//test property data is accessed here from Repository--Generic.properties
@@ -78,6 +83,7 @@ public class RateCreation {
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
+			System.out.println("inside");
 			QALIVE=stat.getProperty("Status");
 			FileInputStream pageObjectGen = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();//test live property data is accessed here--LiveRepository--Generic.properties
@@ -85,7 +91,7 @@ public class RateCreation {
 		}
 		
 		
-		 //room=gen.getProperty("ExistingRoomType1");
+		 room=gen.getProperty("ExistingRoomType1");
 		channelid2=gen.getProperty("ExistingChannel");
 		mealplan2=gen.getProperty("ExixtingMealPlan");
 		
@@ -144,6 +150,12 @@ public class RateCreation {
 	}
 	
 	
+	private static String String(String property) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 	@Test
 	public static void start() throws InterruptedException, FindFailed, AWTException, IOException, UnsupportedFlavorException
 	{
@@ -234,7 +246,7 @@ public class RateCreation {
 					//AddNewRatePlan();
 					ExistingRateCode();
 				}
-				AssignRateToChannel();
+				//AssignRateToChannel();
 		
 		        //String CreateNewRate ="False";
 		//Create New Rate Code 
@@ -630,13 +642,15 @@ public class RateCreation {
         	    }
         	    else
         	    {
-        	    	selectratcode.selectByVisibleText(text);
+        	    	selectratcode.selectByVisibleText(text);//assigning selected rate code 
         	    	
         	    }
-        	    
+        	  
         	    WebElement leftelement=driver.findElement(By.xpath("//*[@id='leftValues']"));
+        	  //these 2 lines used to scroll the entire page to downwards--starts
         	    ((JavascriptExecutor) driver).executeScript(
         	            "arguments[0].scrollIntoView();", leftelement);
+        	  //these 2 lines used to scroll the entire page to downwards--ends
         	    WebDriverWait wait=new WebDriverWait(driver,20);
         	    Thread.sleep(2000);
         	    WebElement roomtype=driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[2]/div[1]/div/select"));
@@ -650,7 +664,7 @@ public class RateCreation {
         	   
         	    selectmealplan.selectByVisibleText(gen.getProperty("ExixtingMealPlan"));
         	   
-        	    Thread.sleep(5000);
+        	    Thread.sleep(3000);
         	    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='leftValues']")));
         	    WebElement leftelement1=driver.findElement(By.xpath("//*[@id='leftValues']"));
         	    java.util.List<WebElement>option =leftelement1.findElements(By.tagName("option"));
@@ -666,17 +680,19 @@ public class RateCreation {
         	    		if(optname.equals(gen.getProperty("ExistingChannel")))
         	    		{
         	    			System.out.println("insideone");
-        	    			action.moveToElement(opt).click(opt).build().perform();
+        	    			action.moveToElement(opt).click(opt).build().perform();//Mouse action to click on matched enabled channel
         	    			Thread.sleep(3000);
-        	    			 driver.findElement(By.xpath("//*[@id='btnRight']")).click();
+        	    			 driver.findElement(By.xpath("//*[@id='btnRight']")).click();//navigation arrow xpath
         	    		
-        	    			break;
+        	    			//break;
         	    		}
         	    	}
         	    }
         	    Thread.sleep(3000);
-        	    WebElement ele=null;
-        	
+        	  
+        	    WebElement ele=driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[5]/div[1]/div[2]/div/select"));
+
+        	  
         	    String inventory="Allocation Inventory";
         	    if(inventory.equalsIgnoreCase("Allocation Inventory"))
         	    {
@@ -687,13 +703,14 @@ public class RateCreation {
         	    	Thread.sleep(2000);
         	    	try
         	    	{
-        	    	allocation=driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[6]/div[2]/div/div/div[2]/div/input"));
+        	    	allocation=driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[6]/div[2]/div/div/div[2]/div/input"));//allocation inventory will be sent to allocation
         	    	}
+        	    	
         	    	catch(Exception e)
         	    	{
         	    		
         	    	}
-        	    	try
+        	    	try //2 try boxes just to manage inventory which we are getting sometimes in div[5] or div[6]
         	    	{
         	    	allocation=driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[1]/div/fieldset/div[5]/div[2]/div/div/div[2]/div/input"));
         	    	}
@@ -704,24 +721,31 @@ public class RateCreation {
         	    	
         	        allocation.sendKeys("10");
         	        Thread.sleep(2000);
+        	        
+        	      //these 2 lines used to scroll the entire page to downwards--starts
         	    	JavascriptExecutor js = ((JavascriptExecutor) driver);
 
         	        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        	         //*[@id="bootstrap-wizard-1"]/div[3]/div/div/a[2]
-					//driver.findElement(By.xpath("//*[@id='remoteModal-rate']/div/div/div[3]/a[1]")).click();
-        	        driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[3]/div/div/a[2]")).click();
+        	         
+        	      //these 2 lines used to scroll the entire page to downwards--ends
+        	        driver.findElement(By.xpath("//*[@id='bootstrap-wizard-1']/div[3]/div/div/a[2]")).click();//save button click
+        	        Thread.sleep(3000);
+        	        //For Internal Use only box address  
+        	        WebElement dialogmodule=driver.findElement(By.xpath("/html/body/div[52]/div/div"));
         	        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='btn btn-primary']")));
-        	        driver.findElement(By.cssSelector("*[class^='btn btn-primary']")).click();
+        	        //Internal Use proceed button address 
+        	        dialogmodule.findElement(By.cssSelector("*[class^='btn btn-primary']")).click();
         	        Thread.sleep(5000);
         	        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Msg1']")));
-        	        WebElement msgbox=driver.findElement(By.xpath("//*[@id='Msg1']"));
+        	        
+        	        WebElement msgbox=driver.findElement(By.xpath("//*[@id='Msg1']"));//1st masg box after clicking on proceed is stored here
         	        WebElement msg=msgbox.findElement(By.tagName("p"));
-        	        Assert.assertEquals("Confirm your save will modify the rates if the rates have been alloted earlier or New rates will alloted for the Channel", msg.getText());
+        	        Assert.assertEquals("Confirm your save will modify the rates if the rates have been alloted earlier or New rates will alloted for the Channel", msg.getText());//if assert functions returns false next entire code wont be executed
         	        msgbox.findElement(By.xpath("//*[@id='bot2-Msg1']")).click();
         	        Thread.sleep(3000);
         	        wait=new WebDriverWait(driver,10000);
         	        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("bot1-Msg1")));
-        	        WebElement SuccessMsgBox=driver.findElement(By.xpath("//*[@id='Msg1']"));
+        	        WebElement SuccessMsgBox=driver.findElement(By.xpath("//*[@id='Msg1']"));//2nd masg box after clicking on proceed is stored here
         	        SuccessMsgBox.findElement(By.id("bot1-Msg1")).click();
         	       
         	       

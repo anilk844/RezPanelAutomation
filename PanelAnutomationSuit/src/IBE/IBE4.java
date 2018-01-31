@@ -56,27 +56,30 @@ public static List<Integer>ticketRates;
  public static String SummaryPage=null;
  public static Properties stat;
 
+ 
+//Google Code To fetch data From Excel 
 @DataProvider
 public Object[][] getData() throws IOException
 {
 	
-	data= new ArrayList();
-	FileInputStream file= new FileInputStream("D://IBE TestCase//IBETestData.xlsx");
-	XSSFWorkbook workbook = new XSSFWorkbook(file);
-	XSSFSheet sheet = workbook.getSheet("Sheet1");
+	data= new ArrayList(); //This data will store the rows and columns in single dimensional array 
+	FileInputStream file= new FileInputStream("C://Users//qa.test//git//RezPanelAutomation//PanelAnutomationSuit//src//IBE//IBETestData.xlsx");//accessing excel sheet
+	XSSFWorkbook workbook = new XSSFWorkbook(file);//converting to workbook
+	XSSFSheet sheet = workbook.getSheet("Sheet1");//Fetching sheet from workbook 
 	Iterator itr = sheet.iterator();
 	while(itr.hasNext())
 	{
-		Row RowItr = (Row)itr.next();
-		Iterator cellItr=RowItr.cellIterator();
+		Row RowItr = (Row)itr.next();//taking entire row  
+		Iterator cellItr=RowItr.cellIterator();//considering data horizontally cell by cell 
+	
 		while(cellItr.hasNext())
 		{
 			Cell cells= (Cell)cellItr.next();
-			switch(cells.getCellType())
+			switch(cells.getCellType())//fetching cell type 
 			{
-			case Cell.CELL_TYPE_STRING:data.add(cells.getStringCellValue());
+			case Cell.CELL_TYPE_STRING:data.add(cells.getStringCellValue());//if celltype is String then data will be added to Arraylist ie, data 
 			break;
-			case Cell.CELL_TYPE_NUMERIC:data.add(cells.getNumericCellValue());
+			case Cell.CELL_TYPE_NUMERIC:data.add(cells.getNumericCellValue());//Similarly numeric and boolean also gets added to Arraylist, this will store numeric value as 2.00
 			break;
 			case Cell.CELL_TYPE_BOOLEAN:data.add(cells.getBooleanCellValue());
 			break;
@@ -85,15 +88,15 @@ public Object[][] getData() throws IOException
 			}
 		}
 	}
-	int rw=data.size()/16;
-	Object a[][]=new Object[rw][16];
+	int rw=data.size()/16; 
+	Object a[][]=new Object[rw][16];//2-dimential array of rows and 16 columns 
 	int j=0;
-	for(int i=16;i<data.size();i=i+16)
+	for(int i=16;i<data.size();i=i+16)//The first 16 columns are skipped(heading are skipped)
 	{
 		
-	    double a1=(double)data.get(i);
-	    int DayCount=(int) Math.round(a1);
-	    a[j][0]=DayCount;
+	    double a1=(double)data.get(i);//converting into double to make sure data is stored in double 
+	    int DayCount=(int) Math.round(a1);//This code is used handle integer stored in double format, eg: 2.00//parsing double to integer
+	    a[j][0]=DayCount;//put daycount data in (0,0) cell
 	    double b=(double)data.get(i+1);
 	    int AdultCount=(int) Math.round(b);
 	    a[j][1]=AdultCount;
@@ -129,12 +132,12 @@ public Object[][] getData() throws IOException
 	    a[j][13]=TicketName;
 	    String PackageType=(String) data.get(i+14);
 	    a[j][14]=PackageType;
-	    String TestCaseName="("+(String) data.get(i+15)+")";
+	    String TestCaseName="("+(String) data.get(i+15)+")";//Last value ie, i+15 = 16 + 15 
 		a[j][15]=TestCaseName;
 		j=j+1;
 		
 	}
-	return a;
+	return a;//Returns entire row in each iteration and gets binded with IBE method 
 }
 
 
@@ -153,7 +156,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
 	if(intialFlag)
 	{
 		
-	  FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/IBE/IBESetting.properties");
+	  FileInputStream status = new FileInputStream("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/src/IBE/IBESetting.properties");//To switch between old and new Summary page, presently not implemented.
 	  stat=new Properties();
 	  stat.load(status);
 	  System.setProperty("webdriver.chrome.driver", "D://Files//Chrome Driver//chromedriver.exe");
@@ -208,7 +211,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     }
     //guest Done Button
   
-    driver.findElement(By.xpath("//*[@id='GuestDetails']/div/div[2]/div/button")).click();
+    driver.findElement(By.xpath("//*[@id='GuestDetails']/div/div[2]/div/button")).click();//click on done in adult child selection popup
     //search button
  
     driver.findElement(By.cssSelector("*[class^='btn btn-default searchbtn']")).click();
@@ -218,11 +221,11 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     	tktvoucherCheck=0;
     	PackageVoucherCheck=0;
       // System.out.println(RoomName);
-       String rmName[]=RoomName.split("\\+");
-       String mpName[]=MealPlan.split("\\+");
+       String rmName[]=RoomName.split("\\+"); //in case of multiple room selection split by +
+       String mpName[]=MealPlan.split("\\+");//same for meal plan like room
        for(int j=0;j<rmName.length;j++)
        {
-    	   try
+    	   try //first time this try catch block is not working only after going to summary page it will work
        	{
     		JavascriptExecutor js = ((JavascriptExecutor) driver);
 			WebElement element = driver.findElement(By.cssSelector("*[class^='btn btn-default rmbRds add-more-rooms']"));
@@ -236,7 +239,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
        		System.out.println(z);
        	}
     	   bookroom(rmName[j],mpName[j]);
-    	   xpathflag=xpathflag+1;
+    	   xpathflag=xpathflag+1; //this is for any combination + package
        }
     }
     
@@ -298,7 +301,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     {
     	
     	int amount=totalAmount;
-    	String AddName[]=AddOnsName.split("\\+");
+    	String AddName[]=AddOnsName.split("\\+");// addons are splitted with + in case of multiple addons
     	for(int ai=0;ai<AddName.length;ai++)
     	{
     		
@@ -313,7 +316,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
   //  if(stat.getProperty("summaryPage").equalsIgnoreCase("old"))
 	//{
     
-       System.out.println("inside");
+       
        Thread.sleep(2000);
        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class='table table-condensed borderless']")));
        WebElement tax=driver.findElement(By.cssSelector("*[class='table table-condensed borderless']"));
@@ -327,7 +330,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
 	   String parseString=TaxAmount;
 	   totalAmount=totalAmount+Integer.parseInt(parseString);
 	
-       String BooingtotalAmt=driver.findElement(By.cssSelector("*[class^='total-amount']")).getText();
+       String BooingtotalAmt=driver.findElement(By.cssSelector("*[class^='total-amount']")).getText();//BooingtotalAmt refers to grand total in summary page
        totalAmt=BooingtotalAmt;
    
        for(String s :specialchar)
@@ -335,28 +338,28 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     	  totalAmt=totalAmt.replace(s, "");
 	   }
 	   String parseStringtotalAmt=totalAmt;
-	   totalAMTValue=Integer.parseInt(parseStringtotalAmt);
-	   //------------------Changes 12-28-2017
-    	int bookingrateCheckFlag=0;
-    	if(ticketRates.size()>0)
-    	{
-        	int FinalTotalAmount=0;
-            for(int a :ticketRates)
-            {
-       	if(bookingrateCheckFlag==0)
-    	{
-    	FinalTotalAmount=totalAmount+a;
-    	totalAmount=FinalTotalAmount;
-    	if(totalAMTValue==totalAmount)
-    	{
-    		bookingrateCheckFlag=1;
-    	}
-    	}
-    }
-	}
+	   totalAMTValue=Integer.parseInt(parseStringtotalAmt);//totalAMTValue grand total fetched from summary page
+	   /*int bookingrateCheckFlag=0;
+   	     if(ticketRates.size()>0)
+      	{
+         	int FinalTotalAmount=0;
+           for(int a :ticketRates)
+           {
+      	      if(bookingrateCheckFlag==0)
+   	          {
+                 FinalTotalAmount=totalAmount+a;
+   	             totalAmount=FinalTotalAmount;
+             	if(totalAMTValue==totalAmount)
+             	{
+   		           bookingrateCheckFlag=1;
+   	            }
+   	        }
+         }
+	}*/
+
     	
-    //------------------Stop
-    if(totalAmount==totalAMTValue)
+   
+    if(totalAmount==totalAMTValue)//totalAmount calculated in the code and its compared with  grand total of booking summary 
     {
     	System.out.println("total Amount:- "+totalAmount);
     	System.out.println("Booing Summary Amount:-"+totalAMTValue);
@@ -392,15 +395,15 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
     if(tktvoucherCheck==1)
     {
     	
-    	wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='payDetails table-striped']")));
-        WebElement a1=driver.findElement(By.cssSelector("*[class^='payDetails table-striped']"));
-        List<WebElement> td1=a1.findElements(By.id("td"));
-        amt=td1.get(7).getText();
+    	wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='payDetails table-striped']")));//display voucher
+        WebElement a1=driver.findElement(By.cssSelector("*[class^='payDetails table-striped']"));//voucher div
+        List<WebElement> td1=a1.findElements(By.id("td"));///take all td with find elements
+        amt=td1.get(7).getText();//i know that total amount is displayed in 7th td
     }else
  
     {
-    	  wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='mainContainer']/table/tbody/tr[5]/td[2]")));
-    	  amt=driver.findElement(By.xpath("//*[@id='mainContainer']/table/tbody/tr[5]/td[2]")).getText();
+    	  wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='mainContainer']/table/tbody/tr[5]/td[2]")));//in case of combination booking
+    	  amt=driver.findElement(By.xpath("//*[@id='mainContainer']/table/tbody/tr[5]/td[2]")).getText();//consider xpath to take amount
     	  
     	  
     	
@@ -408,7 +411,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
   
     
     
-    String[] AmtStr=amt.split(" ");
+    String[] AmtStr=amt.split(" ");//INR 1180
     System.out.println("Booking Summary amount:-"+totalAmt);
     System.out.println("Voucher Page amount:-"+AmtStr[1]);
     if(AmtStr[1].equalsIgnoreCase(String.valueOf(totalAMTValue)))
@@ -467,14 +470,15 @@ public static  void execute() throws IOException, InvalidFormatException
    public static void bookroom(String roomtype1,String meal1) throws InterruptedException
    {
        //driver.findElement(By.xpath("//*[@id='ScrollRoom']/div[1]/div/div[1]/div[1]/div[1]/div/a")).click();
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='content-loader']")));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='rooms']/img")));
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/img")));
-       wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/div/img")));
-   	   JavascriptExecutor js = ((JavascriptExecutor) driver);
-
-		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-	
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='content-loader']")));//loader should disappear
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='rooms']/img")));//room loader should disappear
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/img"))); //meal plan loader should disappear
+       wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/div/img")));//meal plan loader should disappear
+   	   
+       //code for scroller to scroll page down start
+       JavascriptExecutor js = ((JavascriptExecutor) driver);
+   	   js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+       //code for scroller to scroll page down end
 		List<WebElement>mealPlan1 =new LinkedList<WebElement>();
 		List<WebElement>mealPlan2 =new LinkedList<WebElement>();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class^='col-sm-12 pad-zero rate-inventory read-more rooms-info']")));
@@ -482,21 +486,23 @@ public static  void execute() throws IOException, InvalidFormatException
     	Boolean RoomNameflag=true;
     	Boolean RoomMealflag=true;
     	WebDriverWait mealwait=new WebDriverWait(driver,4);
-    	for(WebElement web:roomtype)
+    	for(WebElement web:roomtype)//using 2 div's of 2 different rooms in for each
     	{
     		if(RoomNameflag)
     		{
-    		WebElement roomName=web.findElement(By.cssSelector("*[class^='label-Blue col-sm-8 pad-zero']"));
-    		String roomname1=roomName.getText();
+    		WebElement roomName=web.findElement(By.cssSelector("*[class^='label-Blue col-sm-8 pad-zero']"));// //room name inspect element
+    		String roomname1=roomName.getText();//capture room name
     
-    		if(roomname1.equalsIgnoreCase(roomtype1))
+    		if(roomname1.equalsIgnoreCase(roomtype1))//excel i/p room compared with captured room
     		{
     			RoomNameflag=false;
     			
     			Thread.sleep(6000);
+    			
+    			// 2 try blocks used here bcz meal plan css locator is different when there is only meal plan and meal plan with offer
     			try{
     			                              
-    			mealwait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='col-xs-12 pad-zero margin-align mealplan-rate-info']")));
+    			mealwait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='col-xs-12 pad-zero margin-align mealplan-rate-info']")));//waiting for i/p meal plan from excel to appear in UI
     			
     			mealPlan1= web.findElements(By.cssSelector("*[class^='col-xs-12 pad-zero margin-align mealplan-rate-info']"));
     			
@@ -515,7 +521,7 @@ public static  void execute() throws IOException, InvalidFormatException
         		{
         			System.out.println(e);
         		}
-    			mealPlan1.addAll(mealPlan2);
+    			mealPlan1.addAll(mealPlan2);//addall method adds mealplan2 to mealplan1
     		
     		
     			for(WebElement meal:mealPlan1)
@@ -523,19 +529,19 @@ public static  void execute() throws IOException, InvalidFormatException
     				if(RoomMealflag)
     				{
         			
-    				String mealplanweb=meal.findElement(By.cssSelector("*[class^='day-roomlabel']")).getText();
+    				String mealplanweb=meal.findElement(By.cssSelector("*[class^='day-roomlabel']")).getText();//capture meal plan name from UI
     				
-    				if(mealplanweb.equalsIgnoreCase(meal1))
+    				if(mealplanweb.equalsIgnoreCase(meal1))//Compare this meal plan captured with excel i/p meal plan
     				{
     					
-    					String price=meal.findElement(By.cssSelector("*[class^='promo-availablerate total-room-rate']")).getText();
-    					String specialchar[]={",","\""};
+    					String price=meal.findElement(By.cssSelector("*[class^='promo-availablerate total-room-rate']")).getText();//capture meal plan rates
+    					String specialchar[]={",","\""};//amount captured will be like this "1,600"  ....\ escape character to handle ""
     					for(String s :specialchar)
     					{
-    						price=price.replace(s, "");
+    						price=price.replace(s, "");//"1600"-----next time //1600
     					}
     					String parseString=price;
-    					totalAmount=totalAmount+Integer.parseInt(parseString);
+    					totalAmount=totalAmount+Integer.parseInt(parseString);//totalamount=0 for the first time
     					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     					RoomMealflag=false;
     					wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("button")));
@@ -579,9 +585,11 @@ public static  void execute() throws IOException, InvalidFormatException
 	   //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='rooms']/img")));
 	   //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/img")));
        //wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='flip_maindiv']/div/div/img")));
-       try
+	   
+       try 
+     //package tab has got 2 xpaths 1. //*[@id='packagetab']/a, the home page will have this xpath in the first load 
        {
-    	   if(xpathflag==0)
+    	   if(xpathflag==0)  
     	   {
     		System.out.println("Inside");
     		Thread.sleep(20000);
@@ -593,8 +601,10 @@ public static  void execute() throws IOException, InvalidFormatException
        {
     	   System.out.println();
        }
-       try
+       try//This try-catch block for any combination + package includes package + package also
+       //*[@id='hpackagetab']/a - this xpath will be thr xpath when navigated from summary to home page
        {
+    	   
     	   if(xpathflag!=0)
     	   {
     	      packtype.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='hpackagetab']/a")));
@@ -605,65 +615,73 @@ public static  void execute() throws IOException, InvalidFormatException
        {
     	   System.out.println();
        }
-	//*[@id="hpackagetab"]/a
-	//*[@id="packagetab"]/a
+	
        
        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='package']/img")));
        Thread.sleep(2000);
+       //Code for scroller startd
        JavascriptExecutor js = ((JavascriptExecutor) driver);
 
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		//Code for scroll ends
 	     wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='lead margin-clear text-left']")));
 	 //List<WebElement>WebPackageType=driver.findElements(By.cssSelector("*[class^='lead margin-clear text-left']"));
 	 
-	    List<WebElement>WebPackageType=driver.findElements(By.cssSelector("*[class^='overlay-container overlay-visible']"));
+	    List<WebElement>WebPackageType=driver.findElements(By.cssSelector("*[class^='overlay-container overlay-visible']"));//package type image addresses stored here
 	 
-	 for(WebElement a :WebPackageType)
+	 for(WebElement a :WebPackageType)//for each takes each address
 	 {
 		
 		 if(PackageTypeflag)
 		 {
-			 String name=a.findElement(By.cssSelector("*[class^='lead margin-clear text-left']")).getText();
+			 String name=a.findElement(By.cssSelector("*[class^='lead margin-clear text-left']")).getText();//package text capture
 			
-		 if(name.equalsIgnoreCase(PackageType))
+		 if(name.equalsIgnoreCase(PackageType))//comparing package text captured with excel i/p package type
 		 {
 			 PackageTypeflag=false;
-			 a.findElement(By.cssSelector("*[class^='overlay-link popup-img']")).click();
+			 a.findElement(By.cssSelector("*[class^='overlay-link popup-img']")).click();//clcik on package type image
 			 wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='col-sm-12 pad-zero packages-info']")));
-			 List<WebElement>WebPackageName=driver.findElements(By.cssSelector("*[class^='col-sm-12 pad-zero packages-info']"));
+			 List<WebElement>WebPackageName=driver.findElements(By.cssSelector("*[class^='col-sm-12 pad-zero packages-info']"));//package each div when clicked on package type image
 			 for(WebElement b :WebPackageName)
 			 {
 				 
 				 if(PackageNameflag)
 				 {
-					 String pkname=b.findElement(By.cssSelector("*[class^='label-Blue']")).getText();
+					 String pkname=b.findElement(By.cssSelector("*[class^='label-Blue']")).getText();//cspture package name like package type
 					 
-				 if(pkname.equalsIgnoreCase(PackageName))
+				 if(pkname.equalsIgnoreCase(PackageName))//comparing captured package name with excel i/p package name
 				 {
 					 PackageNameflag=false;
 					
+					 
+					 //code for drop down starts here
 					 WebElement mealPlanSelectDropDown=b.findElement(By.cssSelector("*[class^='form-control selected-package-mealplan']"));
 					
 					 Select sel=new Select(mealPlanSelectDropDown);
 					 sel.selectByVisibleText(MealType);
-					
-					 String price=b.findElement(By.cssSelector("*[class^='package-price']")).getText();
-					String specialchar[]={" ",",","\""};
+					 //code for drop down ends here
+					 
+					 String price=b.findElement(By.cssSelector("*[class^='package-price']")).getText();//capture package price
+					String specialchar[]={" ",",","\""};//amount captured will be like this "1,600"  ....\ escape character to handle ""
  					for(String s :specialchar)
  					{
- 						price=price.replace(s, "");
+ 						price=price.replace(s, "");//"1600"-----next time //1600
  					}
  					String parseString=price;
- 					totalAmount=totalAmount+Integer.parseInt(parseString);
+ 					totalAmount=totalAmount+Integer.parseInt(parseString);//total amount previously has room total if any
  					// wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='lead margin-clear text-left']")));
-                    WebElement button=b.findElement(By.cssSelector("*[class^='btn btn-default  book-pakage']"));
+                    WebElement button=b.findElement(By.cssSelector("*[class^='btn btn-default  book-pakage']"));//consider reserve package button address
+                    
+                    //code for scroll till Reserve package	button--start
                     JavascriptExecutor js1 = ((JavascriptExecutor) driver);
              	   //Now scroll to this element 
              	    js1.executeScript("arguments[0].scrollIntoView(true);", button);
  				    
- 					 b.findElement(By.cssSelector("*[class^='btn btn-default  book-pakage']")).click();
+             	 //code for scroll till Reserve package	button--end
+             	    
+ 					 b.findElement(By.cssSelector("*[class^='btn btn-default  book-pakage']")).click();//reserve package button click
  					 Thread.sleep(2000);
- 					try
+ 					try//to handle LOS if any
  					{
  						System.out.println("-----------------------");
  						WebElement dialogbox =driver.findElement(By.xpath("//*[@id='checkindate-popup']"));
@@ -693,14 +711,15 @@ public static  void execute() throws IOException, InvalidFormatException
    {
 	   ticketRates=new ArrayList<Integer>();
 	   boolean tickettypeflag=true;
-	   WebDriverWait TicketType=new WebDriverWait(driver,4);
+	   WebDriverWait TicketType=new WebDriverWait(driver,4);// explicitely wait
 	  
-	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='content-loader']")));
+	   wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='content-loader']")));//to handle main loader on hoe page load
 	   System.out.println("hello");
 	 //*[@id="hofferstab"]/a
 	   try
 	   {
 		   if(xpathflag==0)
+			   //like package we will have 2 xpaths for ticket as well --please refer package
     	   {
 			   System.out.println("hello111");
 		       TicketType.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='offerstab']/a")));
@@ -714,7 +733,7 @@ public static  void execute() throws IOException, InvalidFormatException
 	   
 	   try
 	   {
-		   if(xpathflag!=0)
+		   if(xpathflag!=0)//any combination with ticket
     	   {
 		      TicketType.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='hofferstab']/a")));
 		      driver.findElement(By.xpath("//*[@id='hofferstab']/a")).click();
@@ -725,24 +744,27 @@ public static  void execute() throws IOException, InvalidFormatException
 		  System.out.println();
 	   }
 	   
-	    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='offers']/img")));
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id='offers']/img")));//ticket loaded should go off
 	    JavascriptExecutor js = ((JavascriptExecutor) driver);
-
+        
+	    //page scroll full down--start
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		
+		 //page scroll full down--ends
 	    wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("*[class^='col-lg-4 rate-inventory col-md-4 col-sm-6 col-xs-12 rooms-info grid-roomtype']")));
-        List<WebElement>Ticket1=driver.findElements(By.cssSelector("*[class^='col-lg-4 rate-inventory col-md-4 col-sm-6 col-xs-12 rooms-info grid-roomtype']"));
-       for(WebElement a :Ticket1)
+        List<WebElement>Ticket1=driver.findElements(By.cssSelector("*[class^='col-lg-4 rate-inventory col-md-4 col-sm-6 col-xs-12 rooms-info grid-roomtype']"));//consider all main div addresses on click of ticket
+       for(WebElement a :Ticket1)//consider each address one by one
        {
     	   if(tickettypeflag)
     	   {
-    	   String WebticketNAme=a.findElement(By.tagName("span")).getText();
-    	   if(WebticketNAme.equalsIgnoreCase(Ticketname))
+    	   String WebticketNAme=a.findElement(By.tagName("span")).getText();//capture ticket name from span
+    	   if(WebticketNAme.equalsIgnoreCase(Ticketname))//compare captured ticket name with i/p excel ticketname
     	   {
     		   
-    		    List<WebElement>rates=a.findElements(By.cssSelector("*[class='weekrate rate-fnt']"));
+    		    List<WebElement>rates=a.findElements(By.cssSelector("*[class='weekrate rate-fnt']"));//contains address of amount in ticket (both week day and week end)
     		    for(WebElement e :rates)
     		    {
-    		    	String Rates=e.getText();
+    		    	String Rates=e.getText();  //to handle rates --please refer package or room code
     		    	String specialchar[]={" ",",","\""};
     				for(String s :specialchar)
     				{
@@ -757,7 +779,7 @@ public static  void execute() throws IOException, InvalidFormatException
 				
 				//totalAmount=totalAmount+Integer.parseInt(parseString);
     		   tickettypeflag=false;
-    		   a.findElement(By.cssSelector("*[class^='btn btn-default btn-custom ticket-book pull-right']")).click();
+    		   a.findElement(By.cssSelector("*[class^='btn btn-default btn-custom ticket-book pull-right']")).click();//click on add to summary
     	   }
     	   }
        }
@@ -767,32 +789,32 @@ public static  void execute() throws IOException, InvalidFormatException
        JavascriptExecutor js1 = ((JavascriptExecutor) driver);
 	   WebElement element = driver.findElement(By.cssSelector("*[class^='total-amount']"));
 	   //Now scroll to this element 
-	   js1.executeScript("arguments[0].scrollIntoView(true);", element);
+	   js1.executeScript("arguments[0].scrollIntoView(true);", element);//scrolls till grand total in summary page
        
         String specialchar[]={" ",",","\""};
-	    String BooingtotalAmt=driver.findElement(By.cssSelector("*[class^='total-amount']")).getText();
-	    String totalAmt=BooingtotalAmt;
+	    String BooingtotalAmt=driver.findElement(By.cssSelector("*[class^='total-amount']")).getText();///consider total amount
+	    String totalAmt=BooingtotalAmt;//put BooingtotalAmt to totalAmt
 	    for(String s :specialchar)
 		{
 	    	totalAmt=totalAmt.replace(s, "");
 		}
 		String parseStringtotalAmt=totalAmt;
-	    int totalAMTValue=Integer.parseInt(parseStringtotalAmt);
+	    int totalAMTValue=Integer.parseInt(parseStringtotalAmt);//totalAMTValue is booking summary display grand total value
 		int bookingrateCheckFlag=0;
 	    if(ticketRates.size()>0)
 		{
 		
-	    for(int a :ticketRates)
+	    for(int a :ticketRates) //code to cross verify to know whether week day or week end ticket is selected (based on hotel settings)..consider week end ticket is selected
 	    {int FinalTotalAmount=0;
 	    	if(bookingrateCheckFlag==0)
 	    	{
-	    	FinalTotalAmount=totalAmount+a;
+	    	FinalTotalAmount=totalAmount+a;//ticket cost+ total amount
 	    	//totalAmount=FinalTotalAmount;
 	    	
 	    	wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class='table table-condensed borderless']")));
 		    WebElement tax=driver.findElement(By.cssSelector("*[class='table table-condensed borderless']"));
 		    WebElement TaxTd=tax.findElement(By.cssSelector("*[class='col-sm-4 text-right']"));
-		    String TaxAmount=TaxTd.findElement(By.cssSelector("*[class='font-size-13 ']")).getText();
+		    String TaxAmount=TaxTd.findElement(By.cssSelector("*[class='font-size-13 ']")).getText();//Tax get text
 		    
 			for(String s :specialchar)
 			{
@@ -800,28 +822,28 @@ public static  void execute() throws IOException, InvalidFormatException
 			}
 			String parseString=TaxAmount;
 			//totalAmount=totalAmount+Integer.parseInt(parseString);
-			FinalTotalAmount=FinalTotalAmount+Integer.parseInt(parseString);
-			System.out.println("FinalTotalAmount "+FinalTotalAmount);
-			System.out.println("totalAMTValue "+totalAMTValue);
+			FinalTotalAmount=FinalTotalAmount+Integer.parseInt(parseString);//ticket cost+ total amount+tax
+			
 	    	if(totalAMTValue==FinalTotalAmount)
 	    	{
-	    		bookingrateCheckFlag=1;
+	    		bookingrateCheckFlag=1;//here when it is 1 , further no need to check with week day rates of ticket
 	    		totalAmount=FinalTotalAmount;
 	    	}
 	    	}
 	    }
 	    
 		}
-	    if(tktcount>=0)
+	    if(tktcount>=0)//if ticket is >0 in excel i/p
 	    {
+	    	
 	    	wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("*[class='table table-condensed borderless']")));
 		    WebElement tax=driver.findElement(By.cssSelector("*[class='table table-condensed borderless']"));
 		    WebElement TaxTd=tax.findElement(By.cssSelector("*[class='col-sm-4 text-right']"));
 		    String TaxAmount=TaxTd.findElement(By.cssSelector("*[class='font-size-13 ']")).getText();
 	    	String parseString=TaxAmount;
-	    	totalAmount=totalAmount-Integer.parseInt(parseString);
-	    	tktcount=tktcount-1;
-	    	  //System.out.println("Total Amount Inside Ticket Count**----"+totalAmount);
+	    	totalAmount=totalAmount-Integer.parseInt(parseString);//this is to avoid tax amount getting added twice when there are multiple tickets
+	    	tktcount=tktcount-1;//this is also to handle tax in a proper way..to avoid tax getting calculated multiple times in case of multiple tickets
+	    	//System.out.println("Total Amount Inside Ticket Count**----"+totalAmount);
 	    }
 	    
 	    System.out.println("Total Amount Inside Ticket Count----"+totalAmount);
@@ -840,33 +862,35 @@ public static  void execute() throws IOException, InvalidFormatException
 	   
 	 if(stat.getProperty("summaryPage").equalsIgnoreCase("old"))
 	 {
-	   System.out.println("1");
+	//scroll and wait till add on option is visible
 	   JavascriptExecutor js = ((JavascriptExecutor) driver);
 	   WebElement element = driver.findElement(By.cssSelector("*[class^='col-sm-12 myaddons']"));
 	   //Now scroll to this element 
 	   js.executeScript("arguments[0].scrollIntoView(true);", element);
 	   boolean addonsname=true;
 	   //col-md-12 col-sm-12 addons list-group ng-scope addons-list
-	   List<WebElement>addls=element.findElements(By.cssSelector("*[class^='col-md-12 col-sm-12 addons list-group ng-scope addons-list']"));
+	   List<WebElement>addls=element.findElements(By.cssSelector("*[class^='col-md-12 col-sm-12 addons list-group ng-scope addons-list']"));//add address of all addons to the list
 	   for(WebElement a :addls)
 	   {
-		   System.out.println("1");
+		  
 		   if(addonsname)
 		   {
-		   String AddOnsName=a.findElement(By.cssSelector("*[class^='col-md-8 col-sm-8 addons-details pad-zero']")).getText();
+		   String AddOnsName=a.findElement(By.cssSelector("*[class^='col-md-8 col-sm-8 addons-details pad-zero']")).getText();//capture addons name
 		   System.out.println(AddOnsName);
 		   System.out.println(AddonsService);
-		   if(AddOnsName.equalsIgnoreCase(AddonsService))
+		   if(AddOnsName.equalsIgnoreCase(AddonsService))//compare captuired addon name with excel i/p addonservice
 		   {
-			   System.out.println("1");
+			   
 		       addonsname=false;
+		       
+		       //code for drop down to select no of addons
 			   WebElement addonscount=a.findElement(By.cssSelector("*[class^='update-addon']"));
 			   Select sel=new Select(addonscount);
 			   sel.selectByVisibleText(String.valueOf(count));
 			   
-			    List<WebElement> ls=a.findElements(By.cssSelector("*[class^='col-md-2 col-sm-2 addons-rate pad-zero ng-binding']"));
+			    List<WebElement> ls=a.findElements(By.cssSelector("*[class^='col-md-2 col-sm-2 addons-rate pad-zero ng-binding']"));//rate of 
 			    String price=ls.get(2).getText();
-			    System.out.println("----------------"+price);
+			   
 				String specialchar[]={" ",",","\""};
 				for(String s :specialchar)
 				{
@@ -898,7 +922,7 @@ public static  void execute() throws IOException, InvalidFormatException
 
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		System.out.println("11");
-	   WebElement guest= driver.findElement(By.xpath("//*[@id='guestinfo']"));
+	   WebElement guest= driver.findElement(By.xpath("//*[@id='guestinfo']"));//address stored in web element
 	   WebElement FirstName=guest.findElement(By.id("User_Firstname"));
 	   WebElement LastName=guest.findElement(By.id("User_Lastname"));
 	   WebElement MobileNumber=guest.findElement(By.id("User_Mobilenumber"));
@@ -913,7 +937,7 @@ public static  void execute() throws IOException, InvalidFormatException
 	   LastName.sendKeys(LastName1);
 	   MobileNumber.sendKeys(MobileNumber1);
 	   Email.sendKeys(Email1);
-	   for(WebElement e:first)
+	   for(WebElement e:first)//when there are multiple rooms in the reservation
 	   {
 		   e.sendKeys(FirstName1);
 	   }
@@ -931,7 +955,7 @@ public static  void execute() throws IOException, InvalidFormatException
    
    public static void datecreste(String Startdate,String Enddate)
    {
-	   String sd[]=Startdate.split("\\-");
+	   String sd[]=Startdate.split("\\-");//Date split was not working with hiphen and therfore forward slashes were used.
 	   String ed[]=Enddate.split("\\-");
 	   String startday=sd[0];
 	   String startmon=sd[1];
@@ -940,42 +964,43 @@ public static  void execute() throws IOException, InvalidFormatException
 	   String endMon=ed[1];
 	   String endYear=ed[2];
 	   
-	   driver.findElement(By.xpath("//*[@id='checkin']")).click();
+	   driver.findElement(By.xpath("//*[@id='checkin']")).click();//check in date calendar click
 	   WebElement checkindropdown =driver.findElement(By.cssSelector("*[class^='datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom']"));
 	   
-	   checkindropdown.findElement(By.cssSelector("*[class^='datepicker-switch']")).click();
-	   List<WebElement>checkinmon=checkindropdown.findElements(By.tagName("span"));
+	   checkindropdown.findElement(By.cssSelector("*[class^='datepicker-switch']")).click();//clicks on Month header (Januarary 2018)
+	   List<WebElement>checkinmon=checkindropdown.findElements(By.tagName("span"));//List of months are stored in checkinmon variable
 	   boolean startmonflag=true;
 	   for(WebElement a:checkinmon)
 	   {
 		   if(startmonflag)
 		   {
 		   String mon=a.getText();
-		   if(mon.equalsIgnoreCase(startmon))
+		   if(mon.equalsIgnoreCase(startmon))//if current month matches to this span list month
 		   {  
 			   startmonflag=false;
 			   List<WebElement>curday=new LinkedList<WebElement>();
 		       List<WebElement>furday=new LinkedList<WebElement>();
 			   a.click();
-			   curday=checkindropdown.findElements(By.cssSelector("*[class^='active day']"));
-			   try
+			   curday=checkindropdown.findElements(By.cssSelector("*[class^='active day']"));//Stores the current date address
+			   try//if current day is 31st, then there wont be any future days in that month and try throws error 
 			   {
-			   furday=checkindropdown.findElements(By.cssSelector("*[class^='day']"));
+			   furday=checkindropdown.findElements(By.cssSelector("*[class^='day']"));//stores all the future date address
 			   }
 			   catch(Exception e)
 			   {
 				   
 			   }
-			   curday.addAll(furday);
-			   System.out.println(curday.size());
+			   //upper loop will only store the address of the dates
+			   curday.addAll(furday);//adding all future days with Current day 
+			  
 			   boolean startdayflag=true;
 			   for(WebElement b : curday)
 			   {
 				   if(startdayflag)
 				   {
-				   String day=b.getText();
-				   System.out.println(day);
-				   if(day.equalsIgnoreCase(startday))
+				   String day=b.getText();//
+				 //using the address of the dates, we store the values in day variable
+				   if(day.equalsIgnoreCase(startday))//this loop is used to click on current date based startday definition used up.
 				   {
 					   b.click();
 					   startdayflag=false;
@@ -989,7 +1014,7 @@ public static  void execute() throws IOException, InvalidFormatException
 	   
 	   
 	   
-	   //CheckOut
+	   //CheckOut, please refer checkin comments 
 	   driver.findElement(By.xpath("//*[@id='checkout']")).click();
 	   WebElement checkOutdropdown =driver.findElement(By.cssSelector("*[class^='datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom']"));
 	  
@@ -1038,14 +1063,7 @@ public static  void execute() throws IOException, InvalidFormatException
 	   
 	   
 	   
-	   /*System.out.println(startmon);
-	   System.out.println(startday);
-	   System.out.println(startYear);
-	   System.out.println(endMon);
-	   System.out.println(endday);
-	   System.out.println(endYear);*/
-	   
-	   
+
    }
 
 
