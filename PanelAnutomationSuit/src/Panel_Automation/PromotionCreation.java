@@ -48,25 +48,25 @@ public class PromotionCreation {
 		driver=RateCreation.driver;
 		
 		
-		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		stat=new Properties();
 		stat.load(status);
 		if(stat.getProperty("Status").equalsIgnoreCase("QA"))
 		{
 			System.out.println("1");
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
 		else if(stat.getProperty("Status").equalsIgnoreCase("LIVE"))
 		{
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();
 			gen.load(pageObjectGen);
 		}
 		
 		//promotion.properties file gets loaded here contains all xpaths and i/p
-		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Promotion.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Promotion.properties");
 		prop = new Properties();
 	    prop.load(pageObject);
 	    wait=new WebDriverWait(driver,40);//explicit wait
@@ -535,9 +535,10 @@ public class PromotionCreation {
 	        if(BookingNight.equals("Booking/All nights")||BookingNight.equalsIgnoreCase("For every X nights Discount on Xth night")||BookingNight.equalsIgnoreCase("For Xth night onwards"))
 	        {
 	        	if(amount.equals("Amount"))
-	        	{
+	        	{//*[@id="wizard-discount"]/div[2]/div[3]/span/label/i
+	        		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='wizard-discount']/div[2]/div[3]/span/label/input")));
 	        		Thread.sleep(2000);
-	        	driver.findElement(By.xpath("//*[@id='wizard-discount']/div[2]/div[3]/span/label/input")).click();//%age  and flat toggle switch
+	        	    //driver.findElement(By.cssSelector("*[class^='ng-pristine ng-valid']")).click();//%age  and flat toggle switch
 	        	}
 	        
 	        	driver.findElement(By.xpath("//*[@id='wizard-discount']/div[2]/div[2]/div/input")).sendKeys("20");//giving discount amount value in flat

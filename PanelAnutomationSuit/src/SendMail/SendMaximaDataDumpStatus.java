@@ -36,7 +36,7 @@ package SendMail;
 			SimpleDateFormat DF = new SimpleDateFormat("dd-MM-yyyy");
 		    Calendar RC = Calendar.getInstance();
 		    String start=DF.format(RC.getTime());
-		    File source=new File("C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxim/Maxim.html");
+		    File source=new File("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxim/Maxim.html");
 		    //C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxima/Maxima.html
 			//File source = new File("D:/WorkSpace/ibv4_code/MobileTest/test-output/AndroidMobileAutomation/Mobile Android Automation.html");
 			File dest = new File("D:/Maxim Daily Report/PanelARIReport-"+start+".html");
@@ -60,17 +60,17 @@ package SendMail;
 		    Calendar RC = Calendar.getInstance();
 		    String start=DF.format(RC.getTime());
 		   Properties props = new Properties();
-		   props.put("mail.smtp.host", "smtp.gmail.com");
-		   props.put("mail.smtp.socketFactory.port", "465");
+		   props.put("mail.smtp.host", "smtp.rediffmailpro.com");
+		   props.put("mail.smtp.socketFactory.port", "587");
 		   props.put("mail.smtp.socketFactory.class",
 		   "javax.net.ssl.SSLSocketFactory");
 		   props.put("mail.smtp.auth", "true");
-		   props.put("mail.smtp.port", "465");
+		   props.put("mail.smtp.port", "587");
 		   Session session = Session.getDefaultInstance(props,
 
 		   new javax.mail.Authenticator() {
 		   protected PasswordAuthentication getPasswordAuthentication() {
-		   return new PasswordAuthentication("anil.kumar@reznext.com","@nilk844@");
+		   return new PasswordAuthentication("systemmonitoring@reznext.net","Reznext@123");
 		}
 		});
 		   
@@ -78,7 +78,7 @@ package SendMail;
 		       Message message = new MimeMessage(session);
 
 		       // Set From: header field of the header.
-		       message.setFrom(new InternetAddress("anil.kumar@reznext.com"));
+		       message.setFrom(new InternetAddress("systemmonitoring@reznext.net"));
 
 		       // Set To: header field of the header.
 		       message.setRecipients(Message.RecipientType.TO,
@@ -103,7 +103,7 @@ package SendMail;
 		       // Part two is attachment
 		       messageBodyPart = new MimeBodyPart();
 		       
-		       String filename = "C:/Users/qa.test/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxim/Maxim.html";
+		       String filename = "C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/test-output/Maxim/Maxim.html";
 		       DataSource source = new FileDataSource(filename);
 		       messageBodyPart.setDataHandler(new DataHandler(source));
 		       messageBodyPart.setFileName(filename);

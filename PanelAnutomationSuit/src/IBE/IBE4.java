@@ -63,7 +63,7 @@ public Object[][] getData() throws IOException
 {
 	
 	data= new ArrayList(); //This data will store the rows and columns in single dimensional array 
-	FileInputStream file= new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/IBE/IBETestData.xlsx");//accessing excel sheet
+	FileInputStream file= new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/IBE/IBETestData.xlsx");//accessing excel sheet
 	XSSFWorkbook workbook = new XSSFWorkbook(file);//converting to workbook
 	XSSFSheet sheet = workbook.getSheet("Sheet1");//Fetching sheet from workbook 
 	Iterator itr = sheet.iterator();
@@ -156,7 +156,7 @@ public static void IBE(int DayCount,int AdultCount,int ChildCount,int InfantCoun
 	if(intialFlag)
 	{
 		
-	  FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/IBE/IBESetting.properties");//To switch between old and new Summary page, presently not implemented.
+	  FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/IBE/IBESetting.properties");//To switch between old and new Summary page, presently not implemented.
 	  stat=new Properties();
 	  stat.load(status);
 	  System.setProperty("webdriver.chrome.driver", "D://Maxim Chrom Driver//chromedriver.exe");

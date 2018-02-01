@@ -66,7 +66,7 @@ public class RateCreation {
 	{
         
 		 //Status variable conatins Switch QA and Live properties file address
-		 FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
+		 FileInputStream status = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/SwitchQAandLIVE.properties");
 		 stat=new Properties();//stat is variable of type properties and its used to store object reference
 		 stat.load(status);//loading status variable into stat
 		 System.out.println(stat.getProperty("Status"));
@@ -77,7 +77,7 @@ public class RateCreation {
 		
 			 System.out.println("inside");
 			QALIVE=stat.getProperty("Status");
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Generic.properties");
 			gen=new Properties();//test property data is accessed here from Repository--Generic.properties
 			gen.load(pageObjectGen);
 		}
@@ -85,7 +85,7 @@ public class RateCreation {
 		{
 			System.out.println("inside");
 			QALIVE=stat.getProperty("Status");
-			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
+			FileInputStream pageObjectGen = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/LiveRepository/Generic.properties");
 			gen=new Properties();//test live property data is accessed here--LiveRepository--Generic.properties
 			gen.load(pageObjectGen);//USING GEN.PROPERTIES we access pageobjectgen 
 		}
@@ -159,7 +159,7 @@ public class RateCreation {
 	@Test
 	public static void start() throws InterruptedException, FindFailed, AWTException, IOException, UnsupportedFlavorException
 	{
-		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/Panel&IBEAutomationSuit/PanelAnutomationSuit/src/Repository/Rate_Creation_Repository.properties");
+		FileInputStream pageObject = new FileInputStream("C:/Users/anil.kumar/git/RezPanelAutomation/PanelAnutomationSuit/src/Repository/Rate_Creation_Repository.properties");
 		prop = new Properties();
 		prop.load(pageObject);
 		driver.get(gen.getProperty("Rate_creation_URL")); //contains either test gen or live gen file
