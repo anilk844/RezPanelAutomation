@@ -60,17 +60,18 @@ package SendMail;
 		    Calendar RC = Calendar.getInstance();
 		    String start=DF.format(RC.getTime());
 		   Properties props = new Properties();
+		   props.put("mail.transport.protocol", "smtp");
 		   props.put("mail.smtp.host", "smtp.rediffmailpro.com");
 		   props.put("mail.smtp.socketFactory.port", "587");
-		   props.put("mail.smtp.socketFactory.class",
-		   "javax.net.ssl.SSLSocketFactory");
+		  // props.put("mail.smtp.socketFactory.class",
+		   //"javax.net.ssl.SSLSocketFactory");
 		   props.put("mail.smtp.auth", "true");
 		   props.put("mail.smtp.port", "587");
 		   Session session = Session.getDefaultInstance(props,
 
 		   new javax.mail.Authenticator() {
 		   protected PasswordAuthentication getPasswordAuthentication() {
-		   return new PasswordAuthentication("systemmonitoring@reznext.net","Reznext@123");
+		   return new PasswordAuthentication("systemmonitoring@reznext.net","Qwerty@123");
 		}
 		});
 		   
@@ -83,7 +84,7 @@ package SendMail;
 		       // Set To: header field of the header.
 		       message.setRecipients(Message.RecipientType.TO,
 		          InternetAddress.parse("poornima.rao@reznext.com"));
-
+		       message.addRecipients(Message.RecipientType.CC, InternetAddress.parse("sahana.siddaraju@reznext.com,jegatheesan.p@reznext.com"));
 		       // Set Subject: header field
 		       message.setSubject("Maxim Occupancy Push Status");
 
